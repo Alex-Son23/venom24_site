@@ -13,3 +13,6 @@ env
 
 # Но оставить все app/*/static/
 !*/static/
+
+.DS_Store
+venom_media.tar.gz
