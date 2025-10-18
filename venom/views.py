@@ -44,6 +44,7 @@ class HomePageView(ListView):
         context['zoneplay'] = [content for content in context['all_content'] if isinstance(content, ZonePlay)]
         context['characteristics'] = [content for content in context['all_content'] if isinstance(content, Characteristics)]
         context["mainpage"] = MainPage.get_solo
+        context["clubs"] = Club.objects.all()
         return context
 
     def get(self, request, *args, **kwargs):

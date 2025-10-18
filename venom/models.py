@@ -2708,6 +2708,8 @@ class Club(models.Model):
 
     is_open_24 = models.BooleanField(verbose_name="Круглосуточный", blank=True, null=True)
 
+    is_open = models.BooleanField(verbose_name="Открыт ли клуб", blank=True, null=True, default=True)
+
     def get_pc_games(self):
         return [g.strip() for g in self.pc_games.split(",") if g.strip()]
 

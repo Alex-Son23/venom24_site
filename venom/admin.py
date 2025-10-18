@@ -2261,6 +2261,7 @@ class ClubAdmin(admin.ModelAdmin):
                     "name",
                     "full_name",
                     "slug",
+                    "is_open",
                     "video",
                     "phone",
                     "map_link",

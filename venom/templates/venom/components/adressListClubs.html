@@ -4,7 +4,7 @@
             <li class="club glassEffect {% if not club.is_open %}clubNotStandart{% endif %}">
                 <div class="txtPart">
                     <div class="phoneCountPc">
-                        <a href="{% url 'club_detail' slug=club.slug %}" class="title">{{ club.name }}</a>
+                        <a href="{% url 'club_page' club.slug %}" class="title">{{ club.name }}</a>
                         {% if club.total_pcs %}
                             <div class="pcCount">{{ club.total_pcs }}ПК</div>
                         {% endif %}
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="btnPart">
-                            <a href="{% url 'club_detail' slug=club.slug %}" class="more lineAnimation">
+                            <a href="{% url 'club_page' club.slug %}" class="more lineAnimation">
                                 Подробнее <div class="flare"></div>
                             </a>
                             {% if club.phone %}
