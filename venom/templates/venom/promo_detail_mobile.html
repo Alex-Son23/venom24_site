@@ -16,7 +16,7 @@
         <a href="{% url 'promo' %}" class="rubric">Акции</a>
         <div class="date">{{ promodetailmobile.time_create|date:"d F Y" }}</div>
         <h1>{{ promodetailmobile.title }}</h1>
-        <p>{{ promodetailmobile.descr|safe }}</p>
+        <p>{{ promodetailmobile.descr|linebreaks|safe }}</p>
 
         <a href="{% url 'promo' %}" class="goBack">Назад</a>
     </div>
