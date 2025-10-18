@@ -2945,31 +2945,58 @@ def club_promo_upload_path(instance, filename):
 
 
 class ClubPromo(models.Model):
-    club = models.ForeignKey("Club", related_name="promos", on_delete=models.CASCADE)
+    """
+    Акция, которая может относиться к нескольким клубам.
+    """
+    clubs = models.ManyToManyField(
+        "Club",
+        through="ClubPromoRelation",
+        related_name="promos",
+        verbose_name="Клубы, участвующие в акции",
+        blank=True,
+    )
+
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(max_length=255, db_index=True, verbose_name="Slug")
 
-    photo = models.ImageField(upload_to=club_promo_upload_path)
-    photo_mobile = models.ImageField(upload_to=club_promo_upload_path, blank=True, null=True)
+    photo = models.ImageField(upload_to="photos/clubs/promos/")
+    photo_mobile = models.ImageField(upload_to="photos/clubs/promos/", blank=True, null=True)
 
     short = models.TextField(blank=True, verbose_name="Короткое описание")
     descr = models.TextField(blank=True, verbose_name="Текст")
 
     sort = models.PositiveIntegerField(default=0, verbose_name="Порядок")
-    time_create = models.DateTimeField(auto_now_add=True, verbose_name="Создание")
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Обновлено")
-    is_published = models.BooleanField(default=True, verbose_name="Опубликован")
+    is_published = models.BooleanField(default=True, verbose_name="Опубликована")
 
     def __str__(self):
-        return f"{self.club.name} — {self.title}"
+        return self.title
 
     class Meta:
         verbose_name = "Акция клуба"
-        verbose_name_plural = "Акции клуба"
+        verbose_name_plural = "Акции клубов"
         ordering = ["-time_create"]
+
+
+class ClubPromoRelation(models.Model):
+    """
+    Промежуточная таблица для связи акции и клуба.
+    Обеспечивает уникальность slug в пределах клуба.
+    """
+    club = models.ForeignKey("Club", on_delete=models.CASCADE)
+    promo = models.ForeignKey(ClubPromo, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Связь клуба и акции"
+        verbose_name_plural = "Связи клубов и акций"
         constraints = [
-            models.UniqueConstraint(fields=["club", "slug"], name="unique_club_promo_slug")
+            models.UniqueConstraint(fields=["club", "promo"], name="unique_club_promo_relation")
         ]
+
+    def __str__(self):
+        return f"{self.club.name} — {self.promo.title}"
+    
 
 class ClubZonesNew(models.Model):
     club = models.ForeignKey("Club", related_name="zones", on_delete=models.CASCADE)
@@ -3071,12 +3098,11 @@ class ZonesClubPics(models.Model):
 
 
 class NewsNew(models.Model):
-    club = models.ForeignKey(
+    clubs = models.ManyToManyField(
         "Club",
-        on_delete=models.CASCADE,
-        null=True, blank=True,
+        blank=True,
         related_name="global_news",
-        verbose_name="Клуб (если новость клубная)"
+        verbose_name="Клубы (если новость клубная)"
     )
 
     title = models.CharField(max_length=255, verbose_name='Заголовок')
@@ -3093,14 +3119,13 @@ class NewsNew(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True, verbose_name="Опубликовано")
 
-    # 🔹 Новое поле — флаг "на главной странице"
     is_main_page = models.BooleanField(default=False, verbose_name="Показывать на главной")
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = 'Новость'
+        verbose_name = 'Новости'
         verbose_name_plural = 'Новости'
         ordering = ['-time_create']
 

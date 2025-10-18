@@ -2131,7 +2131,7 @@ class ClubPageImagesInline(admin.StackedInline):
 
 
 # --- 📰 Новости клуба ---
-@admin.register(ClubNews)
+# @admin.register(ClubNews)
 class ClubNewsAdmin(admin.ModelAdmin):
     list_display = ("title", "club", "is_published", "time_create", "time_update")
     list_filter = ("club", "is_published")
@@ -2156,29 +2156,74 @@ class ClubNewsAdmin(admin.ModelAdmin):
 
 
 # --- 🎟 Промо-акции клуба ---
+class ClubPromoRelationInline(admin.TabularInline):
+    """
+    Inline для связи акции и клубов.
+    Позволяет выбирать, к каким клубам относится акция.
+    """
+    model = ClubPromoRelation
+    extra = 1
+    autocomplete_fields = ["club"]
+
+
 @admin.register(ClubPromo)
 class ClubPromoAdmin(admin.ModelAdmin):
-    list_display = ("title", "club", "is_published", "time_create", "time_update")
-    list_filter = ("club", "is_published")
-    prepopulated_fields = {"slug": ("title",)}
+    """
+    Админка для акций, которые могут быть у нескольких клубов.
+    """
+    list_display = ("title", "get_clubs", "is_published", "sort", "time_create")
+    list_filter = ("is_published",)
     search_fields = ("title", "short", "descr")
-    list_editable = ("is_published",)
-    readonly_fields = ("time_create", "time_update", image_preview)
-    fields = (
-        "club",
-        "title",
-        "slug",
-        "photo",
-        "photo_mobile",
-        image_preview,
-        "short",
-        "descr",
-        "sort",
-        "is_published",
-        "time_create",
-        "time_update",
+    ordering = ("-time_create",)
+    inlines = [ClubPromoRelationInline]
+
+    readonly_fields = ("time_create", "time_update", "preview_image")
+
+    fieldsets = (
+        ("Основная информация", {
+            "fields": ("title", "slug", "is_published", "sort")
+        }),
+        ("Контент", {
+            "fields": ("short", "descr")
+        }),
+        ("Изображения", {
+            "fields": ("photo", "photo_mobile", "preview_image")
+        }),
+        ("Системное", {
+            "fields": ("time_create", "time_update")
+        }),
     )
 
+    def get_clubs(self, obj):
+        """
+        Возвращает список клубов, связанных с акцией.
+        """
+        clubs = obj.clubs.all().values_list("name", flat=True)
+        return ", ".join(clubs) if clubs else "—"
+    get_clubs.short_description = "Клубы"
+
+    def preview_image(self, obj):
+        """
+        Показывает превью основного изображения в админке.
+        """
+        if obj.photo:
+            return format_html('<img src="{}" width="120" style="border-radius:6px;">', obj.photo.url)
+        return "—"
+    preview_image.short_description = "Превью"
+
+
+@admin.register(ClubPromoRelation)
+class ClubPromoRelationAdmin(admin.ModelAdmin):
+    """
+    Отдельная админка для промежуточной связи (на случай ручного управления).
+    """
+    list_display = ("club", "promo")
+    search_fields = ("club__name", "promo__title")
+    autocomplete_fields = ["club", "promo"]
+
+    class Meta:
+        verbose_name = "Связь клуба и акции"
+        verbose_name_plural = "Связи клубов и акций"
 
 # --- 🌐 SEO клуба ---
 class ClubSeoInline(admin.StackedInline):
@@ -2205,7 +2250,7 @@ class ClubAdmin(admin.ModelAdmin):
     ordering = ("name",)
 
     # Подключаем связанные блоки
-    inlines = [ClubSeoInline, PhotoClubInline, ClubGalleryInline, ClubRouteInline, ClubBottomAboutInline, ClubPageImagesInline,]
+    inlines = [ClubPageImagesInline, ClubSeoInline, PhotoClubInline, ClubGalleryInline, ClubRouteInline, ClubBottomAboutInline,]
 
     # Группировка полей на странице клуба
     fieldsets = (
@@ -2255,60 +2300,66 @@ class ClubAdmin(admin.ModelAdmin):
 
 @admin.register(NewsNew)
 class NewsNewAdmin(admin.ModelAdmin):
-    list_display = (
-        "title",
-        "club",
-        "is_main_page",
-        "is_published",
-        "sort",
-        "time_create",
-        "time_update",
-    )
-    list_filter = ("is_published", "is_main_page", "club")
-    search_fields = ("title", "short", "descr")
-    prepopulated_fields = {"slug": ("title",)}
-    ordering = ("-time_create",)
-    list_editable = ("is_published", "is_main_page", "sort")
-    readonly_fields = ("time_create", "time_update")
+    # list_display = (
+    #     "title",
+    #     "club",
+    #     "is_main_page",
+    #     "is_published",
+    #     "sort",
+    #     "time_create",
+    #     "time_update",
+    # )
+    # list_filter = ("is_published", "is_main_page", "club")
+    # search_fields = ("title", "short", "descr")
+    # prepopulated_fields = {"slug": ("title",)}
+    # ordering = ("-time_create",)
+    # list_editable = ("is_published", "is_main_page", "sort")
+    # readonly_fields = ("time_create", "time_update")
 
-    fieldsets = (
-        (
-            "Основная информация",
-            {
-                "fields": (
-                    "title",
-                    "slug",
-                    "club",
-                    "is_main_page",
-                    "is_published",
-                    "sort",
-                )
-            },
-        ),
-        (
-            "Контент",
-            {
-                "fields": (
-                    "photo",
-                    "photo_mobile",
-                    "short",
-                    "descr",
-                )
-            },
-        ),
-        (
-            "Системная информация",
-            {
-                "classes": ("collapse",),
-                "fields": ("time_create", "time_update"),
-            },
-        ),
-    )
+    # fieldsets = (
+    #     (
+    #         "Основная информация",
+    #         {
+    #             "fields": (
+    #                 "title",
+    #                 "slug",
+    #                 "club",
+    #                 "is_main_page",
+    #                 "is_published",
+    #                 "sort",
+    #             )
+    #         },
+    #     ),
+    #     (
+    #         "Контент",
+    #         {
+    #             "fields": (
+    #                 "photo",
+    #                 "photo_mobile",
+    #                 "short",
+    #                 "descr",
+    #             )
+    #         },
+    #     ),
+    #     (
+    #         "Системная информация",
+    #         {
+    #             "classes": ("collapse",),
+    #             "fields": ("time_create", "time_update"),
+    #         },
+    #     ),
+    # )
+    list_display = ('title', 'get_clubs', 'is_main_page', 'is_published', 'time_create')
+    list_filter = ('is_published', 'is_main_page', 'clubs')
+    search_fields = ('title',)
+    filter_horizontal = ('clubs',)  # Позволяет выбирать несколько клубов
 
-    def get_queryset(self, request):
-        """Добавляем select_related для ускорения выборки клуба."""
-        qs = super().get_queryset(request)
-        return qs.select_related("club")
+    def get_clubs(self, obj):
+        clubs = obj.clubs.all()
+        if clubs.exists():
+            return ", ".join([club.name for club in clubs])
+        return "Общая новость"
+    get_clubs.short_description = "Клубы"
 
     def get_list_display_links(self, request, list_display):
         """Чтобы можно было кликнуть по названию для редактирования."""
@@ -2316,13 +2367,15 @@ class NewsNewAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         """
-        Автоматически отключает 'is_main_page', если указан клуб.
+        Автоматически отключает 'is_main_page', если выбраны клубы.
         Это исключает логическую ошибку: новость не может быть и клубной, и главной.
         """
-        if obj.club and obj.is_main_page:
-            obj.is_main_page = False
-        super().save_model(request, obj, form, change)
+        # Проверяем: есть ли выбранные клубы
+        if obj.is_main_page and obj.pk:
+            if obj.clubs.exists():
+                obj.is_main_page = False
 
+        super().save_model(request, obj, form, change)
 
 # --- Inline для фото зоны ---
 class ZonePhotoInline(admin.TabularInline):

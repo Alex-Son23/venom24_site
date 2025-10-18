@@ -40,10 +40,8 @@
                         <a href="{% url 'news_detail_new' slug=news_item.slug %}" class="title">{{ news_item.title }}</a>
 
                         <div class="categoryList">
-                        {% for category in news_item.catnews.all %}
-                            {% if category.id != 1 %}
+                        {% for category in news_item.clubs.all %}
                            <span class="categoryTag"> {{ category.name }} {% if not forloop.last %}</span> {% endif %}
-                            {% endif %}
                         {% endfor %}
                         </div>
 

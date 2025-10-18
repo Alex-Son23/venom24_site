@@ -1,5 +1,5 @@
 from itertools import chain
-
+from django.db.models import Q
 from django.shortcuts import redirect
 
 from django.contrib.auth import logout
@@ -37,11 +37,9 @@ class HomePageView(ListView):
         context['news_new_variant'] = [content for content in context['all_content'] if
                                        isinstance(content, NewsNewVariant)]
 
-        latest_news = NewsNewVariant.objects.filter(is_published=True).exclude(catnews=1).order_by( '-time_create', '-id')[:7]
-        news_categories = {news.id: news.catnews.all() for news in latest_news}
+        latest_news = NewsNew.objects.filter(is_published=True).order_by( '-time_create', '-id')[:7]
 
         context['latest_news'] = latest_news
-        context['news_categories'] = news_categories
         context['photovenum'] = [content for content in context['all_content'] if isinstance(content, PhotoVenum)]
         context['zoneplay'] = [content for content in context['all_content'] if isinstance(content, ZonePlay)]
         context['characteristics'] = [content for content in context['all_content'] if isinstance(content, Characteristics)]
@@ -109,17 +107,15 @@ class PromoPageView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['promos'] = [content for content in context['all_content'] if isinstance(content, PromoPage)]
+        context['promos'] = ClubPromo.objects.filter(is_published=True)
         context['news'] = [content for content in context['all_content'] if isinstance(content, News)]
         context['seo'] = PromoPageSeo.objects.last()
         context['news_new_variant'] = [content for content in context['all_content'] if
                                        isinstance(content, NewsNewVariant)]
 
-        latest_news = NewsNewVariant.objects.filter(is_published=True).order_by('-sort', '-time_create', '-id')
-        news_categories = {news.id: news.catnews.all() for news in latest_news}
+        latest_news = NewsNew.objects.filter(is_published=True).order_by('-sort', '-time_create', '-id')
         context['photovenum'] = [content for content in context['all_content'] if isinstance(content, Tournament)]
         context['latest_news'] = latest_news
-        context['news_categories'] = news_categories
         context["mainpage"] = MainPage.get_solo
         
 
@@ -137,7 +133,7 @@ class PromoPageView(ListView):
 
 
 class PromoDetail(DetailView):
-    model = PromoPage
+    model = ClubPromo
     template_name = 'venom/promodetail.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'promo'
@@ -152,7 +148,7 @@ class NewsDetail(DetailView):
 
 
 class NewsDetailNew(DetailView):
-    model = NewsNewVariant
+    model = NewsNew
     template_name = 'venom/newsDetailNew.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'news'
@@ -162,23 +158,44 @@ class NewsDetailNew(DetailView):
         # Получаем текущую новость
         news = self.get_object()
         # Добавляем рубрики новости в контекст
-        context['categories'] = news.catnews.all()
+        context['categories'] = news.clubs.all()
         return context
 
 
 
 class NewsDetailMobileNew(DetailView):
-    model = NewsNewVariant
+    model = ClubNews
     template_name = 'venom/news_detail_mobile_new.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'newsdetailmobile'
+
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")
+
+        # if club_slug:
+        #     return (
+        #         NewsNew.objects
+        #         .filter(
+        #             Q(clubs__slug=club_slug) |
+        #             Q(is_main_page=False),  # можно включить и общие, если нужно
+        #             is_published=True
+        #         )
+        #         .distinct()
+        #     )
+        # else:
+        #     # Главные или общие новости
+        #     return NewsNew.objects.filter(
+        #         Q(is_main_page=True) | Q(clubs__isnull=True),
+        #         is_published=True
+        #     ).distinct()
+        return NewsNew.objects.filter(slug=slug)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # Получаем текущую новость
         news = self.get_object()
         # Добавляем рубрики новости в контекст
-        context['categories'] = news.catnews.all()
+        context['categories'] = news.clubs.all()
         return context
 
     # def get(self, request, *args, **kwargs):
@@ -196,7 +213,7 @@ class NewsDetailMobile(DetailView):
 
 
 class PromoDetailMobile(DetailView):
-    model = PromoPage
+    model = ClubPromo
     template_name = 'venom/promo_detail_mobile.html'
     slug_url_kwarg = 'slug'
     context_object_name = 'promodetailmobile'
@@ -1176,11 +1193,11 @@ class ClubPageView(ListView):
 
         # Собираем контент по клубу
         news = ClubNews.objects.filter(club=self.club, is_published=True).order_by('-sort', '-time_create')
-        promos = ClubPromo.objects.filter(club=self.club, is_published=True).order_by('-sort', '-time_create')
+        promos = ClubPromo.objects.filter(clubs=self.club, is_published=True).order_by('-sort', '-time_create')
         zones = ClubZonesNew.objects.filter(club=self.club, is_published=True).order_by('-sort', 'time_create')
         gallery = ClubGallery.objects.filter(club=self.club, is_published=True).order_by('id')
         photos = PhotoClub.objects.filter(club=self.club).order_by('-order')
-        news_new_variant = NewsNew.objects.filter(is_published=True, club=self.club).order_by('-sort', '-time_create')
+        news_new_variant = NewsNew.objects.filter(is_published=True, clubs=self.club).order_by('-sort', '-time_create')
         route = ClubRoute.objects.filter(club=self.club)
         print(news_new_variant)
         # Объединяем все сущности в общий список, если тебе нужно их рендерить циклом
@@ -1237,26 +1254,27 @@ class NewsNewDetailView(DetailView):
     def get_queryset(self):
         """
         Определяем queryset:
-        - если есть club_slug → фильтруем по клубу;
-        - иначе выводим только новости главной страницы.
+        - если есть club_slug → фильтруем новости, связанные с этим клубом;
+        - иначе выводим только общие новости (is_main_page=True или без клубов).
         """
         club_slug = self.kwargs.get("club_slug")
 
         if club_slug:
             return (
                 NewsNew.objects
-                .select_related("club")
                 .filter(
-                    club__slug=club_slug,
+                    Q(clubs__slug=club_slug) |
+                    Q(is_main_page=True),  # можно включить и общие, если нужно
                     is_published=True
                 )
+                .distinct()
             )
         else:
-            # Новости главной страницы
+            # Главные или общие новости
             return NewsNew.objects.filter(
-                is_main_page=True,
+                Q(is_main_page=True) | Q(clubs__isnull=True),
                 is_published=True
-            )
+            ).distinct()
 
     def get_context_data(self, **kwargs):
         """
@@ -1273,12 +1291,17 @@ class NewsNewDetailView(DetailView):
             context["club"] = None
             context["seo"] = None
 
+        # 🔹 Дополнительно: показываем, для каких клубов новость относится
+        context["related_clubs"] = self.object.clubs.all()
+
         return context
-    
+
     def get(self, request, *args, **kwargs):
+        """
+        Определяем шаблон под мобильную версию.
+        """
         user_agent = get_user_agent(request)
 
-        # Определяем шаблон под мобильную версию
         if hasattr(user_agent, "is_mobile") and user_agent.is_mobile:
             self.template_name = "venom/news_detail_mobile_new.html"
         else:
@@ -1303,9 +1326,8 @@ class ClubPromoDetailView(DetailView):
         """
         return (
             ClubPromo.objects
-            .select_related("club")
             .filter(
-                club__slug=self.kwargs["club_slug"],
+                clubs__slug=self.kwargs["club_slug"],
                 is_published=True
             )
         )

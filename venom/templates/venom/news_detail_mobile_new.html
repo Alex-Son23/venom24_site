@@ -15,9 +15,7 @@
         <div class="categoryList">
             <div class="availbaleInClub">Доступно в:</div>
             {% for category in categories %}
-                {% if category.id != 1 %}
                 <span class="categoryTag">{{ category.name }}</span>{% if not forloop.last %} {% endif %}
-                {% endif %}
             {% endfor %}
         </div>
 

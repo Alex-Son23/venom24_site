@@ -57,12 +57,9 @@
                 <a href="{% url 'news_detail_new' slug=news_item.slug %}" class="newsPiclink">
                     <img src="{{ news_item.photo_mobile.url }}" alt="" >
                     <div class="categoryList">
-                    {% if news_item.is_main_page %}
-                    {% else %}
-                    {% for category in news_item.clubs.all %}
+                    {% for category in news_item.catnews.all %}
                        <span class="categoryTag"> {{ category.name }} {% if not forloop.last %}</span> {% endif %}
                     {% endfor %}
-                    {% endif %}
                     </div>
                 </a>
             </div>
