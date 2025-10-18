@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Вернадка новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ vernadkanewsmobile.photo_mobile.url }}" alt="{{ vernadkanewsmobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'vernadka' %}" class="rubric">Вернадка Новости</a>
+        <div class="date">{{ vernadkanewsmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ vernadkanewsmobile.title }}</h1>
+        <p>{{ vernadkanewsmobile.descr|safe }}</p>
+
+        <a href="{% url 'vernadka' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

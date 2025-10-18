@@ -1,0 +1,49 @@
+{% extends 'venom/layout.html' %}
+
+{% block title %} Акции — Детальная {% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="promoPageDetailFix glassEffectFeaturesDark">
+    <img src="{{ promo.photo.url }}" alt="" class="topPic">
+
+
+    <div class="txtPart">
+        <a href="{% url 'promo' %}" class="rubric">Акции</a>
+        <div class="date">{{ promo.time_create|date:"d F Y" }}</div>
+        <h1>{{ promo.title }}</h1>
+        <p>{{ promo.descr|safe }}</p>
+
+        <a href="{% url 'promo' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+
+
+<!--<div class="promoPageDetail">-->
+<!--    <img src="{{ promo.photo.url }}" alt="" class="topPic">-->
+
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'promo' %}" class="rubric">Акции</a>-->
+<!--        <div class="date">{{ promo.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ promo.title }}</h1>-->
+<!--        <p>{{ promo.descr|linebreaks }}</p>-->
+<!--        <p>{{ promo.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'promo' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+
+{% endblock %}
+
+

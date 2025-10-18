@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Жулебино Акции — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ zulebinopromomobile.photo_mobile.url }}" alt="{{ zulebinopromomobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'zulebino' %}" class="rubric">Акции Жулебино</a>
+        <div class="date">{{ zulebinopromomobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ zulebinopromomobile.title }}</h1>
+        <p>{{ zulebinopromomobile.descr|safe }}</p>
+
+        <a href="{% url 'zulebino' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

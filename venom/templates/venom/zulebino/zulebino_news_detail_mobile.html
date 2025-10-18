@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Жулебино новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ zulebinonewsmobile.photo_mobile.url }}" alt="{{ zulebinonewsmobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'zulebino' %}" class="rubric">Новости Жулебино</a>
+        <div class="date">{{ zulebinonewsmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ zulebinonewsmobile.title }}</h1>
+        <p>{{ zulebinonewsmobile.descr|safe }}</p>
+
+        <a href="{% url 'zulebino' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

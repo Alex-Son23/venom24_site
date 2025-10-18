@@ -1,0 +1,63 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="clubsPage">
+    <ul class="wrapClubsMobile">
+        {% include 'venom/components/glassEffectBlocks.html' with titlepart="Клубы VENOM" subtitle="Выбери свою любимую арену" %}
+
+        {% for club in clubs %}
+        <li class="club glassEffect">
+            <a class="photoLink" href="{% url 'club_page' club.slug %}">
+                {% if club.zones_image and club.zones_image.image_mobile %}
+                    <img src="{{ club.zones_image.image_mobile.url }}" alt="{{ club.name }}">
+                {% else %}
+                    <img src="{% static 'venom/img/noimage.jpg' %}" alt="{{ club.name }}">
+                {% endif %}
+            </a>
+
+            {% if club.pc_count %}
+                <div class="pcCount">{{ club.pc_count }}ПК</div>
+            {% endif %}
+
+            <h4 class="title">{{ club.name }}</h4>
+
+            {% if club.zones.exists %}
+            <div class="howMuchClubsMobileInClubPage">
+                <div class="titleHowMuch">
+                    {{ club.zones.count }} зон{% if club.zones.count == 1 %}а{% endif %} в клубе:
+                </div>
+                <ul class="listShortZones">
+                    {% for zone in club.zones.all %}
+                        <li>
+                            {{ zone.title }}
+                            {% if zone.count %}
+                                <span>{{ zone.count }}пк</span>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% else %}
+            <div class="howMuchClubsMobileInClubPage">
+                <div class="titleHowMuch">Клуб в процессе открытия</div>
+            </div>
+            {% endif %}
+
+            {% if club.is_open_24 %}
+                <div class="timeworking">Работает круглосуточно</div>
+            {% endif %}
+
+            <a href="{% url 'club_page' club.slug %}" class="more">Подробнее</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% include 'venom/components/map.html' %}
+{% endblock %}

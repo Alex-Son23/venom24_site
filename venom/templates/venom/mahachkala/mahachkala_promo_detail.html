@@ -1,0 +1,42 @@
+{% extends 'venom/layout.html' %}
+
+{% block title %} Махачкала Акции — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubFix glassEffectFeaturesDark">
+    <img src="{{ mahachkalapromo.photo.url }}" alt="{{ mahachkalapromo.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'mahachkala' %}" class="rubric">Акции Махачкала</a>
+        <div class="date">{{ mahachkalapromo.time_create|date:"d F Y" }}</div>
+        <h1>{{ mahachkalapromo.title }}</h1>
+        <p>{{ mahachkalapromo.descr|safe }}</p>
+
+        <a href="{% url 'mahachkala' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+
+<!--<div class="detailNewsAndPrmoInClub">-->
+<!--    <img src="{{ mahachkalapromo.photo.url }}" alt="{{ mahachkalapromo.title }}" class="topPic">-->
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'mahachkala' %}" class="rubric">Акции Махачкала</a>-->
+<!--        <div class="date">{{ mahachkalapromo.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ mahachkalapromo.title }}</h1>-->
+<!--        <p>{{ mahachkalapromo.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'mahachkala' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+{% endblock %}

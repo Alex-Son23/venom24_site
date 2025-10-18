@@ -1,0 +1,183 @@
+
+{% load static %}
+
+
+
+{% with request.resolver_match.url_name as current_url %}
+<div class="wrapTopnav">
+
+  <ul class="topNav">
+    <li>
+      <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'venom/img/logo_ex.png' %}" alt="Логотип">
+    </a>
+    </li>
+
+    <li>
+      <a href="{% url 'home' %}" class="{% if current_url == 'home' %}active{% endif %}">
+          Главная
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'clubs' %}" class="{% if current_url == 'clubs' or current_url == 'vdnh' or current_url == 'vernadka' or current_url == 'mitino' or current_url == 'coptevo' or current_url == 'zulebino' or current_url == 'zukovsky' or current_url == 'serpuhovskaya' or current_url == 'pushkino' or current_url == 'mahachkala' %}active{% endif %}">
+          Клубы
+      </a>
+
+      <ul class="inside">
+          <li><a href="{% url 'vdnh' %}" class="{% if current_url == 'vdnh' %}active{% endif %}">ВДНХ</a></li>
+          <li><a href="{% url 'vernadka' %}" class="{% if current_url == 'vernadka' %}active{% endif %}">Вернадского</a></li>
+          <li><a href="{% url 'mitino' %}" class="{% if current_url == 'mitino' %}active{% endif %}">Митино</a></li>
+          <li><a href="{% url 'serpuhovskaya' %}" class="{% if current_url == 'serpuhovskaya' %}active{% endif %}">Серпуховская</a></li>
+          <li><a href="{% url 'mahachkala' %}" class="{% if current_url == 'mahachkala' %}active{% endif %}">Махачкала</a></li>
+          <li><a href="{% url 'coptevo' %}" class="{% if current_url == 'coptevo' %}active{% endif %}">Коптево</a></li>
+          <li><a href="{% url 'zulebino' %}" class="{% if current_url == 'zulebino' %}active{% endif %}">Жулебино</a></li>
+          <li><a href="{% url 'zukovsky' %}" class="{% if current_url == 'zukovsky' %}active{% endif %}">Жуковский</a></li>
+
+
+<!--          <li><a href="{% url 'pushkino' %}" class="{% if current_url == 'pushkino' %}active{% endif %}">Пушкино</a></li>-->
+<!--          <li><a href="{% url 'mahachkala' %}" class="{% if current_url == 'mahachkala' %}active{% endif %}">Махачкала</a></li>-->
+      </ul>
+    </li>
+
+
+
+
+
+<!--      <li>-->
+<!--        <a href="{% url 'promo' %}" class="{% if 'promo' in current_url or 'news' in current_url %}active{% endif %}">-->
+<!--            Акции-->
+<!--        </a>-->
+<!--      </li>-->
+
+      <li>
+        <a href="{% url 'promo' %}" class="{% if current_url == 'promo' %}active{% endif %}">
+            Новости, Акции, Турниры
+        </a>
+      </li>
+
+
+
+
+
+    <!-- <li>
+      <a href="{% url 'franchise' %}" class="{% if current_url == 'franchise' %}active{% endif %}">
+          Франшиза
+        </a>
+    </li> -->
+
+
+
+
+    <li>
+      <a href="{% url 'contact' %}" class="{% if current_url == 'contact' %}active{% endif %}">
+          Контакты
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'franchise' %}" class="{% if current_url == 'franchise' %}active{% endif %}">
+          ФРАНШИЗА
+      </a>
+    </li>
+
+  </ul>
+
+
+
+
+
+  <ul class="lang">
+
+
+
+
+      <li>
+          {% if current_url == 'home' %}
+          <a href="tel:8 (993) 666-0-444" class="callToClub">8 (993) 666-0-444</a>
+          {% endif %}
+
+          {% if current_url == 'franchise' %}
+          <a href="tel:+74994445384" class="callToClub"><span>Франшиза</span>+7 (499) 444-53-84</a>
+          {% endif %}
+
+          {% if current_url == 'clubs' %}
+          <a href="tel:8 (993) 666-0-444" class="callToClub">8 (993) 666-0-444</a>
+          {% endif %}
+
+
+
+          {% if 'promo' in current_url %}
+            <a href="tel:8 (993) 666-0-444" class="callToClub">8 (993) 666-0-444</a>
+          {% endif %}
+
+
+
+          {% if current_url == 'contact' %}
+          <a href="tel:8 (993) 666-0-444" class="callToClub">8 (993) 666-0-444</a>
+          {% endif %}
+
+
+
+          {% if current_url == 'vdnh' %}
+          <a href="tel:8 (925) 541-97-29" class="callToClub"> <span>ВДНХ</span> 8 (925) 541-97-29</a>
+          {% endif %}
+
+          {% if current_url == 'vernadka' %}
+          <a href="tel:+7 (926) 054-11-14" class="callToClub"><span>Вернадского</span> +7 (926) 054-11-14</a>
+          {% endif %}
+
+          {% if current_url == 'mitino' %}
+          <a href="tel:+7 (993) 666-04-44" class="callToClub"><span>Митино</span> +7 (993) 666-04-44</a>
+          {% endif %}
+
+          {% if current_url == 'serpuhovskaya' %}
+          <a href="tel:⁠8 (925) 385-08-37" class="callToClub"><span>Серпуховская</span> ⁠8 (925) 385-08-37</a>
+          {% endif %}
+
+          {% if current_url == 'mahachkala' %}
+          <a href="tel:8 (988) 795-89-89" class="callToClub"><span>Махачкала</span> 8 (988) 795-89-89</a>
+          {% endif %}
+
+          {% if current_url == 'coptevo' %}
+          <a href="tel:+7 (925) 623-09-67" class="callToClub"><span>Коптево</span> +7 (925) 623-09-67</a>
+          {% endif %}
+
+          {% if current_url == 'zulebino' %}
+          <a href="tel:+7 (915) 125-63-06" class="callToClub"><span>Жулебино</span> +7 (915) 125-63-06</a>
+          {% endif %}
+
+          {% if current_url == 'zukovsky' %}
+          <a href="tel:+7 (915) 421-99-98" class="callToClub"><span>Жуковский</span> +7 (915) 421-99-98</a>
+          {% endif %}
+
+
+          {% if current_url == 'pushkino' %}
+          <a href="tel:8 (993) 666-0-444" class="callToClub"><span>Пушкино</span> 8 (993) 666-0-444</a>
+          {% endif %}
+
+
+      </li>
+
+      {% if user.is_authenticated %}
+      <a href="/admin77/" class="login" target="_blank">Админка</a>
+      {% endif %}
+
+      {% if request.user.is_authenticated %}
+        <div class="userName"><span>username:</span>{{ user.username }}</div>
+        <a href="{% url 'logout' %}" class="logout">Выйти</a>
+      {% endif %}
+
+  </ul>
+
+
+
+</div>
+{% endwith %}
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Махачкала новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ mahachkalanewsmobile.photo_mobile.url }}" alt="{{ mahachkalanewsmobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'mahachkala' %}" class="rubric">Махачкала Новости</a>
+        <div class="date">{{ mahachkalanewsmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ mahachkalanewsmobile.title }}</h1>
+        <p>{{ mahachkalanewsmobile.descr|safe }}</p>
+
+        <a href="{% url 'mahachkala' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

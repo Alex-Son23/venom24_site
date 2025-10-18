@@ -1,0 +1,42 @@
+{% extends 'venom/layout.html' %}
+
+{% block title %} Пушкино Акции — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubFix glassEffectFeaturesDark">
+    <img src="{{ pushkinopromo.photo.url }}" alt="{{ pushkinopromo.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'pushkino' %}" class="rubric">Акции Пушкино</a>
+        <div class="date">{{ pushkinopromo.time_create|date:"d F Y" }}</div>
+        <h1>{{ pushkinopromo.title }}</h1>
+        <p>{{ pushkinopromo.descr|safe }}</p>
+
+        <a href="{% url 'pushkino' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+
+<!--<div class="detailNewsAndPrmoInClub">-->
+<!--    <img src="{{ pushkinopromo.photo.url }}" alt="{{ pushkinopromo.title }}" class="topPic">-->
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'pushkino' %}" class="rubric">Акции Пушкино</a>-->
+<!--        <div class="date">{{ pushkinopromo.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ pushkinopromo.title }}</h1>-->
+<!--        <p>{{ pushkinopromo.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'pushkino' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+{% endblock %}

@@ -1,0 +1,2990 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "HeadlinerNo.45";
+  src: url("/static/venom/fonts/HeadlinerNo45CYR.woff2") format("woff2"), url("/static/venom/fonts/HeadlinerNo45CYR.woff") format("woff");
+  /* другие форматы, если есть */
+  font-weight: normal;
+  font-style: normal;
+}
+.glassGameZones {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+}
+
+.glassEffectFeaturesDark {
+  box-sizing: border-box;
+  background: rgba(2, 6, 23, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border: 1px solid rgba(2, 6, 23, 0.2);
+}
+
+#video-background-mobile {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #020617;
+  color: #f1f5f9;
+  font-family: "Roboto Mono", monospace;
+  padding-top: 70px;
+}
+
+a {
+  text-decoration: none;
+  transition: ease 0.3s;
+}
+a.logo img {
+  border-radius: 50%;
+}
+
+ul li {
+  list-style: none;
+}
+
+.glassEffect {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glassZones {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3019607843);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+}
+
+.glassEffectBlocks {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.glassEffectBlocks .title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.glassEffectBlocks p.subTitle {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.wrapForBtNews {
+  margin-left: 14px;
+  margin-right: 14px;
+  margin-bottom: 60px;
+}
+@media only screen and (max-width: 375px) {
+  .wrapForBtNews {
+    margin-top: 30px;
+  }
+}
+.wrapForBtNews a.moreNews {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #4338ca;
+  color: #e2e8f0;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 0px;
+  border-radius: 6px;
+}
+
+.lineAnimation {
+  position: relative;
+  overflow-x: hidden;
+}
+.lineAnimation .flare {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 45px;
+  transform: skewX(-45deg);
+  animation: flareAnimation;
+  left: -150%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+  animation: flareAnimation 2s infinite linear;
+}
+@keyframes flareAnimation {
+  0% {
+    left: -150%;
+  }
+  80% {
+    left: 20%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+ul.shortListClubsMobileOnTop {
+  box-sizing: border-box;
+  display: flex;
+  margin: 10px;
+  gap: 10px;
+  overflow-y: scroll;
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 375px) {
+  ul.shortListClubsMobileOnTop {
+    gap: 7px;
+    margin: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+  }
+}
+ul.shortListClubsMobileOnTop li {
+  background-color: #020617;
+  border-radius: 10px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+}
+ul.shortListClubsMobileOnTop li.one {
+  border: 1px solid #8b5cf6;
+}
+ul.shortListClubsMobileOnTop li.two {
+  border: 1px solid #84cc16;
+}
+ul.shortListClubsMobileOnTop li.tri {
+  border: 1px solid #fb923c;
+}
+ul.shortListClubsMobileOnTop li.four {
+  border: 1px solid #9333ea;
+}
+ul.shortListClubsMobileOnTop li.five {
+  border: 1px solid #14b8a6;
+}
+ul.shortListClubsMobileOnTop li.six {
+  border: 1px solid #f87171;
+}
+ul.shortListClubsMobileOnTop li.seven {
+  border: 1px solid #3b82f6;
+}
+ul.shortListClubsMobileOnTop li .titlePromo {
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.wrapTopnavMobile {
+  box-sizing: border-box;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3019607843);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+.wrapTopnavMobile ul.topNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrapTopnavMobile ul.topNav li.logo img {
+  width: 30px;
+}
+.wrapTopnavMobile ul.topNav li a {
+  color: #cbd5e1;
+  letter-spacing: 2px;
+  font-size: 24px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wrapTopnavMobile ul.topNav li a:hover {
+  color: #94a3b8;
+}
+.wrapTopnavMobile a.humb {
+  box-sizing: border-box;
+  display: block;
+  width: 35px;
+  height: 35px;
+  background-color: #cbd5e1;
+  border-radius: 6px;
+  padding: 6px;
+}
+.wrapTopnavMobile a.humb img {
+  width: 100%;
+}
+
+.leftMobileMenu {
+  background-color: #0f172a;
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  z-index: 105;
+  width: 100%;
+  height: 100vh;
+  z-index: 120;
+  transform: translateX(-100%);
+  transition: ease 0.4s;
+  overflow-y: auto;
+}
+.leftMobileMenu .insideLeftMobile {
+  padding: 80px 20px;
+  position: relative;
+}
+.leftMobileMenu .insideLeftMobile a.closeBt {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 20px;
+  background-color: #020617;
+  color: #cbd5e1;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.leftMobileMenu .insideLeftMobile a.logo {
+  display: block;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #e2e8f0;
+}
+.leftMobileMenu .insideLeftMobile a.logo img {
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 40px;
+}
+.leftMobileMenu .insideLeftMobile ul.menu li a {
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #020617;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  padding: 12px;
+  border-radius: 6px;
+}
+.leftMobileMenu .insideLeftMobile ul.menu li a.active {
+  color: #020617;
+  background-color: #65a30d;
+}
+.leftMobileMenu .insideLeftMobile a.politicsBt {
+  font-size: 12px;
+  color: #94a3b8;
+  text-decoration: underline;
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.leftMobileMenu .insideLeftMobile ul.clubsListMobile {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+.leftMobileMenu .insideLeftMobile ul.clubsListMobile li a {
+  background-color: #0e7490;
+  margin-bottom: 0;
+}
+.leftMobileMenu .insideLeftMobile ul.clubsListMobile li a.active {
+  color: #020617;
+  background-color: #65a30d;
+}
+.leftMobileMenu .insideLeftMobile ul.phoneEmaial {
+  margin-top: 60px;
+}
+.leftMobileMenu .insideLeftMobile ul.phoneEmaial .descr {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #94a3b8;
+}
+.leftMobileMenu .insideLeftMobile ul.phoneEmaial li a {
+  display: block;
+  font-size: 20px;
+  font-weight: 900;
+  color: #f87171;
+}
+
+.leftMobileMenu.open {
+  transform: translateX(0);
+  transition: ease 0.2s;
+}
+
+.utpMobile {
+  box-sizing: border-box;
+  padding: 0;
+  margin-bottom: 30px;
+  width: 100%;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-top: 30px;
+}
+.utpMobile .txtPart {
+  padding: 20px 10px;
+}
+.utpMobile .txtPart h1 {
+  color: #6464e6;
+  margin: 0;
+  padding: 0;
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+}
+.utpMobile .txtPart h1 span {
+  display: block;
+  font-size: 80px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #d946ef 33%, #0D61BC 66%, #8AA9D6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #d946ef;
+  display: table;
+  margin: 20px auto;
+}
+.utpMobile video.videoPartMobile {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.ourAdvantagesMobile {
+  padding: 20px 0;
+  margin-bottom: 60px;
+}
+.ourAdvantagesMobile .title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #6366f1;
+  text-transform: uppercase;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+.ourAdvantagesMobile .title span {
+  display: block;
+}
+.ourAdvantagesMobile .subTitle {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.ourAdvantagesMobile ul.insideAdvantages {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.ourAdvantagesMobile ul.insideAdvantages li.zone {
+  padding: 15px;
+  border: none;
+  box-sizing: border-box;
+  background: rgba(17, 24, 39, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3019607843);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+}
+.ourAdvantagesMobile ul.insideAdvantages li.zone .zoneTitle {
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 20px;
+  color: #6875f5;
+}
+.ourAdvantagesMobile ul.insideAdvantages li.zone img {
+  width: 100%;
+  max-width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 13px;
+  margin-bottom: 20px;
+}
+.ourAdvantagesMobile ul.insideAdvantages li.zone .param {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: #cbd5e1;
+}
+.ourAdvantagesMobile ul.insideAdvantages li.zone .param span {
+  font-weight: 900;
+}
+
+.adressListClubsMobile {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.adressListClubsMobile ul.clubsList {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+.adressListClubsMobile ul.clubsList li.club {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 13px;
+  margin-bottom: 1px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart {
+  margin-bottom: 40px;
+  text-align: center;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .phoneCountPc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .phoneCountPc a.title {
+  display: block;
+  font-size: 25px;
+  font-weight: 900;
+  color: #a5b4fc;
+  margin-right: 20px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .phoneCountPc .titleNew {
+  display: block;
+  font-size: 25px;
+  font-weight: 900;
+  color: #a5b4fc;
+  margin-right: 20px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .phoneCountPc .pcCount {
+  background-color: #cbd5e1;
+  color: #020617;
+  font-size: 20px;
+  border-radius: 30px;
+  display: inline-block;
+  padding: 4px 20px;
+  font-weight: 900;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .howMuchZonesMobileListClubs {
+  box-sizing: border-box;
+  background: rgba(2, 6, 23, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(5px);
+  border: none;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  padding: 14px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .howMuchZonesMobileListClubs .titleHowMuch {
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .howMuchZonesMobileListClubs ul.listShortZones li {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .howMuchZonesMobileListClubs ul.listShortZones li span {
+  color: #38bdf8;
+  font-weight: 500;
+  margin-left: 14px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart .addr {
+  font-size: 16px;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+.adressListClubsMobile ul.clubsList li.club .txtPart a.phone {
+  color: #a5b4fc;
+  font-weight: 500;
+  font-size: 20px;
+}
+.adressListClubsMobile ul.clubsList li.club .btnPart {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.adressListClubsMobile ul.clubsList li.club .btnPart a.more {
+  background-color: #ee5151;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+}
+.adressListClubsMobile ul.clubsList li.club .btnPart a.call {
+  background-color: #22c55e;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+}
+
+.mapWrapMobile {
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 1600px) {
+  .mapWrapMobile {
+    margin-bottom: 20px;
+  }
+}
+.mapWrapMobile #map {
+  width: 100%;
+  height: 800px;
+  background-color: #020617;
+  box-sizing: border-box;
+}
+.mapWrapMobile .ymaps-layers-pane {
+  filter: invert(100%);
+  -ms-filter: invert(100%);
+  -webkit-filter: invert(100%);
+  -moz-filter: invert(100%);
+  -o-filter: invert(100%);
+}
+
+.titleNewsRazdel {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 900;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.clubPageMobile {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.clubPageMobile .topAlertMobile {
+  background-color: #f87171;
+  color: #020617;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 900;
+  padding: 10px;
+  margin: 0px 10px 40px 10px;
+  text-align: center;
+  border-radius: 6px;
+}
+.clubPageMobile .topBanerMobile {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  padding: 20px 0;
+}
+.clubPageMobile .topBanerMobile .overlay {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  background-color: rgba(2, 6, 23, 0.5);
+  z-index: -1;
+  box-sizing: border-box;
+}
+.clubPageMobile .topBanerMobile img.picClub {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-sizing: border-box;
+}
+.clubPageMobile .topBanerMobile .videoPartClub {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+.clubPageMobile .topBanerMobile .txtPart {
+  z-index: 3;
+  padding: 20px 20px;
+  height: inherit;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.clubPageMobile .topBanerMobile .txtPart .firstLine {
+  margin-bottom: 30px;
+}
+.clubPageMobile .topBanerMobile .txtPart .firstLine .smallTitle {
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-family: "HeadlinerNo.45";
+  letter-spacing: 2px;
+  color: #38bdf8;
+}
+.clubPageMobile .topBanerMobile .txtPart .firstLine h1.title {
+  font-size: 70px;
+  font-weight: 500;
+  font-family: "HeadlinerNo.45";
+  letter-spacing: 3px;
+  margin: 0;
+  line-height: 70px;
+  color: #cbd5e1;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine .howMuchClubsMobile {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  border: none;
+  margin-bottom: 30px;
+  padding: 14px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine .howMuchClubsMobile .titleHowMuch {
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine .howMuchClubsMobile ul.listShortZones li {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine .howMuchClubsMobile ul.listShortZones li span {
+  color: #38bdf8;
+  font-weight: 500;
+  margin-left: 14px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine .addr {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 100;
+  line-height: 30px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine .addr span {
+  background-color: #3f3f46;
+  border-radius: 6px;
+  padding: 2px 15px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine ul.features {
+  display: flex;
+  margin-bottom: 40px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine ul.features li {
+  background-color: #1f2937;
+  border-radius: 30px;
+  font-size: 18px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  font-weight: 500;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine ul.phoneAndToMap {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine ul.phoneAndToMap li.wrapPhone {
+  overflow: hidden;
+  position: relative;
+  margin-right: 20px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine ul.phoneAndToMap li.wrapPhone a.phone {
+  display: block;
+  border-radius: 6px;
+  color: #e2e8f0;
+  background-color: #0284c7;
+  padding: 8px 20px;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine ul.phoneAndToMap a.toMapBt {
+  font-weight: 500;
+  display: block;
+  border-radius: 6px;
+  color: #020617;
+  background-color: #65a30d;
+  padding: 8px 20px;
+  font-size: 16px;
+}
+.clubPageMobile .topBanerMobile .txtPart .secondLine ul.phoneAndToMap a.toMapBt:hover {
+  color: #ec4899;
+}
+.clubPageMobile .newsBlockMobile {
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px;
+}
+.clubPageMobile .newsBlockMobile .titlePromoRazdel {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-weight: 900;
+  text-align: center;
+  color: #f87171;
+}
+.clubPageMobile .newsBlockMobile ul.listNewsMobile {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.clubPageMobile .newsBlockMobile ul.listNewsMobile li {
+  background-color: #818cf8;
+  border-radius: 13px;
+  padding: 20px;
+  display: block;
+}
+.clubPageMobile .newsBlockMobile ul.listNewsMobile li img {
+  display: block;
+  border-radius: 13px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+  height: 140px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.clubPageMobile .newsBlockMobile ul.listNewsMobile li .rubric {
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: #cbd5e1;
+  background-color: #0f172a;
+  padding: 2px 4px;
+  border-radius: 6px;
+  display: none;
+}
+.clubPageMobile .newsBlockMobile ul.listNewsMobile li .titleNews {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0f172a;
+  font-weight: 900;
+  display: block;
+}
+.clubPageMobile .newsBlockMobile ul.listNewsMobile li .descr {
+  font-size: 16px;
+  color: #0f172a;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.clubPageMobile .newsBlockMobile ul.listNewsMobile li a.moreBt {
+  display: block;
+  background-color: #f87171;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.clubPageMobile .newsBlockMobile ul.listPromoMobile {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  box-sizing: border-box;
+}
+.clubPageMobile .newsBlockMobile ul.listPromoMobile li {
+  background-color: #0ea5e9;
+  border-radius: 13px;
+  padding: 20px;
+  display: block;
+}
+.clubPageMobile .newsBlockMobile ul.listPromoMobile li img {
+  border-radius: 13px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.clubPageMobile .newsBlockMobile ul.listPromoMobile li .titlePromo {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+  font-weight: 900;
+  display: block;
+}
+.clubPageMobile .newsBlockMobile ul.listPromoMobile li .descr {
+  font-size: 16px;
+  color: #0f172a;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.clubPageMobile .newsBlockMobile ul.listPromoMobile li a.moreBt {
+  display: block;
+  background-color: #f87171;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.clubPageMobile ul.clubsZonesMobile {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin: 40px 20px 20px 20px;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach {
+  padding: 14px;
+  border-radius: 6px;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .zoneSmall {
+  font-size: 12px;
+  font-weight: 600;
+  color: #d1d5db;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .zoneName {
+  margin-bottom: 20px;
+  font-family: BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+  font-size: 33px;
+  font-weight: 400;
+  color: #e5e7eb;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .sliderLineWrap {
+  position: relative;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .sliderLineWrap .zoomIn {
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  padding: 4px;
+  background-color: rgba(203, 213, 225, 0.4);
+  height: 40px;
+  width: 40px;
+  border-radius: 13px;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .sliderLineWrap .zoomIn img.zoomInPic {
+  box-sizing: border-box;
+  width: 40px;
+  height: auto;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .sliderLineWrap .sliderLine a {
+  display: block;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .sliderLineWrap .sliderLine a:nth-child(n+2) {
+  display: none;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach img {
+  width: 100%;
+  max-width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 13px;
+  margin-bottom: 10px;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .btnWrap {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .btnWrap a.call {
+  display: block;
+  padding: 10px;
+  background-color: #8b5cf6;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 16px;
+  color: #e2e8f0;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .btnWrap a.toMap {
+  display: block;
+  padding: 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 16px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach .btnWrap a.toMap:hover {
+  background-color: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #1e293b;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach ul.pricePnCht {
+  margin-bottom: 20px;
+  border-radius: 13px;
+  padding: 20px;
+  background-color: rgba(3, 7, 18, 0.6);
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach ul.pricePnCht p.titleTime {
+  display: block;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach ul.pricePnCht .wrapTime li {
+  padding: 0;
+  font-size: 15px;
+  border-bottom: 1px solid #64748b;
+  padding: 10px 0;
+  font-weight: 300;
+  color: #e2e8f0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+.clubPageMobile ul.clubsZonesMobile li.zoneMobileEach ul.pricePnCht .wrapTime li span {
+  font-weight: 900;
+  font-size: 15px;
+}
+.clubPageMobile ul.clubsZonesMobile ul.pricePtVs {
+  margin-bottom: 20px;
+  border-radius: 13px;
+  padding: 20px;
+  background-color: rgba(31, 41, 55, 0.6);
+  border: 1px solid #A78BFA;
+}
+.clubPageMobile ul.clubsZonesMobile ul.pricePtVs p.titleTime {
+  display: block;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+.clubPageMobile ul.clubsZonesMobile ul.pricePtVs p.smallTitle {
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-top: 10px;
+  color: #cbd5e1;
+}
+.clubPageMobile ul.clubsZonesMobile ul.pricePtVs .wrapTime li {
+  padding: 0;
+  padding: 7px;
+  border-radius: 6px;
+  border-bottom: 1px solid #64748b;
+  padding: 10px 0;
+  font-weight: 300;
+  color: #e2e8f0;
+  font-size: 15px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+.clubPageMobile ul.clubsZonesMobile ul.pricePtVs .wrapTime li span {
+  font-weight: 900;
+  font-size: 15px;
+}
+.clubPageMobile ul.params {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.clubPageMobile ul.params li {
+  padding: 0px;
+  margin-bottom: 18px;
+}
+.clubPageMobile ul.params li .pTitle {
+  display: inline-block;
+  font-weight: 400;
+  border-radius: 6px;
+  font-size: 20px;
+  color: #7dd3fc;
+  margin-bottom: 10px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+.clubPageMobile ul.params li .pDescr {
+  color: #f1f5f9;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+
+.pictureForClubMobile {
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.pictureForClubMobile .title {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 900;
+  text-align: center;
+  color: #e5e7eb;
+}
+.pictureForClubMobile .txt {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-left: 4px solid #f87171;
+  border-radius: 6px;
+  padding-left: 10px;
+}
+.pictureForClubMobile .txt p {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  color: #f1f5f9;
+}
+.pictureForClubMobile .txt p a {
+  color: #c4b5fd;
+}
+.pictureForClubMobile .txt p.likeTitle {
+  font-weight: 900;
+  color: #67e8f9;
+}
+.pictureForClubMobile video {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.pictureForClubMobile img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 13px;
+}
+
+.bigGalleryMobile {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 0px;
+  margin-top: 30px;
+}
+.bigGalleryMobile .titleGallery {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 900;
+  text-align: center;
+  color: #f87171;
+}
+.bigGalleryMobile img {
+  width: 100%;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 13px;
+}
+
+.detailNewsAndPrmoInClubMobile {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+  background: rgba(2, 6, 23, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border: 1px solid rgba(2, 6, 23, 0.2);
+}
+.detailNewsAndPrmoInClubMobile img.topPic {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.detailNewsAndPrmoInClubMobile .categoryList {
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.detailNewsAndPrmoInClubMobile .categoryList .availbaleInClub {
+  font-size: 16px;
+  font-weight: 300;
+  color: #e2e8f0;
+  border: 1px solid #6464E6;
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+.detailNewsAndPrmoInClubMobile .categoryList .categoryTag {
+  display: block;
+  background-color: rgba(100, 100, 230, 0.6);
+  color: #f8fafc;
+  border: 1px solid #020617;
+  font-size: 14px;
+  padding: 5px 8px;
+  font-weight: 400;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+.detailNewsAndPrmoInClubMobile .txtPart {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.detailNewsAndPrmoInClubMobile .txtPart img {
+  width: 100%;
+  max-width: 100%;
+  height: auto !important;
+  border-radius: 13px;
+  margin: 10px 0;
+}
+.detailNewsAndPrmoInClubMobile .txtPart .rubric {
+  background-color: #a3e635;
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.detailNewsAndPrmoInClubMobile .txtPart .date {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.detailNewsAndPrmoInClubMobile .txtPart h1 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 500;
+  color: #e2e8f0;
+  margin-bottom: 40px;
+}
+.detailNewsAndPrmoInClubMobile .txtPart p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+.detailNewsAndPrmoInClubMobile .txtPart a.goBack {
+  background-color: #4f46e5;
+  color: #f1f5f9;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 8px 40px;
+  display: block;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.promoPageMobile {
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+}
+.promoPageMobile .insideWrapNewsPromoMobile {
+  margin-bottom: 0px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile .titleRazdel {
+  font-size: 25px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile img {
+  width: 100%;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoListScroll {
+  box-sizing: border-box;
+  display: flex;
+  gap: 10px;
+  overflow-y: scroll;
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 375px) {
+  .promoPageMobile .insideWrapNewsPromoMobile ul.promoListScroll {
+    gap: 7px;
+  }
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoListScroll li {
+  min-width: 150px;
+  width: 150px;
+  background-color: #6d28d9;
+  border-radius: 13px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 375px) {
+  .promoPageMobile .insideWrapNewsPromoMobile ul.promoListScroll li {
+    width: 120px;
+  }
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoListScroll li img {
+  border-radius: 13px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media only screen and (max-width: 375px) {
+  .promoPageMobile .insideWrapNewsPromoMobile ul.promoListScroll li img {
+    height: 100px;
+    margin-bottom: 10px;
+  }
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoListScroll li a.title {
+  display: block;
+  color: #e2e8f0;
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList {
+  margin-bottom: 60px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList li {
+  padding: 20px 10px;
+  margin-bottom: 30px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList li .date {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  background-color: #0ea5e9;
+  border-radius: 6px;
+  padding: 2px 4px;
+  display: inline-block;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList li .title {
+  display: block;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #cbd5e1;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList li img {
+  width: 100%;
+  border-radius: 13px;
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList li p {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList li p a {
+  color: #f43f5e;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.promoList li a.more {
+  display: block;
+  background-color: #f87171;
+  color: #020617;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li {
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  border: none;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li .catNews {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  background-color: #f87171;
+  color: #020617;
+  border-radius: 6px;
+  padding: 2px 4px;
+  display: inline-block;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li .date {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  background-color: #059669;
+  border-radius: 6px;
+  padding: 2px 4px;
+  display: inline-block;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li .title {
+  display: block;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #a3e635;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li .title:hover {
+  color: #22d3ee;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li a.pic {
+  display: block;
+  position: relative;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li a.pic .categoryList {
+  margin-right: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li a.pic .categoryList .categoryTag {
+  display: block;
+  background-color: rgba(100, 100, 230, 0.9);
+  color: #f8fafc;
+  border: 1px solid #020617;
+  font-size: 14px;
+  padding: 2px 5px;
+  font-weight: 400;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li img {
+  width: 100%;
+  border-radius: 13px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li p {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li a.more {
+  display: block;
+  background-color: #f87171;
+  color: #020617;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsListNew li a.more:hover {
+  background-color: #ef4444;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li {
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  border: none;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li .catNews {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  background-color: #f87171;
+  color: #020617;
+  border-radius: 6px;
+  padding: 2px 4px;
+  display: inline-block;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li .date {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  background-color: #059669;
+  border-radius: 6px;
+  padding: 2px 4px;
+  display: inline-block;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li .title {
+  display: block;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #a3e635;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li .title:hover {
+  color: #22d3ee;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li img {
+  width: 100%;
+  border-radius: 13px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li p {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li a.more {
+  display: block;
+  background-color: #f87171;
+  color: #020617;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+.promoPageMobile .insideWrapNewsPromoMobile ul.newsList li a.more:hover {
+  background-color: #ef4444;
+}
+.promoPageMobile ul.wrapPromo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.promoPageMobile ul.wrapPromo li {
+  padding: 20px;
+}
+.promoPageMobile ul.wrapPromo li .date {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  font-size: 22px;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.promoPageMobile ul.wrapPromo li a.title {
+  display: block;
+  font-size: 45px;
+  color: #84cc16;
+  font-weight: 900;
+  margin-bottom: 50px;
+}
+@media only screen and (max-width: 2560px) {
+  .promoPageMobile ul.wrapPromo li a.title {
+    font-size: 35px;
+  }
+}
+.promoPageMobile ul.wrapPromo li a.title:hover {
+  color: #a3e635;
+}
+.promoPageMobile ul.wrapPromo li img {
+  width: 100%;
+  max-width: 100%;
+  height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+@media only screen and (max-width: 2560px) {
+  .promoPageMobile ul.wrapPromo li img {
+    height: 500px;
+  }
+}
+.promoPageMobile ul.wrapPromo li p {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.promoPageMobile ul.wrapPromo li p a {
+  color: #0ea5e9;
+}
+.promoPageMobile ul.wrapPromo li p a:hover {
+  color: #f87171;
+}
+.promoPageMobile ul.wrapPromo li a.more {
+  display: block;
+  text-align: center;
+  background-color: #f87171;
+  color: #020617;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 6px;
+}
+.promoPageMobile ul.wrapPromo li a.more:hover {
+  background-color: #ef4444;
+}
+.promoPageMobile ul.wrapPromoNews {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 250px;
+}
+@media only screen and (max-width: 1920px) {
+  .promoPageMobile ul.wrapPromoNews {
+    gap: 20px;
+  }
+}
+.promoPageMobile ul.wrapPromoNews li {
+  padding: 10px;
+}
+.promoPageMobile ul.wrapPromoNews li .catNews {
+  background-color: #65a30d;
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.promoPageMobile ul.wrapPromoNews li .date {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.promoPageMobile ul.wrapPromoNews li a.title {
+  display: block;
+  font-size: 30px;
+  color: #cbd5e1;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+@media only screen and (max-width: 2560px) {
+  .promoPageMobile ul.wrapPromoNews li a.title {
+    font-size: 25px;
+  }
+}
+.promoPageMobile ul.wrapPromoNews li a.title:hover {
+  color: #a3e635;
+}
+.promoPageMobile ul.wrapPromoNews li img {
+  width: 100%;
+  max-width: 100%;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+@media only screen and (max-width: 2560px) {
+  .promoPageMobile ul.wrapPromoNews li img {
+    height: 400px;
+  }
+}
+.promoPageMobile ul.wrapPromoNews li p {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.promoPageMobile ul.wrapPromoNews li p a {
+  color: #0ea5e9;
+}
+.promoPageMobile ul.wrapPromoNews li p a:hover {
+  color: #f87171;
+}
+.promoPageMobile ul.wrapPromoNews li a.more {
+  display: block;
+  text-align: center;
+  background-color: #f87171;
+  color: #020617;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 6px;
+}
+.promoPageMobile ul.wrapPromoNews li a.more:hover {
+  background-color: #ef4444;
+}
+
+ul.wrapClubsMobile {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+ul.wrapClubsMobile li.club {
+  padding: 20px;
+  text-align: center;
+  border: none;
+}
+ul.wrapClubsMobile li.club a.photoLink {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+ul.wrapClubsMobile li.club a.photoLink img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: inherit;
+  transition: ease 0.3s;
+}
+ul.wrapClubsMobile li.club .pcCount {
+  font-size: 24px;
+  font-weight: 500;
+  color: #020617;
+  margin-bottom: 10px;
+}
+ul.wrapClubsMobile li.club .title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #d1d5db;
+  margin-bottom: 20px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+ul.wrapClubsMobile li.club .howMuchClubsMobileInClubPage {
+  box-sizing: border-box;
+  background: rgba(2, 6, 23, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(5px);
+  display: block;
+  border: none;
+  margin-bottom: 30px;
+  padding: 14px;
+}
+ul.wrapClubsMobile li.club .howMuchClubsMobileInClubPage .titleHowMuch {
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+ul.wrapClubsMobile li.club .howMuchClubsMobileInClubPage ul.listShortZones li {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+ul.wrapClubsMobile li.club .howMuchClubsMobileInClubPage ul.listShortZones li span {
+  color: #38bdf8;
+  font-weight: 500;
+  margin-left: 14px;
+}
+ul.wrapClubsMobile li.club ul.features {
+  margin-bottom: 20px;
+}
+ul.wrapClubsMobile li.club ul.features li {
+  background-color: #7c3aed;
+  color: #f3f4f6;
+  font-size: 16px;
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+ul.wrapClubsMobile li.club .timeworking {
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 14px;
+}
+ul.wrapClubsMobile li.club a.more {
+  background-color: #ee5151;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+ul.wrapClubsMobile li.club a.more:hover {
+  background-color: #f87171;
+}
+
+ul.listsContactsClubsMobile {
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+ul.listsContactsClubsMobile li.eachClub {
+  padding: 20px;
+}
+ul.listsContactsClubsMobile li.eachClub a.title {
+  display: block;
+  font-size: 30px;
+  font-weight: 900;
+  color: #d1d5db;
+  margin-bottom: 10px;
+}
+ul.listsContactsClubsMobile li.eachClub .street {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+ul.listsContactsClubsMobile li.eachClub a.photoLink {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 13px;
+}
+ul.listsContactsClubsMobile li.eachClub a.photoLink img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: inherit;
+  transition: ease 0.3s;
+}
+ul.listsContactsClubsMobile li.eachClub .timeWork {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+ul.listsContactsClubsMobile li.eachClub .bntWrap {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+ul.listsContactsClubsMobile li.eachClub .bntWrap a.phone {
+  display: block;
+  background-color: #4f46e5;
+  padding: 14px 10px;
+  border-radius: 6px;
+  color: #f8fafc;
+  font-size: 16px;
+}
+ul.listsContactsClubsMobile li.eachClub .bntWrap a.onMap {
+  display: block;
+  background-color: #0f172a;
+  padding: 14px 10px;
+  border-radius: 6px;
+  color: #f8fafc;
+  font-size: 16px;
+}
+
+.franchisePageMobile {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0px;
+  padding: 20px;
+}
+.franchisePageMobile .insideFranchize {
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+.franchisePageMobile .insideFranchize h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+.franchisePageMobile .insideFranchize p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.franchisePageMobile .insideFranchize span.pribil {
+  font-size: 18px;
+  color: #f1f5f9;
+  background-color: #8b5cf6;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.franchisePageMobile .insideFranchize ul.listForHelp {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.franchisePageMobile .insideFranchize ul.listForHelp li {
+  background-color: #0f172a;
+  padding: 16px;
+  border-radius: 6px;
+  transition: ease 0.3s;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+.franchisePageMobile .insideFranchize .btnWrap {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.franchisePageMobile .insideFranchize .btnWrap a.phone {
+  background-color: #0284c7;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 14px 20px;
+}
+.franchisePageMobile .insideFranchize .btnWrap a.email {
+  background-color: #18181b;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 14px 20px;
+}
+.franchisePageMobile .insideFranchize .presentationFranchise {
+  padding: 10px;
+}
+.franchisePageMobile .insideFranchize .presentationFranchise .title {
+  font-size: 25px;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-bottom: 40px;
+}
+.franchisePageMobile .insideFranchize .presentationFranchise a {
+  display: flex;
+  align-items: center;
+  background-color: #a3e635;
+  padding: 5px 10px;
+  border-radius: 13px;
+}
+.franchisePageMobile .insideFranchize .presentationFranchise a img {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.franchisePageMobile .insideFranchize .presentationFranchise a .txt {
+  display: flex;
+  flex-direction: column;
+}
+.franchisePageMobile .insideFranchize .presentationFranchise a .txt .smallTitle {
+  font-size: 20px;
+  font-weight: 300;
+  color: #020617;
+}
+.franchisePageMobile .insideFranchize .presentationFranchise a .txt .titleSee {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  color: #020617;
+}
+.franchisePageMobile p {
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.franchisePageMobile p span.rose {
+  background-color: #f87171;
+  color: #020617;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.franchisePageMobile p span.green {
+  background-color: #84cc16;
+  color: #020617;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.franchisePageMobile p span.blue {
+  background-color: #06b6d4;
+  color: #020617;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.franchisePageMobile p span.lightOrange {
+  background-color: #fdba74;
+  color: #020617;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.franchisePageMobile p span.orange {
+  background-color: #f97316;
+  color: #020617;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.franchisePageMobile p span.puash {
+  background-color: #8b5cf6;
+  color: #e2e8f0;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.franchisePageMobile p span.vznos {
+  background-color: #fb7185;
+  color: #020617;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+ul.listPromoMobileOnTop {
+  box-sizing: border-box;
+  display: flex;
+  margin: 10px;
+  gap: 10px;
+  overflow-y: scroll;
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 375px) {
+  ul.listPromoMobileOnTop {
+    gap: 7px;
+    margin: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+  }
+}
+ul.listPromoMobileOnTop li {
+  min-width: 150px;
+  width: 150px;
+  background-color: #0ea5e9;
+  border-radius: 13px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 375px) {
+  ul.listPromoMobileOnTop li {
+    width: 120px;
+  }
+}
+ul.listPromoMobileOnTop li img {
+  border-radius: 13px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media only screen and (max-width: 375px) {
+  ul.listPromoMobileOnTop li img {
+    height: 100px;
+    margin-bottom: 0px;
+  }
+}
+ul.listPromoMobileOnTop li .titlePromo {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+  font-weight: 900;
+  display: block;
+}
+@media only screen and (max-width: 375px) {
+  ul.listPromoMobileOnTop li .titlePromo {
+    font-size: 14px;
+  }
+}
+ul.listPromoMobileOnTop li a.moreBt {
+  display: block;
+  background-color: #f87171;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+ul.listNewsMobileOnTop {
+  box-sizing: border-box;
+  display: flex;
+  margin-left: 20px;
+  gap: 10px;
+  overflow-y: scroll;
+  margin-bottom: 60px;
+}
+@media only screen and (max-width: 375px) {
+  ul.listNewsMobileOnTop {
+    gap: 7px;
+    margin: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+  }
+}
+ul.listNewsMobileOnTop li {
+  min-width: 150px;
+  width: 150px;
+  background-color: #818CF8;
+  border-radius: 13px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 375px) {
+  ul.listNewsMobileOnTop li {
+    width: 120px;
+  }
+}
+ul.listNewsMobileOnTop li img {
+  border-radius: 13px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media only screen and (max-width: 375px) {
+  ul.listNewsMobileOnTop li img {
+    height: 130px;
+    margin-bottom: 5px;
+  }
+}
+ul.listNewsMobileOnTop li .titleNews {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #020617;
+  font-weight: 900;
+  display: block;
+}
+@media only screen and (max-width: 375px) {
+  ul.listNewsMobileOnTop li .titleNews {
+    font-size: 14px;
+  }
+}
+
+.howFindClubMobile {
+  background-color: rgba(15, 23, 42, 0.8);
+  margin-bottom: 40px;
+  padding: 30px;
+  border-radius: 13px;
+  margin: 0 20px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.howFindClubMobile img {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+.howFindClubMobile .titleHow {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  color: #e2e8f0;
+  margin-bottom: 30px;
+  z-index: 1;
+}
+.howFindClubMobile a.showWayToClub {
+  text-align: center;
+  display: block;
+  background-color: #0284c7;
+  color: #f1f5f9;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 60px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.bigGalleryMobileBottom {
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 10px;
+  margin-bottom: 40px;
+  border-radius: 13px;
+}
+.bigGalleryMobileBottom .titleGallery {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 900;
+  text-align: center;
+  color: #f87171;
+}
+.bigGalleryMobileBottom p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.bigGalleryMobileBottom img {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 13px;
+}
+
+.franchisePageNewMobile {
+  margin: 0 auto;
+  margin-top: 0px;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .overlayMobile {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+  box-sizing: border-box;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .videoPartClub {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart {
+  z-index: 3;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .firstLine .smallTitle {
+  display: inline-block;
+  background-color: rgba(163, 230, 53, 0.2);
+  border: 1px solid #a3e635;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-bottom: 60px;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .firstLine h1.title {
+  font-size: 100px;
+  font-weight: 500;
+  font-family: "HeadlinerNo.45";
+  letter-spacing: 3px;
+  margin: 0;
+  margin-bottom: 60px;
+  line-height: 100px;
+  color: #a3e635;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .secondLineMobile .addr {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 60px;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .secondLineMobile ul.features {
+  margin-bottom: 50px;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .secondLineMobile ul.features li {
+  background-color: #d9f99d;
+  color: #020617;
+  border-radius: 6px;
+  font-size: 22px;
+  padding: 5px 15px;
+  margin-right: 10px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .secondLineMobile ul.phoneAndToMapMobile li.wrapPhone {
+  overflow: hidden;
+  position: relative;
+  margin-right: 20px;
+  width: 100%;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .secondLineMobile ul.phoneAndToMapMobile li.wrapPhone a.phone {
+  display: block;
+  border-radius: 6px;
+  color: #020617;
+  background-color: #f87171;
+  padding: 10px 20px;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .secondLineMobile ul.phoneAndToMapMobile a.writeMeWidjet {
+  display: block;
+  border-radius: 6px;
+  color: #e2e8f0;
+  background-color: #312e81;
+  padding: 10px 20px;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.franchisePageNewMobile .topBanerFranchiseMobile .txtPart .secondLineMobile ul.phoneAndToMapMobile a.toMapBt {
+  font-weight: 500;
+  display: block;
+  border-radius: 6px;
+  color: #f1f5f9;
+  background-color: rgba(248, 113, 113, 0.1);
+  border: 1px solid #f87171;
+  padding: 10px 20px;
+  font-size: 18px;
+  text-align: center;
+}
+.franchisePageNewMobile .titleInfoMobile {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.franchisePageNewMobile .subTitleAboutMobile {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.franchisePageNewMobile .aboutInfoMobile {
+  padding: 20px;
+  margin-bottom: 40px;
+}
+.franchisePageNewMobile .aboutInfoMobile ul.listAbout {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+.franchisePageNewMobile .aboutInfoMobile ul.listAbout li {
+  background-color: rgba(2, 6, 23, 0.2);
+  border: 1px solid #a3e635;
+  text-align: center;
+  border-radius: 13px;
+  padding: 30px;
+}
+.franchisePageNewMobile .aboutInfoMobile ul.listAbout li .info {
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.franchisePageNewMobile .aboutInfoMobile ul.listAbout li .descr {
+  font-size: 22px;
+  font-weight: 300;
+}
+.franchisePageNewMobile .clubsListFranchise {
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li {
+  background-color: rgba(2, 6, 23, 0.2);
+  padding: 20px;
+  border-radius: 13px;
+  margin-bottom: 30px;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li .picPart {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li .picPart img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 13px;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li .txtPart {
+  width: 100%;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li .txtPart .titleClub {
+  font-size: 32px;
+  font-weight: 400;
+  color: #a3e635;
+  margin-bottom: 40px;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li .txtPart ul.featuresClubsMobile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li .txtPart ul.featuresClubsMobile li {
+  background-color: rgba(2, 6, 23, 0.3);
+  padding: 10px;
+  border-radius: 13px;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+.franchisePageNewMobile .clubsListFranchise ul.listFranchiseClubsMobile li .txtPart p {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.franchisePageNewMobile .crmBlockFranchise {
+  padding: 20px;
+  margin-bottom: 40px;
+}
+.franchisePageNewMobile .crmBlockFranchise .wrapMorInfo .presentationFranchiseNewFranchise {
+  background-color: rgba(2, 6, 23, 0.2);
+  padding: 20px;
+  border-radius: 13px;
+  margin-bottom: 20px;
+}
+.franchisePageNewMobile .crmBlockFranchise .wrapMorInfo .presentationFranchiseNewFranchise .titlePresentFranchise {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 900;
+  color: #a3e635;
+  margin-bottom: 40px;
+}
+.franchisePageNewMobile .crmBlockFranchise .wrapMorInfo .presentationFranchiseNewFranchise a.linkToPresentationFranchise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0f172a;
+  padding: 20px;
+  border-radius: 13px;
+}
+.franchisePageNewMobile .crmBlockFranchise .wrapMorInfo .presentationFranchiseNewFranchise a.linkToPresentationFranchise .txt .smallTitle {
+  font-size: 20px;
+  font-weight: 300;
+  color: #818cf8;
+}
+.franchisePageNewMobile .crmBlockFranchise .wrapMorInfo .presentationFranchiseNewFranchise a.linkToPresentationFranchise .txt .title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #818cf8;
+}
+.franchisePageNewMobile .crmBlockFranchise .wrapMorInfo .presentationFranchiseNewFranchise a.linkToPresentationFranchise img {
+  width: 30px;
+}
+.franchisePageNewMobile .whyNetMobile {
+  padding: 20px;
+  margin-bottom: 40px;
+}
+.franchisePageNewMobile .whyNetMobile ul.listAboutMobileFranchise li {
+  background-color: rgba(2, 6, 23, 0.2);
+  border: 1px solid #a3e635;
+  text-align: center;
+  border-radius: 13px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.franchisePageNewMobile .whyNetMobile ul.listAboutMobileFranchise li .info {
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.franchisePageNewMobile .whyNetMobile ul.listAboutMobileFranchise li .descr {
+  font-size: 20px;
+  font-weight: 300;
+}
+.franchisePageNewMobile .priceFranchiseMobile {
+  padding: 20px;
+  background-color: #020617;
+  border-radius: 13px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMobile {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMobile li {
+  background-color: rgba(163, 230, 53, 0.8);
+  text-align: center;
+  border-radius: 13px;
+  padding: 20px;
+  color: #020617;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMobile li .info {
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMobile li .descr {
+  font-size: 20px;
+  font-weight: 900;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card {
+  /* width: 100%; */
+  background-color: rgba(2, 6, 23, 0.2);
+  border: 1px solid #a3e635;
+  border-radius: 13px;
+  padding: 20px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card .devicesWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card .devicesWrap .pc {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 20px;
+  border: 1px solid #a3e635;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card .devicesWrap .sony {
+  font-size: 20px;
+  font-weight: 900;
+  background-color: #a3e635;
+  color: #0f172a;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card .item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #a3e635;
+  padding-bottom: 10px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card .item .titleItem {
+  font-weight: 300;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card .item .moneyItem {
+  font-weight: 900;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card a.write {
+  display: block;
+  border: 1px solid #a3e635;
+  background-color: #d9f99d;
+  color: #020617;
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 60px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.fincnseModelMobile li.card a.write:hover {
+  background-color: #020617;
+  color: #a3e635;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMini {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMini li {
+  background-color: rgba(163, 230, 53, 0.8);
+  text-align: center;
+  border-radius: 13px;
+  padding: 30px;
+  color: #020617;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMini li .info {
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.franchisePageNewMobile .priceFranchiseMobile ul.priceWrapMini li .descr {
+  font-size: 20px;
+  font-weight: 900;
+}
+.franchisePageNewMobile .priceFranchiseMobile .wrapWriteForFranchise {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.franchisePageNewMobile .priceFranchiseMobile .wrapWriteForFranchise .writeForFranchise {
+  display: block;
+  border: 1px solid #a3e635;
+  color: #e2e8f0;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 10px 20px;
+  border-radius: 13px;
+}
+.franchisePageNewMobile .priceFranchiseMobile .wrapWriteForFranchise .writeForFranchise:hover {
+  background-color: #a3e635;
+  color: #020617;
+}
+
+.bigGalleryFranchise {
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 40px;
+  margin-top: 60px;
+}
+.bigGalleryFranchise .titleGallery {
+  font-size: 26px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 900;
+  text-align: center;
+  color: #f1f5f9;
+}
+.bigGalleryFranchise p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.bigGalleryFranchise img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 13px;
+}
+
+.franchiseLink {
+  display: block;
+  background-color: #a3e635;
+  padding: 25px;
+  font-size: 25px;
+  color: #020617;
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.squareGalleryMobile {
+  width: 99%;
+  margin: 0 auto;
+  padding: 5px;
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+.squareGalleryMobile .titleGallery {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #F1F5F9;
+}
+.squareGalleryMobile .subtitle {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+.squareGalleryMobile .wrapListGalery {
+  box-sizing: border-box;
+}
+.squareGalleryMobile .wrapListGalery .oneLine {
+  display: grid;
+  grid-template-columns: 35% 15% 20% auto; /* первый ряд */
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.squareGalleryMobile .wrapListGalery .twoLine {
+  display: grid;
+  grid-template-columns: auto 20% 35% 15%; /* второй ряд */
+  gap: 5px;
+}
+.squareGalleryMobile .wrapListGalery img {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 90px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 13px;
+}
+
+.politicsPageMobile {
+  width: 98%;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-bottom: 60px;
+  padding: 20px;
+  color: #cbd5e1;
+}
+.politicsPageMobile h1 {
+  font-size: 20px;
+}
+.politicsPageMobile h2 {
+  font-size: 18px;
+}
+.politicsPageMobile h3 {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+  font-size: 16px;
+}
+.politicsPageMobile p {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.wrapListGames {
+  width: 98%;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+}
+.wrapListGames .title {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 900;
+  text-align: center;
+  color: #F1F5F9;
+}
+.wrapListGames .title span {
+  color: #e2e8f0;
+  font-weight: 300;
+}
+.wrapListGames .insideListGames {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapListGames .insideListGames a.gamesBt {
+  display: inline-block;
+  background-color: #7c3aed;
+  border: 1px solid #7c3aed;
+  color: #f1f5f9;
+  padding: 6px 40px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.wrapListGames .insideListGames a.gamesBt:hover {
+  background-color: #8b5cf6;
+}
+.wrapListGames .insideListGames .leftPart {
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+.wrapListGames .insideListGames .rightPart {
+  width: 100%;
+  text-align: center;
+}
+
+.modalGamesWrap {
+  box-sizing: border-box;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0f172a;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalGamesWrap .insideModalGames {
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: scroll;
+  max-width: 100%;
+  background-color: #020617;
+  border-radius: 20px;
+  padding: 20px;
+}
+.modalGamesWrap .insideModalGames .lineCloseBt {
+  text-align: right;
+  margin-bottom: 40px;
+}
+.modalGamesWrap .insideModalGames .lineCloseBt a.closeModalGames, .modalGamesWrap .insideModalGames .lineCloseBt .closeModalTV {
+  display: inline;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #e2e8f0;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.modalGamesWrap .insideModalGames .lineCloseBt a.closeModalGames:hover, .modalGamesWrap .insideModalGames .lineCloseBt .closeModalTV:hover {
+  color: #94a3b8;
+}
+.modalGamesWrap .insideModalGames .titleModal {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 30px;
+  color: #818cf8;
+}
+.modalGamesWrap .insideModalGames ul {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.modalGamesWrap .insideModalGames ul li {
+  box-sizing: border-box;
+  background-color: #1e293b;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  font-size: 16px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: ease 0.2s;
+}
+
+.ClubGamesModal {
+  display: none;
+}
+
+.ClubGamesModal.show {
+  display: flex;
+}
+
+.ClubTVsModal {
+  display: none;
+}
+
+.ClubTVModal.show {
+  display: flex;
+}
+
+.bottomAboutMobile {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 40px;
+}
+@media only screen and (max-width: 1920px) {
+  .bottomAboutMobile {
+    width: 98%;
+    margin-top: 20px;
+  }
+}
+.bottomAboutMobile .title {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: #F1F5F9;
+}
+.bottomAboutMobile .txt {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.broniruyPcMobile {
+  width: 98%;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  padding: 40px;
+}
+.broniruyPcMobile .subTitle {
+  font-size: 14px;
+  color: #e5e7eb;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+.broniruyPcMobile .makeBronTxt {
+  display: block;
+  margin-bottom: 30px;
+  color: #e5e7eb;
+  font-size: 21px;
+  font-weight: 500;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+.broniruyPcMobile .makeBronTxt a {
+  color: #a78bfa;
+  text-decoration: underline;
+}
+.broniruyPcMobile .makeBronTxt a:hover {
+  color: #c4b5fd;
+  text-decoration: none;
+}
+.broniruyPcMobile .wrapLinkApp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.broniruyPcMobile .wrapLinkApp a.linkAppBlock {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 8px 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.broniruyPcMobile .wrapLinkApp a.linkAppBlock:hover {
+  background-color: #e2e8f0;
+}
+.broniruyPcMobile .wrapLinkApp a.linkAppBlock .logoPart {
+  margin-right: 20px;
+}
+.broniruyPcMobile .wrapLinkApp a.linkAppBlock .logoPart .kartinkaGoogle {
+  width: 25px;
+}
+.broniruyPcMobile .wrapLinkApp a.linkAppBlock .logoPart .kartinkaApple {
+  width: 25px;
+}
+.broniruyPcMobile .wrapLinkApp a.linkAppBlock .txtPart .txtTitle {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+.broniruyPcMobile .wrapLinkApp a.linkAppBlock .txtPart .txtSubtitle {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+
+ul.ourFeaturesMobile {
+  width: 98%;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+ul.ourFeaturesMobile li.item {
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 25% auto;
+  gap: 4px;
+}
+ul.ourFeaturesMobile li.item .animationBlock {
+  width: 100%;
+}
+ul.ourFeaturesMobile li.item .txtPart {
+  align-self: center;
+}
+ul.ourFeaturesMobile li.item .txtPart .title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #f3f4f6;
+}
+ul.ourFeaturesMobile li.item .txtPart .subTitle {
+  font-size: 14px;
+  font-weight: 200;
+  color: #e5e7eb;
+  font-weight: 700;
+}/*# sourceMappingURL=mobilemain.css.map */
+
+
+.socialLinks {
+  display: flex;
+  gap: 26px;
+  justify-content: center; /* Выравнивание ссылок вправо */
+  margin-top: 10px;
+}
+
+.socialLinks a {
+  font-size: 24px;
+  text-decoration: none;
+  color: #f1f5f9; /* Change to your preferred color */
+  transition: color 0.3s ease;
+}
+
+.socialLinks a:hover {
+  color: #0077b5; /* Change to your desired hover color */
+}
+
+.socialLinks i {
+  margin-right: 8px; /* Space between icon and text */
+}

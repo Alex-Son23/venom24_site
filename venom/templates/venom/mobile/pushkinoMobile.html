@@ -1,0 +1,458 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+
+
+
+        {% if promoPushkino %}
+        <ul class="listPromoMobileOnTop">
+            {% for item_promo in promoPushkino %}
+            <li>
+                <a href="{% url 'pushkinodetailpromomobile' slug=item_promo.slug %}"><img src="{{ item_promo.photo_mobile.url }}" alt=""></a>
+                <a href="{% url 'pushkinodetailpromomobile' slug=item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+
+
+<div class="clubPageMobile">
+
+    <div class="topAlertMobile">
+        Внимание! Новый клуб Веном в г.Пушкино находится на стадии строительства. Скоро открытие
+    </div>
+
+
+
+
+
+
+
+    <div class="topBanerMobile">
+
+        <div class="overlay"></div>
+
+<!--        <img src="{% static '/venom/img/pushkino/pushkino_utp.jpg' %}" alt="" class="picClub">-->
+
+
+
+        <video class="videoPartClub" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+          <source src="{% static 'venom/video/v_video_big6.mp4' %}" type="video/mp4">
+        </video>
+
+
+
+
+
+
+        <div class="txtPart">
+
+            <div class="firstLine">
+                <div class="smallTitle">VENOM CYBER ZONE</div>
+                <h1 class="title">Кибер зона Пушкино</h1>
+            </div>
+
+
+
+            <div class="secondLine">
+                <div class="addr">
+                    <span>Пушкино</span>
+                    <span>ул Просвещения 13</span>
+                    <span>корп 3</span>
+                    Скоро открытие</div>
+
+                <ul class="features">
+                    <li class="">20ПК</li>
+                    <li class="">3Вида ПК</li>
+                    <li class="">3TV</li>
+                </ul>
+
+
+                <ul class="phoneAndToMap">
+                    <li class="wrapPhone">
+                        <a href="tel:89936660444" class="lineAnimation phone">
+                          <span class="flare"></span>
+                          8 (993) 666-0-444
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://yandex.ru/maps/-/CDu6fX4-" target="_blank" class="toMapBt">
+                        Найти клуб на карте
+                        </a>
+                    </li>
+               </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!--news and promo block-->
+
+
+    <div class="newsBlockMobile">
+
+
+        <div class="titleNewsRazdel">Новости клуба Пушкино</div>
+
+        <ul class="listNewsMobileOnTop">
+
+            {% for item_news in news_new_variant %}
+            <li>
+                <a href="{% url 'pushkinodetailnewsmobilenew' slug=item_news.slug %}"><img src="{{ item_news.photo_mobile.url }}" alt=""></a>
+                <a href="{% url 'pushkinodetailnewsmobilenew' slug=item_news.slug %}" class="titleNews">{{ item_news.title }}</a>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+<!--clubsZones-->
+<div class="clubPageMobile ">
+
+    <ul class="clubsZonesMobile">
+
+        {% for zone in zonesPushkino %}
+        <li class="glassZones zoneMobileEach">
+            <div class="zoneSmall">комната</div>
+            <div class="zoneName">{{ zone.title }}</div>
+            <img src="{{ zone.photo_mobile.url }}" alt="{{ zone.title }}">
+
+            <div class="btnWrap">
+                <a href="tel:8 (993) 666-0-444" class="call">8 (993) 666-0-444</a>
+                <a href="https://yandex.ru/maps/-/CDu6fX4-" target="_blank" class="toMap">На карте</a>
+            </div>
+
+            <ul class="params">
+
+                {% if zone.monitor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.monitor_tile }}</div>
+                        <div class="pDescr">{{ zone.monitor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.processor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.processor_tile }}</div>
+                        <div class="pDescr">{{ zone.processor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.videocard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.videocard_tile }}</div>
+                        <div class="pDescr">{{ zone.videocard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.ozu_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.ozu_tile }}</div>
+                        <div class="pDescr">{{ zone.ozu }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.headset_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.headset_tile }}</div>
+                        <div class="pDescr">{{ zone.headset }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.keyboard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.keyboard_tile }}</div>
+                        <div class="pDescr">{{ zone.keyboard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.mouse_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.mouse_tile }}</div>
+                        <div class="pDescr">{{ zone.mouse }}</div>
+                    </li>
+                {% endif %}
+
+            </ul>
+
+
+            <ul class="pricePnCht ">
+                <p class="titleTime">Понедельник-Четверг (цены)</p>
+
+                <div class="wrapTime">
+                    {% if zone.timeone %}
+                        <li class="glassEffectFeaturesDark">{{ zone.timeone }} <span>{{ zone.priceone }}</span></li>
+                    {% endif %}
+                    {% if zone.timetwo %}
+                        <li class="glassEffectFeaturesDark">{{ zone.timetwo }} <span>{{ zone.prictwo }}</span></li>
+                    {% endif %}
+                    {% if zone.timetri %}
+                        <li class="glassEffectFeaturesDark">{{ zone.timetri }} <span>{{ zone.pricetri }}</span></li>
+                    {% endif %}
+                    {% if zone.timefour %}
+                        <li class="glassEffectFeaturesDark">{{ zone.timefour }} <span>{{ zone.pricefour }}</span></li>
+                    {% endif %}
+                    {% if zone.timefive %}
+                        <li class="glassEffectFeaturesDark">{{ zone.timefive }} <span>{{ zone.pricefive }}</span></li>
+                    {% endif %}
+                    {% if zone.timesix %}
+                        <li class="glassEffectFeaturesDark">{{ zone.timesix }} <span>{{ zone.pricesix }}</span></li>
+                    {% endif %}
+                </div>
+
+            </ul>
+
+
+            <ul class="pricePtVs ">
+                <p class="titleTime">Пятница-Воскресенье (цены)</p>
+                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>
+                <div class="wrapTime">
+                    {% if zone.weekend_timeone %}
+                        <li class="glassEffectFeaturesDark">{{ zone.weekend_timeone }} <span>{{ zone.weekend_priceone }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timetwo %}
+                        <li class="glassEffectFeaturesDark">{{ zone.weekend_timetwo }} <span>{{ zone.weekend_prictwo }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timetri %}
+                        <li class="glassEffectFeaturesDark">{{ zone.weekend_timetri }} <span>{{ zone.weekend_pricetri }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timefour %}
+                        <li class="glassEffectFeaturesDark">{{ zone.weekend_timefour }} <span>{{ zone.weekend_pricefour }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timefive %}
+                        <li class="glassEffectFeaturesDark">{{ zone.weekend_timefive }} <span>{{ zone.weekend_pricefive }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timesix %}
+                        <li class="glassEffectFeaturesDark">{{ zone.weekend_timesix }} <span>{{ zone.weekend_pricesix }}</span></li>
+                    {% endif %}
+                </div>
+            </ul>
+
+
+
+
+
+
+        </li>
+        {% endfor %}
+
+    </ul>
+
+
+</div>
+
+
+
+
+
+<!--squareGallery-->
+<div class="glassEffect squareGalleryMobile">
+
+
+        <div class="titleGallery">Фотогаллерея Пушкино</div>
+
+
+        <div class="wrapListGalery">
+
+            <div class="oneLine">
+
+                <a href="{% static 'venom/img/vernadka/01.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/vernadka/01.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vernadka/02.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/vernadka/02.jpg' %}" />
+                </a>
+
+               <a href="{% static 'venom/img/vernadka/03.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/vernadka/03.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vernadka/04.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/vernadka/04.jpg' %}" />
+                </a>
+
+            </div>
+
+            <div class="twoLine">
+
+                <a href="{% static 'venom/img/vernadka/05.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="fivePic" src="{% static 'venom/img/vernadka/05.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vernadka/06.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sixPic" src="{% static 'venom/img/vernadka/06.jpg' %}" />
+                </a>
+
+                 <a href="{% static 'venom/img/vernadka/07.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sevenPic" src="{% static 'venom/img/vernadka/07.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/vernadka/08.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="eightPic" src="{% static 'venom/img/vernadka/08.jpg' %}" />
+                </a>
+
+            </div>
+
+        </div>
+
+</div>
+<!--squareGallery END -->
+
+
+
+
+
+
+
+<!--{% if pushkinogalleryNone %}-->
+<!--<div class="bigGalleryMobileBottom">-->
+
+
+<!--        <div class="titleGallery">Фотогаллерея клуба Пушкино</div>-->
+<!--        <p>Cеть топовых кибер-арен в Москве</p>-->
+
+
+<!--    <link-->
+<!--      rel="stylesheet"-->
+<!--      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"-->
+<!--    />-->
+
+<!--    <div class="swiper">-->
+
+
+<!--          <div class="swiper-wrapper">-->
+<!--              {% for bigslider in pushkinogallery %}-->
+<!--                <div class="swiper-slide"><img src="{{ bigslider.photo_mobile.url }}" alt=""></div>-->
+<!--              {% endfor %}-->
+<!--          </div>-->
+
+
+
+<!--      <div class="swiper-pagination"></div>-->
+<!--        -->
+<!--      <div class="swiper-button-prev"></div>-->
+<!--      <div class="swiper-button-next"></div>-->
+<!--        -->
+<!--      <div class="swiper-scrollbar"></div>-->
+<!--    </div>-->
+
+
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>-->
+
+<!--    <script type="module">-->
+<!--    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'-->
+
+<!--    const swiper = new Swiper('.swiper', {-->
+
+<!--        // direction: 'horisontal',-->
+<!--        loop: true,-->
+
+<!--        slidesPerView: 1,-->
+
+<!--        breakpoints: {-->
+<!--            640: {-->
+<!--                slidesPerView: 1,-->
+<!--            },-->
+<!--            1024: {-->
+<!--                slidesPerView: 1,-->
+<!--            },-->
+<!--        },-->
+
+
+<!--        effect: "cube",-->
+<!--          grabCursor: true,-->
+<!--          cubeEffect: {-->
+<!--            shadow: true,-->
+<!--            slideShadows: true,-->
+<!--            shadowOffset: 20,-->
+<!--            shadowScale: 0.94,-->
+<!--          },-->
+
+
+
+<!--        pagination: {-->
+<!--            el: '.swiper-pagination',-->
+<!--        },-->
+
+
+<!--        navigation: {-->
+<!--            nextEl: '.swiper-button-next',-->
+<!--            prevEl: '.swiper-button-prev',-->
+<!--        },-->
+
+
+<!--        scrollbar: {-->
+<!--            el: '.swiper-scrollbar',-->
+<!--        },-->
+<!--    });-->
+<!--  </script>-->
+
+<!--</div>-->
+<!--{% endif %}-->
+
+
+
+<div class="bottomAboutMobile  glassZones">
+    <div class="title">Киберспортивный клуб Пушкино</div>
+    <div class="txt">Погрузитесь в захватывающий мир киберспорта в Пушкино вместе с клубом Веном. Наш клуб предлагает первоклассные профессиональные тренировки, уникальную возможность участвовать в захватывающих турнирах и соревнованиях, а также наслаждаться общением с единомышленниками и геймерами в нашей киберспортивной обстановке. Независимо от вашего уровня подготовки, мы создали идеальную платформу для развития в киберспорте. Присоединяйтесь к нам прямо сейчас и окунитесь в захватывающий мир киберспорта в Пушкино!</div>
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
+</script>
+
+
+
+{% endblock %}

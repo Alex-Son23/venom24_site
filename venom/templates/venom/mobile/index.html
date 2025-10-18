@@ -1,0 +1,298 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{% for item_seo in seo %}{{ item_seo.title }}{% endfor %}{% endblock %}
+
+{% block descriptionseo %}{% for item_seo in seo %}{{ item_seo.description }}{% endfor %}{% endblock %}
+
+{% block keywordsseo %}{% for item_seo in seo %}{{ item_seo.keywords }}{% endfor %}{% endblock %}
+
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+
+
+
+    <ul class="shortListClubsMobileOnTop">
+        {% for c in all_clubs %}
+          <li class="one">
+            <a href="{% url 'club_page' c.slug %}" class="{% if current_slug == c.slug %}active{% endif %} titlePromo">
+              {{ c.name }}
+            </a>
+          </li>
+        {% empty %}
+          <li><span>Клубы пока не добавлены</span></li>
+        {% endfor %}
+
+    </ul>
+
+
+
+
+
+
+
+
+<!--<div class="utpMobile">-->
+<!--    <div class="txtPart">-->
+<!--        <h1>-->
+<!--        <span>VENOM</span>-->
+<!--        мощная сеть компьютерных игровых клубов в Москве</h1>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="utpMobile">
+    <video class="videoPartMobile" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+      <source src="{% static 'venom/video/square_utp.mp4' %}" type="video/mp4">
+    </video>
+</div>
+
+
+
+
+{% include 'venom/mobile/comppnents/featuresMobile.html' %}
+
+
+
+{% include 'venom/mobile/comppnents/ourAdvantagesMobile.html' %}
+
+
+
+
+    <div class="newsBlockMobile">
+
+
+        {% if news %}
+        <div class="titleNewsRazdel">Новости в сети клубов VENOM</div>
+
+        <ul class="listNewsMobileOnTop">
+            {% for item_news in latest_news %}
+            <li>
+                <a href="{% url 'news_detailmobile_new' slug=item_news.slug %}"><img src="{{ item_news.photo_mobile.url }}" alt=""></a>
+                <a href="{% url 'news_detailmobile_new' slug=item_news.slug %}" class="titleNews">{{ item_news.title }}</a>
+            </li>
+            {% endfor %}
+
+        </ul>
+        {% endif %}
+
+
+
+    </div>
+
+    <div class="wrapForBtNews">
+        <a href="{% url 'promo' %}" class="moreNews">Все новости</a>
+    </div>
+
+
+
+ 
+
+
+{% include 'venom/mobile/comppnents/adressListClubsMobile.html' %}
+
+
+<!-- 
+<a href="{% url 'franchise' %}" class="franchiseLink">
+    Откройте компьютерный клуб по франшизе VENOM
+</a>
+ -->
+
+
+
+
+<!--squareGallery-->
+<div class="glassEffect squareGalleryMobile">
+
+
+        <div class="titleGallery">Фотогаллерея клубов VENOM</div>
+        <div class="subtitle">Cеть топовых кибер-арен в Москве</div>
+
+
+        <div class="wrapListGalery">
+          <div class="oneLine">
+            {% for i in photovenum|slice:":4" %} <!-- Берем первые 4 изображения -->
+            <a href="{{ i.photo_mobile.url }}" data-fancybox="gallery" data-caption="">
+                <img class="onePic" src="{{ i.photo_mobile.url }}" alt="Image"/>
+            </a>
+            {% endfor %}
+        </div>
+    
+        <div class="twoLine">
+            {% for i in photovenum|slice:"4:8" %} <!-- Берем следующие 4 изображения -->
+            <a href="{{ i.photo_mobile.url }}" data-fancybox="gallery" data-caption="">
+                <img class="twoPic" src="{{ i.photo_mobile.url }}" alt="Image"/>
+            </a>
+            {% endfor %}
+        </div>
+            <!-- <div class="oneLine">
+
+                <a href="{% static 'venom/img/mitino/09.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/mitino/09.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vdnh/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/vdnh/03_new.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/vdnh/04_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/vdnh/04_new.jpg' %}" />
+                </a>
+
+            </div>
+
+            <div class="twoLine">
+
+                <a href="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/serpuhovskaya/06.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sixPic" src="{% static 'venom/img/serpuhovskaya/06.jpg' %}" />
+                </a>
+
+                 <a href="{% static 'venom/img/serpuhovskaya/02.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sevenPic" src="{% static 'venom/img/serpuhovskaya/02.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="fivePic" src="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" />
+                </a>
+
+            </div> -->
+
+        </div>
+
+</div>
+<!--squareGallery END -->
+
+
+
+
+
+
+{% if homegalleryNone %}
+<!--<div class="bigGalleryMobileBottom">-->
+
+
+<!--        <div class="titleGallery">Фотогаллерея клубов VENOM</div>-->
+<!--        <p>Cеть топовых кибер-арен в Москве</p>-->
+
+
+<!--    <link-->
+<!--      rel="stylesheet"-->
+<!--      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"-->
+<!--    />-->
+
+<!--    <div class="swiper">-->
+
+<!--          <div class="swiper-wrapper">-->
+<!--              {% for bigslider in homegallery %}-->
+<!--                <div class="swiper-slide"><img src="{{ bigslider.photo_mobile.url }}" alt=""></div>-->
+<!--              {% endfor %}-->
+<!--          </div>-->
+<!--        -->
+<!--      <div class="swiper-pagination"></div>-->
+<!--        -->
+<!--      <div class="swiper-button-prev"></div>-->
+<!--      <div class="swiper-button-next"></div>-->
+<!--        -->
+<!--      <div class="swiper-scrollbar"></div>-->
+<!--    </div>-->
+
+
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>-->
+
+<!--    <script type="module">-->
+<!--    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'-->
+
+<!--    const swiper = new Swiper('.swiper', {-->
+
+<!--        // direction: 'horisontal',-->
+<!--        loop: true,-->
+
+<!--        slidesPerView: 1,-->
+
+<!--        breakpoints: {-->
+<!--            640: {-->
+<!--                slidesPerView: 1,-->
+<!--            },-->
+<!--            1024: {-->
+<!--                slidesPerView: 1,-->
+<!--            },-->
+<!--        },-->
+
+
+<!--        effect: "cube",-->
+<!--          grabCursor: true,-->
+<!--          cubeEffect: {-->
+<!--            shadow: true,-->
+<!--            slideShadows: true,-->
+<!--            shadowOffset: 20,-->
+<!--            shadowScale: 0.94,-->
+<!--          },-->
+
+
+
+<!--        pagination: {-->
+<!--            el: '.swiper-pagination',-->
+<!--        },-->
+
+
+<!--        navigation: {-->
+<!--            nextEl: '.swiper-button-next',-->
+<!--            prevEl: '.swiper-button-prev',-->
+<!--        },-->
+
+
+<!--        scrollbar: {-->
+<!--            el: '.swiper-scrollbar',-->
+<!--        },-->
+<!--    });-->
+<!--  </script>-->
+
+<!--</div>-->
+<!-- end bigGallery-->
+{% endif %}
+
+
+
+
+{% include 'venom/mobile/comppnents/mapMobile.html' %}
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
+</script>
+
+
+
+
+{% endblock %}

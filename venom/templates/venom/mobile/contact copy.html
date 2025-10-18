@@ -1,0 +1,198 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+<div class="contactPage">
+
+
+
+
+
+    <ul class="listsContactsClubsMobile">
+
+        {% include 'venom/components/glassEffectBlocks.html' with titlepart="Контакты клубов VENOM" subtitle="Cеть топовых кибер-арен" %}
+
+        <!-- Social Media Links with Icons -->
+        <div class="socialLinks">
+            <a href="https://vk.com/venomcyberzone" class="vkLink" target="_blank">
+                <i class="fab fa-vk"></i>VK
+            </a>
+            <a href="https://instagram.com/venomcyberzone" class="instaLink" target="_blank">
+                <i class="fab fa-instagram"></i>Instagram
+            </a>
+        </div>
+        {% for club_image in clubs_images %}
+        {% if club_image.type == "Серпуховская" %}
+        <li class="glassEffect eachClub">
+            <a href="{% url 'serpuhovskaya' %}" class="title">Серпуховская</a>
+            <div class="street">Стремянный переулок, 36</div>
+            <a class="photoLink" href="{% url 'serpuhovskaya' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:⁠8 (925) 385-08-37" class="phone">⁠8 (925) 385-08-37</a>
+                <a href="https://yandex.ru/maps/-/CDueyCZa" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+        {% elif club_image.type == "ВДНХ" %}
+        <li class="glassEffect eachClub">
+            <a href="{% url 'vdnh' %}" class="title">ВДНХ</a>
+            <div class="street">ул. Ярославская 21а</div>
+            <a class="photoLink" href="{% url 'vdnh' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:89255419729" class="phone">8 (925) 541-97-29</a>
+                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+        {% elif club_image.type == "Вернадского" %}
+        <li class="glassEffect eachClub">
+            <a href="{% url 'vernadka' %}" class="title">Вернадского</a>
+            <div class="street">ул. Вернадского 58</div>
+            <a class="photoLink" href="{% url 'vernadka' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:+7 (926) 054-11-14" class="phone">+7 (926) 054-11-14</a>
+                <a href="https://yandex.ru/maps/org/venom_cyber_zone/243704983087/?ll=37.494126%2C55.672757&z=17" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+        {% elif club_image.type == "Митино" %}
+        <li class="glassEffect eachClub">
+            <a href="{% url 'mitino' %}" class="title">Митино</a>
+            <div class="street">ул. Митинская 40к1</div>
+            <a class="photoLink" href="{% url 'mitino' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:+7 (993) 666-04-44" class="phone">+7 (993) 666-04-44</a>
+                <a href="https://yandex.ru/maps/org/venom_cyber_zone/10070343906/?indoorLevel=1&ll=37.361516%2C55.847993&z=17" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+        {% elif club_image.type == "Коптево" %}
+        <li class="glassEffect eachClub">
+            <a href="{% url 'coptevo' %}" class="title">Коптево</a>
+            <div class="street">ул. Михалковская 12</div>
+            <a class="photoLink" href="{% url 'coptevo' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:+7 (925) 623-09-67" class="phone">+7 (925) 623-09-67</a>
+                <a href="https://yandex.ru/maps/-/CXv~M~B" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+        {% elif club_image.type == "Жулебино" %}
+        <li class="glassEffect eachClub">
+            <a href="{% url 'zulebino' %}" class="title">Жулебино</a>
+            <div class="street">Лермонтовский проспект, 2к1</div>
+            <a class="photoLink" href="{% url 'zulebino' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:+7 (915) 125-63-06" class="phone">+7 (915) 125-63-06</a>
+                <a href="https://yandex.ru/maps/-/CDQ4e6~v" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+        {% elif club_image.type == "Жуковский" %}
+        <li class="glassEffect eachClub">
+            <a href="{% url 'zukovsky' %}" class="title">Жуковский</a>
+            <div class="street">Жуковский, ул. Гагарина 60а. тц Самолет</div>
+            <a class="photoLink" href="{% url 'zukovsky' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:+7 (915) 421-99-98" class="phone">+7 (915) 421-99-98</a>
+                <a href="https://yandex.ru/maps/-/C-gdj1r" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+        {% elif club_image.type == "Махачкала" %}
+        <li class="glassEffect eachClub">
+            <a class="photoLink" href="{% url 'mahachkala' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <a href="{% url 'mahachkala' %}" class="title">Махачкала</a>
+            <div class="street">г. Махачкала, пр. Гамзатова 64</div>
+            <div class="timeWork">Работает круглосуточно</div>
+
+            <div class="bntWrap">
+                <a href="tel:89887958989" class="phone lineAnimation"><span class="flare"></span> +8 (988) 795-89-89</a>
+                <a href="https://yandex.uz/maps/-/CDxERP5T" target="_blank" class="onMap">Показать на карте</a>
+            </div>
+        </li>
+
+
+    
+
+<!--        <li class="glassEffect eachClub">-->
+<!--            <a href="{% url 'pushkino' %}" class="title">Пушкино</a>-->
+<!--            <div class="street">Пушкино ул. Просвещения 13 корп 3</div>-->
+<!--            <a class="photoLink" href="{% url 'pushkino' %}">-->
+<!--                <img src="{% static 'venom/img/clubs/pushkino.jpg' %}" alt="">-->
+<!--            </a>-->
+<!--            <div class="timeWork">Скоро открытие</div>-->
+
+<!--            <div class="bntWrap">-->
+<!--                <a href="tel:8 (993) 666-0-444" class="phone">8 (993) 666-0-444</a>-->
+<!--                <a href="https://yandex.ru/maps/-/CDu6fX4-" target="_blank" class="onMap">Показать на карте</a>-->
+<!--            </div>-->
+<!--        </li>-->
+
+<!--        <li class="glassEffect eachClub">-->
+<!--            <a href="{% url 'mahachkala' %}" class="title">Махачкала</a>-->
+<!--            <div class="street">г. Махачкала, пр. Гамзатова 64</div>-->
+<!--            <a class="photoLink" href="{% url 'mahachkala' %}">-->
+<!--                <img src="{% static 'venom/img/clubs/mahachkala.jpg' %}" alt="">-->
+<!--            </a>-->
+<!--            <div class="timeWork">Скоро открытие</div>-->
+
+<!--            <div class="bntWrap">-->
+<!--                <a href="tel:8 (993) 666-0-444" class="phone">8 (993) 666-0-444</a>-->
+<!--                <a href="https://yandex.ru/maps/-/CDQiyX3O" target="_blank" class="onMap">Показать на карте</a>-->
+<!--            </div>-->
+<!--        </li>-->
+{% endif %}
+{% endfor %}
+    </ul>
+
+
+</div>
+
+
+
+{% include 'venom/components/map.html' %}
+
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ vernadkanews.title }}{% endblock %}
+{% block descriptionseo %}Клуб VENOM Вернадкого | {{ vernadkanews.title }}{% endblock %}
+{% block keywordsseo %}Клуб VENOM Вернадкого Новости{% endblock %}
+
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubFix glassEffectFeaturesDark">
+    <img src="{{ vernadkanews.photo.url }}" alt="{{ vernadkanews.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'vernadka' %}" class="rubric">Вернадка Новости</a>
+        <div class="date">{{ vernadkanews.time_create|date:"d F Y" }}</div>
+        <h1>{{ vernadkanews.title }}</h1>
+        <p>{{ vernadkanews.descr|safe }}</p>
+
+        <a href="{% url 'vernadka' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+
+<!--<div class="detailNewsAndPrmoInClub">-->
+<!--    <img src="{{ vernadkanews.photo.url }}" alt="{{ vernadkanews.title }}" class="topPic">-->
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'vernadka' %}" class="rubric">Новости Вернадка</a>-->
+<!--        <div class="date">{{ vernadkanews.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ vernadkanews.title }}</h1>-->
+<!--        <p>{{ vernadkanews.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'vernadka' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+{% endblock %}

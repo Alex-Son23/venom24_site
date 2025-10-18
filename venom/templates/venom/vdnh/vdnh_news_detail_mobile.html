@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} ВДНХ новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ vdnhnewsmobile.photo_mobile.url }}" alt="{{ vdnhnewsmobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'vdnh' %}" class="rubric">Новости ВДНХ</a>
+        <div class="date">{{ vdnhnewsmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ vdnhnewsmobile.title }}</h1>
+        <p>{{ vdnhnewsmobile.descr|safe }}</p>
+
+        <a href="{% url 'vdnh' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,681 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+
+    {% if promoKoptevo %}
+    <ul class="listPromoMobileOnTop">
+        {% for item_promo in promoKoptevo %}
+        <li>
+            <a href="{% url 'coptevodetailpromomobile' slug=item_promo.slug %}"><img src="{{ item_promo.photo_mobile.url }}" alt=""></a>
+            <a href="{% url 'coptevodetailpromomobile' slug=item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+
+
+<div class="clubPageMobile">
+
+
+
+
+
+
+    <div class="topBanerMobile">
+
+        <div class="overlay"></div>
+
+<!--        <img src="{% static '/venom/img/koptevo/koptevo_utp.jpg' %}" alt="" class="picClub">-->
+
+        <video class="videoPartClub" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+          <source src="{% static 'venom/video/kk.mp4' %}" type="video/mp4">
+        </video>
+
+
+
+
+
+        <div class="txtPart">
+
+            <div class="firstLine">
+                <div class="smallTitle">VENOM CYBER ZONE</div>
+                <h1 class="title">Веном Кибер и Лаундж Зона Коптево</h1>
+            </div>
+
+
+
+            <div class="secondLine">
+                <div class="addr"><span>ул. Михалковская 12</span>  Работает круглосуточно</div>
+
+                <ul class="features">
+                    <li class="">54ПК</li>
+                    <li class="">3Вида ПК</li>
+                    <li class="">3TV</li>
+                </ul>
+
+
+                <ul class="phoneAndToMap">
+                    <li class="wrapPhone">
+                        <a href="tel:+7 (925) 623-09-67" class="lineAnimation phone">
+                          <span class="flare"></span>
+                          +7 (925) 623-09-67
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://yandex.ru/maps/-/CXv~M~B" target="_blank" class="toMapBt">
+                        Найти клуб на карте
+                        </a>
+                    </li>
+               </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<!--news and promo block-->
+
+    <div class="newsBlockMobile">
+
+
+        <div class="titleNewsRazdel">Новости клуба Коптево</div>
+
+        <ul class="listNewsMobileOnTop">
+
+            {% for item_news in newsKoptevo %}
+            <li>
+                <a href="{% url 'coptevodetailnewsmobile' slug=item_news.slug %}"><img src="{{ item_news.photo_mobile.url }}" alt=""></a>
+                <a href="{% url 'coptevodetailnewsmobile' slug=item_news.slug %}" class="titleNews">{{ item_news.title }}</a>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+<!--clubsZones-->
+<div class="clubPageMobile ">
+
+    <ul class="clubsZonesMobile">
+
+        {% for zone in zonesKoptevo %}
+        <li class="glassZones zoneMobileEach">
+            <div class="zoneSmall">комната</div>
+            <div class="zoneName">{{ zone.title }}</div>
+            <img src="{{ zone.photo_mobile.url }}" alt="{{ zone.title }}">
+
+            <div class="btnWrap">
+                <a href="tel:+7 (925) 623-09-67" class="call">+7 (925) 623-09-67</a>
+                <a href="https://yandex.ru/maps/-/CXv~M~B" target="_blank" class="toMap">На карте</a>
+            </div>
+
+            <ul class="params">
+                {% if zone.monitor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.monitor_tile }}</div>
+                        <div class="pDescr">{{ zone.monitor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.processor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.processor_tile }}</div>
+                        <div class="pDescr">{{ zone.processor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.videocard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.videocard_tile }}</div>
+                        <div class="pDescr">{{ zone.videocard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.ozu_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.ozu_tile }}</div>
+                        <div class="pDescr">{{ zone.ozu }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.headset_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.headset_tile }}</div>
+                        <div class="pDescr">{{ zone.headset }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.keyboard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.keyboard_tile }}</div>
+                        <div class="pDescr">{{ zone.keyboard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.mouse_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.mouse_tile }}</div>
+                        <div class="pDescr">{{ zone.mouse }}</div>
+                    </li>
+                {% endif %}
+            </ul>
+
+
+            <ul class="pricePnCht ">
+                <p class="titleTime">Понедельник-Четверг (цены)</p>
+
+                <div class="wrapTime">
+                    {% if zone.timeone %}
+                        <li class="">{{ zone.timeone }} <span>{{ zone.priceone }}</span></li>
+                    {% endif %}
+                    {% if zone.timetwo %}
+                        <li class="">{{ zone.timetwo }} <span>{{ zone.prictwo }}</span></li>
+                    {% endif %}
+                    {% if zone.timetri %}
+                        <li class="">{{ zone.timetri }} <span>{{ zone.pricetri }}</span></li>
+                    {% endif %}
+                    {% if zone.timefour %}
+                        <li class="">{{ zone.timefour }} <span>{{ zone.pricefour }}</span></li>
+                    {% endif %}
+                    {% if zone.timefive %}
+                        <li class="">{{ zone.timefive }} <span>{{ zone.pricefive }}</span></li>
+                    {% endif %}
+                    {% if zone.timesix %}
+                        <li class="">{{ zone.timesix }} <span>{{ zone.pricesix }}</span></li>
+                    {% endif %}
+                </div>
+
+            </ul>
+
+
+            <ul class="pricePtVs ">
+                <p class="titleTime">Пятница-Воскресенье (цены)</p>
+                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>
+                <div class="wrapTime">
+
+                    {% if zone.weekend_timeone %}
+                        <li class="">{{ zone.weekend_timeone }} <span>{{ zone.weekend_priceone }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timetwo %}
+                        <li class="">{{ zone.weekend_timetwo }} <span>{{ zone.weekend_prictwo }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timetri %}
+                        <li class="">{{ zone.weekend_timetri }} <span>{{ zone.weekend_pricetri }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timefour %}
+                        <li class="">{{ zone.weekend_timefour }} <span>{{ zone.weekend_pricefour }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timefive %}
+                        <li class="">{{ zone.weekend_timefive }} <span>{{ zone.weekend_pricefive }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timesix %}
+                        <li class="">{{ zone.weekend_timesix }} <span>{{ zone.weekend_pricesix }}</span></li>
+                    {% endif %}
+
+                </div>
+            </ul>
+
+
+
+
+
+        </li>
+        {% endfor %}
+
+    </ul>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="wrapListGames glassEffect">
+    <div class="insideListGames">
+
+        <div class="leftPart">
+            <div class="title">Игры | <span>для ПК</span></div>
+            <a href="#" class="gamesBt showModalClubGamesBt">Все игры</a>
+        </div>
+
+        <div class="rightPart">
+            <div class="title">Игры | <span>для TV</span></div>
+            <a href="#" class="gamesBt showModalTVGamesBt">Все игры</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="modalGamesWrap ClubGamesModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt">
+            <a href="#" class="closeModalGames">Закрыть</a>
+        </div>
+        <div class="titleModal">Все игры для ПК (Коптево)</div>
+         <ul>
+            <li>A Way Out</li>
+            <li>Aliens: Dark Descent</li>
+            <li>Apex Legends</li>
+            <li>Battlefield 2042</li>
+            <li>Beam ng.Drive</li>
+            <li>Bioshock Infinite Bundle</li>
+            <li>Command & Conquer: Red Alert 3</li>
+            <li>Counter Strike 1.6</li>
+            <li>CS 2</li>
+            <li>Cyberpunk 2077</li>
+            <li>Dead by Daylight</li>
+            <li>Dead Space Remake</li>
+            <li>Dota 2</li>
+            <li>Elden Ring</li>
+            <li>Escape From Tarkov</li>
+            <li>Far Cry 5</li>
+            <li>Fortnite</li>
+            <li>Forza 5</li>
+            <li>Garry`s Mod</li>
+            <li>Genshin impact</li>
+            <li>Ghostrunner</li>
+            <li>Gta V</li>
+            <li>Hearthstone</li>
+            <li>Heroes of The Storm</li>
+            <li>IC Cup</li>
+            <li>League of Legends</li>
+            <li>Left 4 Dead 2</li>
+            <li>Lego Marvel Super Heroes 2</li>
+            <li>Lego Marvel`s Avengers Deluxe</li>
+            <li>Lego Star Wars: The Skywalker Saga</li>
+            <li>Paladins</li>
+            <li>Phasmophobia</li>
+            <li>Portal 2</li>
+            <li>Pubg</li>
+            <li>Rainbow Six Siege</li>
+            <li>Red Dead Redemption 2</li>
+            <li>Resident Evil 2 Remake</li>
+            <li>Resident Evil 3 Remake</li>
+            <li>Rocket League</li>
+            <li>Rust</li>
+            <li>The Witcher 3</li>
+            <li>Unravel 2</li>
+            <li>Valorant</li>
+            <li>Warcraft 3</li>
+            <li>Warface</li>
+            <li>Warzone</li>
+            <li>World of Tanks</li>
+            <li>World of Warcraft</li>
+         </ul>
+
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const showModalBtn = document.querySelector(".showModalClubGamesBt");
+  const modal = document.querySelector(".ClubGamesModal");
+  const closeModalBtn = modal.querySelector(".closeModalGames");
+
+  function closeModal(e) {
+    e.preventDefault();
+    modal.style.display = "none";
+  }
+
+  showModalBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+
+  closeModalBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      closeModal(event);
+    }
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      closeModal(event);
+    }
+  });
+});
+</script>
+
+
+
+
+
+<div class="modalGamesWrap ClubTVsModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt">
+            <a href="#" class="closeModalTV">Закрыть</a>
+        </div>
+        <div class="titleModal">Все игры для TV (Коптево)</div>
+         <ul>
+             <li>Ac Valhalla Ps5</li>
+            <li>Crash Remastered Ps4</li>
+            <li>Dirt 5 Ps5</li>
+            <li>Dying Light 2 Ps5</li>
+            <li>Elden Ring Ps5</li>
+            <li>Far Cry 6 Ps5</li>
+            <li>FC 24 Ps5</li>
+            <li>Fifa 22 Ps5</li>
+            <li>Fifa 23 Ps5</li>
+            <li>Ghost of Tsusima Ps5</li>
+            <li>God of War 2018 Ps4</li>
+            <li>Gta 5 Ps4</li>
+            <li>Hitman 3 Ps4</li>
+            <li>Horizon Forbiden West Ps5</li>
+            <li>Injustice 2 Ps4</li>
+            <li>It Takes Two Ps5</li>
+            <li>Just Cause 4 Ps4</li>
+            <li>Mortal Combat 1 Ps5</li>
+            <li>Mortal Combat 11 Ultimate Ps5</li>
+            <li>Nba 2K 22 Ps5</li>
+            <li>Nhl 23 Ps5</li>
+            <li>RDR 2 Ps4</li>
+            <li>Spider Man Miles Morales Ps5</li>
+            <li>Star Wars Fallen Order Ps4</li>
+            <li>Tekken 7 Ps4</li>
+            <li>UFC 4 Ps4</li>
+            <li>Uncharted 4 Ps4</li>
+         </ul>
+
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const showModalTVBtn = document.querySelector(".showModalTVGamesBt");
+  const modalTV = document.querySelector(".ClubTVsModal");
+  const closeModalTVBtn = modalTV.querySelector(".closeModalTV");
+
+  function closeModalTV(event) {
+    event.preventDefault();
+    modalTV.style.display = "none";
+  }
+
+  showModalTVBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    modalTV.style.display = "flex";
+  });
+
+  closeModalTVBtn.addEventListener("click", closeModalTV);
+
+  modalTV.addEventListener("click", function(event) {
+    if (event.target === modalTV) {
+      closeModalTV(event);
+    }
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      closeModalTV(event);
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+<div class="glassEffect broniruyPcMobile">
+    <div class="subTitle"> VENOM CYBER ZONE</div>
+    <div class="makeBronTxt">Бронируй мощный игровой ПК удобным способом,
+        <a href="tel:+7 (925) 623-09-67">по телефону</a> или через приложение</div>
+
+        <div class="wrapLinkApp">
+
+            <a href="https://play.google.com/store/apps/details?id=com.f5computers.langame_aggregator" target="_blank" class="linkAppBlock">
+                <div class="logoPart">
+                    <img src="{% static 'venom/img/google_play_logo.svg' %}" alt="" class="kartinkaGoogle">
+                </div>
+                <div class="txtPart">
+                    <div class="txtTitle">GET IT ON for Android</div>
+                    <div class="txtSubtitle">Google Play</div>
+                </div>
+            </a>
+
+            <a href="https://apps.apple.com/ru/app/langame/id1642484175" target="_blank" class="linkAppBlock">
+                <div class="logoPart">
+                     <img src="{% static 'venom/img/apple_logo.svg' %}" alt="" class="kartinkaApple">
+                </div>
+                <div class="txtPart">
+                    <div class="txtTitle">Download on the iPhone</div>
+                    <div class="txtSubtitle">App Store</div>
+                </div>
+            </a>
+
+        </div>
+</div>
+
+
+
+
+<!--animationRoute-->
+<div class="pictureForClubMobile glassEffect">
+    <div class="title">Как найти клуб Коптево</div>
+    <lottie-player src="{% static 'venom/img/lottie/koptevo_m.json' %}" background="transparent" speed="1" loop autoplay></lottie-player>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</div>
+
+
+
+
+
+
+
+<!--squareGallery-->
+<div class="glassEffect squareGalleryMobile">
+
+
+        <div class="titleGallery">Фотогаллерея Коптево</div>
+
+
+        <div class="wrapListGalery">
+
+            <div class="oneLine">
+
+                <a href="{% static 'venom/img/koptevo/01.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/koptevo/01.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/koptevo/02.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/koptevo/02.jpg' %}" />
+                </a>
+
+               <a href="{% static 'venom/img/koptevo/03.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/koptevo/03.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/koptevo/04.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/koptevo/04.jpg' %}" />
+                </a>
+
+            </div>
+
+            <div class="twoLine">
+
+                <a href="{% static 'venom/img/koptevo/05.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="fivePic" src="{% static 'venom/img/koptevo/05.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/koptevo/06.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sixPic" src="{% static 'venom/img/koptevo/06.jpg' %}" />
+                </a>
+
+                 <a href="{% static 'venom/img/koptevo/07.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sevenPic" src="{% static 'venom/img/koptevo/07.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/koptevo/koptevo_utp.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="eightPic" src="{% static 'venom/img/koptevo/koptevo_utp.jpg' %}" />
+                </a>
+
+            </div>
+
+        </div>
+
+</div>
+<!--squareGallery END -->
+
+
+
+
+
+<!--{% if koptevogalleryNone %}-->
+<!--<div class="bigGalleryMobileBottom">-->
+
+
+<!--        <div class="titleGallery">Фотогаллерея Веном Кибер и Лаундж Зона Коптево</div>-->
+<!--        <p>Клуб Коптево (ул. Михалковская 12) это увлекательная и захватывающая атмосферая для всех любителей игр. Здесь вас ждет широкий выбор игр и развлечений. Let`s go.е</p>-->
+
+
+<!--    <link-->
+<!--      rel="stylesheet"-->
+<!--      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"-->
+<!--    />-->
+
+<!--    <div class="swiper">-->
+
+<!--          <div class="swiper-wrapper">-->
+<!--              {% for bigslider in koptevogallery %}-->
+<!--                <div class="swiper-slide"><img src="{{ bigslider.photo_mobile.url }}" alt=""></div>-->
+<!--              {% endfor %}-->
+<!--          </div>-->
+
+
+<!--      <div class="swiper-pagination"></div>-->
+<!--        -->
+<!--      <div class="swiper-button-prev"></div>-->
+<!--      <div class="swiper-button-next"></div>-->
+<!--        -->
+<!--      <div class="swiper-scrollbar"></div>-->
+<!--    </div>-->
+
+
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>-->
+
+<!--    <script type="module">-->
+<!--    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'-->
+
+<!--    const swiper = new Swiper('.swiper', {-->
+
+<!--        // direction: 'horisontal',-->
+<!--        loop: true,-->
+
+<!--        slidesPerView: 1,-->
+
+<!--        breakpoints: {-->
+<!--            640: {-->
+<!--                slidesPerView: 1,-->
+<!--            },-->
+<!--            1024: {-->
+<!--                slidesPerView: 1,-->
+<!--            },-->
+<!--        },-->
+
+
+<!--        effect: "cube",-->
+<!--          grabCursor: true,-->
+<!--          cubeEffect: {-->
+<!--            shadow: true,-->
+<!--            slideShadows: true,-->
+<!--            shadowOffset: 20,-->
+<!--            shadowScale: 0.94,-->
+<!--          },-->
+
+
+
+<!--        pagination: {-->
+<!--            el: '.swiper-pagination',-->
+<!--        },-->
+
+
+<!--        navigation: {-->
+<!--            nextEl: '.swiper-button-next',-->
+<!--            prevEl: '.swiper-button-prev',-->
+<!--        },-->
+
+
+<!--        scrollbar: {-->
+<!--            el: '.swiper-scrollbar',-->
+<!--        },-->
+<!--    });-->
+<!--  </script>-->
+
+<!--</div>-->
+<!--{% endif %}-->
+
+
+
+
+<div class="bottomAboutMobile  glassZones">
+    <div class="title">Веном Кибер и Лаундж Зона Коптево</div>
+    <div class="txt">Кибер-арена Venom Cyber&Lounge Zone на Михалковской улице - это место, где весело и увлекательно можно провести время людям любого возраста и любым компаниям. Посетителей ждут мощные ПК с видеокартами RTX 3060/3060Ti, мониторы 240/270 Гц и топовые девайсы HYPERX, Dark Project, Red Square и Bloody, VGN, приставки PS5 с телевизорами 65 дюймов и разрешением 4К. Установлены большие столы и удобные геймерские кресла, 3D кронштейны чтобы вы могли насладиться игрой в полной мере. Есть продажа снеков и напитков, чтобы можно было перекусить в перерыве между играми. Действуют удобные и выгодные акции, предусмотрены скидки и бонусы. Также для удобства игроков предусмотрен вызов администратора кнопкой и заказ напитков с ПК. Проводятся турниры, буткемпы и другие мероприятия, узнать больше о которых можно у сотрудников кибер-арены. Во втором зале организована Lounge зона с сочными и дымными забивками. Теперь можно подымить сидя за компьютером или Playstation. Чтобы получить ответы на все интересующие вас вопросы, забронировать игровое место и воспользоваться дополнительными предложениями, позвоните по указанному номеру телефона. Кибер-арена Venom Cyber&Lounge Zone работает круглосуточно без перерывов и выходных, поэтому посетить ее можно в любое удобное для вас время.</div>
+
+    </div>
+    
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
+</script>
+
+
+
+
+
+
+{% endblock %}

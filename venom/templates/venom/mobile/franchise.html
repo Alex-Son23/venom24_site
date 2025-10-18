@@ -1,0 +1,484 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+
+
+
+
+
+
+<div class="franchisePageNewMobile">
+
+
+
+    <div class="topBanerFranchiseMobile">
+
+        <div class="overlayMobile"></div>
+
+        <video class="videoPartClub" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+          <source src="{% static 'venom/video/franchise_video.mp4' %}" type="video/mp4">
+        </video>
+
+
+        <div class="txtPart">
+
+            <div class="firstLine">
+                <div class="smallTitle">Откройте компьютерный клуб по франшизе</div>
+                <h1 class="title ">ФРАНШИЗА VENOM</h1>
+            </div>
+
+
+
+            <div class="secondLineMobile">
+                <div class="addr">
+                    Безоговорочный лидер рынка киберспорта в России </div>
+
+                <ul class="features">
+                    <li class="">Окупаемость от 1 года</li>
+                    <li class="">Чистая прибыль 45% от 900к до 2,3м</li>
+                    <li class="">Роялти 5%</li>
+                </ul>
+
+
+                <ul class="phoneAndToMapMobile">
+                    <li class="wrapPhone">
+                        <a href="tel:{{ franchisepage.phone }}" class="lineAnimation phone">
+                          <span class="flare"></span>
+                          {{ franchisepage.phone }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="lineAnimation writeMeWidjet">
+                          <span class="flare"></span>
+                          Написать
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:VENOMFRANCHISE@GMAIL.COM" class="toMapBt">
+                        VENOMFRANCHISE@GMAIL.COM
+                        </a>
+                    </li>
+               </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- topBanerFranchise-->
+
+
+
+
+
+    <div class="franchisePageNewMobile">
+    <div class="glassEffect whyNetMobile">
+        <div class="titleInfoMobile">Почему сеть киберспортивных клубов VENOM?</div>
+
+        <ul class="listAboutMobileFranchise">
+            <li>
+                <div class="info">Самая быстрорастущая отрасль</div>
+                <div class="descr">индустрии развлечений - это киберспорт</div>
+            </li>
+            <li>
+                <div class="info">Каждый 3-й</div>
+                <div class="descr">молодой человек до 25 лет вовлечен в киберспорт</div>
+            </li>
+            <li>
+                <div class="info">Инвестиции</div>
+                <div class="descr">огромное количество брендов из различных сегментов инвестируют в киберспорт (Тинькофф, Мегафон, Виза, Ситилинк, ВТБ и тд.)</div>
+            </li>
+            <li>
+                <div class="info">$2,9 млрд</div>
+                <div class="descr">оборот мирового киберспортивного рынка</div>
+            </li>
+        </ul>
+    </div>
+    <!-- whyNet-->
+</div>
+
+
+
+
+
+
+
+
+    <div class="glassEffect aboutInfoMobile">
+        <div class="titleInfoMobile">Лидеры рынка киберспорта и франчайзинга России</div>
+        <div class="subTitleAboutMobile">Франшиза VENOM — это самая крупная сеть клубов, помощь с подбором и анализом помещения в вашем городе.</div>
+
+        <ul class="listAbout">
+            <li>
+                <div class="info">800 000 р</div>
+                <div class="descr">паушальный взнос </div>
+            </li>
+            <li>
+                <div class="info">От 1 года</div>
+                <div class="descr">окупаемость проекта</div>
+            </li>
+            <li>
+                <div class="info">8-15 млн.р</div>
+                <div class="descr">сумма инвестиций </div>
+            </li>
+            <li>
+                <div class="info">1-2 месяца</div>
+                <div class="descr">время запуска</div>
+            </li>
+        </ul>
+    </div>
+    <!-- aboutInfo-->
+
+
+
+
+</div>
+<!--franchisePageNew-->
+
+
+
+
+{% include 'venom/mobile/comppnents/ourAdvantagesMobile.html' %}
+
+
+
+
+{% if homegallery %}
+<div class="glassEffect bigGalleryFranchise">
+
+
+        <div class="titleGallery">Суперсовременные и уникальные </div>
+        <p>киберпространства в Москве</p>
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+
+
+          <div class="swiper-wrapper">
+              {% for bigslider in homegallery %}
+                <div class="swiper-slide"><img src="{{ bigslider.photo.url }}" alt=""></div>
+              {% endfor %}
+          </div>
+
+
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script type="module">
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
+
+    const swiper = new Swiper('.swiper', {
+
+        // direction: 'horisontal',
+        loop: true,
+
+
+          effect: "creative",
+          creativeEffect: {
+            prev: {
+              shadow: true,
+              translate: [0, 0, -400],
+            },
+            next: {
+              translate: ["100%", 0, 0],
+            },
+          },
+
+        slidesPerView: 1,
+        spaceBetween: 0,
+
+        // breakpoints: {
+        //     640: {
+        //         slidesPerView: 1,
+        //     },
+        //     1024: {
+        //         slidesPerView: 1,
+        //     },
+        // },
+
+
+
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        },
+
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    });
+  </script>
+
+</div>
+
+{% endif %}
+<!-- end bigGallery-->
+
+
+
+
+
+
+
+
+
+<!--<div class="franchisePageNewMobile">-->
+<!--    <div class="glassEffect clubsListFranchise">-->
+
+<!--        <div class="titleInfoMobile">Кибер-клубы VENOM</div>-->
+<!--        <div class="subTitleAboutMobile">Клубы открытые по франшизе</div>-->
+
+
+
+<!--        <ul class="listFranchiseClubsMobile">-->
+<!--            <li>-->
+<!--                <div class="picPart">-->
+<!--                    <img src="/static/venom/img/clubs/koptevo.jpg" alt="">-->
+<!--                </div>-->
+<!--                <div class="txtPart">-->
+<!--                    <div class="titleClub">Клуб Коптево</div>-->
+<!--                    <ul class="featuresClubsMobile">-->
+<!--                        <li>54ПК</li>-->
+<!--                        <li>3Вида ПК</li>-->
+<!--                        <li>3TV</li>-->
+<!--                    </ul>-->
+<!--                    <p>Кибер-арена Venom Cyber&Lounge Zone на Михалковской улице - это место, где весело и увлекательно можно провести время людям любого возраста и любым компаниям. Посетителей ждут мощные ПК с видеокартами RTX 3060/3060Ti, мониторы 240/270 Гц и топовые девайсы HYPERX, Dark Project и Bloody, приставки PS5 с телевизорами 65 дюймов и разрешением 4К. Установлены большие столы и удобные геймерские кресла, чтобы вы могли насладиться игрой в полной мере. Есть продажа снеков и напитков, чтобы можно было перекусить в перерыве между играми. 🍽 🥤 🌮 🍿</p>-->
+<!--                    <p>Действуют удобные и выгодные акции, предусмотрены скидки и бонусы. Также для удобства игроков предусмотрен вызов администратора кнопкой и заказ напитков с ПК. Проводятся турниры, буткемпы и другие мероприятия, узнать больше о которых можно у сотрудников кибер-арены. Во втором зале организована Lounge зона с сочными и дымными забивками. Теперь можно подымить сидя за компьютером или Playstation. </p>-->
+<!--                </div>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <div class="picPart">-->
+<!--                    <img src="/static/venom/img/clubs/zukovsky.jpg" alt="">-->
+<!--                </div>-->
+<!--                <div class="txtPart">-->
+<!--                    <div class="titleClub">Клуб Жуковский</div>-->
+<!--                    <ul class="featuresClubsMobile">-->
+<!--                        <li>40ПК</li>-->
+<!--                        <li>3Вида ПК</li>-->
+<!--                        <li>2TV</li>-->
+<!--                    </ul>-->
+<!--                    <p>Погрузитесь в захватывающий мир киберспорта в Жуковском с клубом VENOM. Наш клуб предоставляет высококлассные профессиональные тренировки, уникальную возможность участвовать в увлекательных турнирах и соревнованиях, а также наслаждаться общением с единомышленниками и геймерами в нашей киберспортивной среде. Независимо от вашего уровня подготовки, мы предлагаем идеальную платформу для развития в киберспорте. Присоединяйтесь к нам сегодня и окунитесь в захватывающий мир киберспорта в Жуковском!</p>-->
+
+<!--                </div>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <div class="picPart">-->
+<!--                    <img src="/media/photos/gallery/zulebino_1_2.jpeg" alt="">-->
+<!--                </div>-->
+<!--                <div class="txtPart">-->
+<!--                    <div class="titleClub">Клуб Жулебино</div>-->
+<!--                    <ul class="featuresClubsMobile">-->
+<!--                        <li>47ПК</li>-->
+<!--                        <li>3Вида ПК</li>-->
+<!--                        <li>2TV</li>-->
+<!--                    </ul>-->
+<!--                    <p>Откройте для себя захватывающий мир киберспорта в Жулебино с киберспортивным клубом VENOM. Наш клуб предлагает высококлассные профессиональные тренировки, возможность участия в увлекательных турнирах и соревнованиях, а также встречи с единомышленниками и геймерами в нашей киберспортивной инфраструктуре. Независимо от вашего уровня подготовки, мы предлагаем идеальную платформу для развития в киберспорте. Присоединяйтесь к нам сегодня и окунитесь в захватывающий мир киберспорта в Жулебино!</p>-->
+
+<!--                </div>-->
+<!--            </li>-->
+
+<!--        </ul>-->
+<!--        -->
+
+<!--    </div>-->
+
+<!--</div>-->
+<!--franchisePageNew-->
+
+
+
+
+
+
+
+
+<div class="franchisePageNewMobile" id="form">
+    <div class="glassEffect crmBlockFranchise">
+        <div class="titleInfoMobile">Получите больше информации</div>
+        <div class="subTitleAboutMobile">о франшизе VENOM</div>
+
+        <div class="wrapMorInfo">
+
+            <div class="presentationFranchiseNewFranchise">
+
+                <div class="titlePresentFranchise">Узнайте больше о франшизе посмотрев нашу презентацию и финансовую модель</div>
+            </div>
+
+            <div class="crmBitrixForm">
+                <script data-b24-form="inline/10/jijeh9" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b28569802/crm/form/loader_10.js');</script>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--crmBlock-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="franchisePageNewMobile">
+    <div class="priceFranchiseMobile">
+        <div class="titleInfoMobile">Стоимость</div>
+
+        <ul class="priceWrapMobile">
+            <li class="one">
+                <div class="info">Стоимость франшизы</div>
+                <div class="descr">800 000 ₽</div>
+            </li>
+            <li class="two">
+                <div class="info">Роялти</div>
+                <div class="descr">5% в месяц</div>
+            </li>
+            <li>
+                <div class="info">Выручка в месяц</div>
+                <div class="descr">от 900  000 ₽</div>
+            </li>
+            <li>
+                <div class="info">Срок открытия</div>
+                <div class="descr">30 - 40 дней</div>
+            </li>
+            <li>
+                <div class="info">Окупаемость бизнеса</div>
+                <div class="descr">от 12 мес</div>
+            </li>
+        </ul>
+
+
+
+        <div class="titleInfoMobile">Финансовая модель</div>
+        <ul class="fincnseModelMobile">
+
+            <li class="card">
+                <div class="devicesWrap">
+                    <div class="pc">30 ПК</div>
+                    <div class="sony">2 PS</div>
+                </div>
+                <div class="item">
+                    <div class="titleItem">Вложения</div>
+                    <div class="moneyItem">14 000 000 р</div>
+                </div>
+                <div class="item">
+                    <div class="titleItem">Оборот</div>
+                    <div class="moneyItem">2 400 000 р</div>
+                </div>
+                <div class="item">
+                    <div class="titleItem">Прибыль</div>
+                    <div class="moneyItem">1 250 000 р</div>
+                </div>
+                <a href="#form" class="write">Скачать финансовую модель</a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- whyNet-->
+</div>
+<!--crmBlock-->
+
+
+<br><br>
+
+
+
+
+
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    let buttons = document.querySelectorAll('.write');
+    let writeForFranchise = document.querySelector('.writeForFranchise');
+    let writeMeWidjet = document.querySelector('.writeMeWidjet');
+
+
+
+    writeForFranchise.onclick = (e) => {
+            e.preventDefault()
+            document.querySelector('.b24-widget-button-openline_livechat span').click();
+        };
+
+   writeMeWidjet.onclick = (e) => {
+            e.preventDefault()
+            document.querySelector('.b24-widget-button-openline_livechat span').click();
+        };
+
+    buttons.forEach((button) => {
+        button.onclick = (e) => {
+            e.preventDefault()
+            document.querySelector('.b24-widget-button-openline_livechat span').click();
+        };
+    });
+});
+
+</script>
+
+
+
+<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn-ru.bitrix24.ru/b28569802/crm/site_button/loader_2_wy011b.js');
+</script>
+
+
+
+
+
+
+{% endblock %}

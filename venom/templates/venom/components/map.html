@@ -1,0 +1,132 @@
+{% load static %}
+
+
+<div class="mapWrap">
+    <div id="map" class="ymaps-layers-pane rounded-2xl overflow-hidden"></div>
+</div>
+
+
+
+
+<script  src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=76c644b0-1ef6-4f1d-9326-c65dd858b41e" type="text/javascript"></script>
+<script type="text/partytown" src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+
+
+<script async  type="text/javascript">
+
+
+    ymaps.ready(init);
+
+    function init() {
+
+        var myMap = new ymaps.Map("map", {
+            center: [55.762869, 37.617652],
+            zoom: 10,
+            behaviors: ["drag", "dblClickZoom", "rightMouseButtonMagnifier", "multiTouch", "scrollZoom", "touchmove"]
+        }, {
+            searchControlProvider:"yandex#search"
+        });
+
+        myMap.behaviors.disable('scrollZoom');
+        myMap.behaviors.disable('multiTouch');
+        myMap.behaviors.disable('touchmove');
+        // myMap.behaviors.disable('drag');
+
+        var isMobile = {
+            Android: function() {return navigator.userAgent.match(/Android/i);},
+            BlackBerry: function() {return navigator.userAgent.match(/BlackBerry/i);},
+            iOS: function() {return navigator.userAgent.match(/iPhone|iPad|iPod/i);},
+            Opera: function() {return navigator.userAgent.match(/Opera Mini/i);},
+            Windows: function() {return navigator.userAgent.match(/IEMobile/i);},
+            any: function() {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() ||
+            isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            // после вызова карты
+            if(isMobile.any()){
+                    myMap.behaviors.disable('scrollZoom');
+                    myMap.behaviors.disable('drag');
+            }
+
+
+
+
+        var myPlacemarkVdnh = new ymaps.Placemark([55.824275, 37.648848], null, {
+            iconLayout: 'default#image',
+            iconImageHref: "/static/venom/img/ballVdnh.png",
+            iconImageSize: [52, 74],
+            iconImageOffset: [-30, -65]
+        }
+        );
+        myMap.geoObjects.add(myPlacemarkVdnh);
+
+
+        var myPlacemarkVernadka = new ymaps.Placemark([55.672631, 37.494264], null, {
+            iconLayout: 'default#image',
+            iconImageHref: "/static/venom/img/ballVernadka.png",
+            iconImageSize: [112, 74],
+            iconImageOffset: [-62, -69]
+        }
+        );
+        myMap.geoObjects.add(myPlacemarkVernadka);
+
+
+        var myPlacemarkMitino = new ymaps.Placemark([55.848110, 37.362020], null, {
+            iconLayout: 'default#image',
+            iconImageHref: "/static/venom/img/ballMitino.png",
+            iconImageSize: [72, 74],
+            iconImageOffset: [-41, -64]
+        }
+        );
+        myMap.geoObjects.add(myPlacemarkMitino);
+
+
+        var myPlacemarkKoptevo = new ymaps.Placemark([55.837978, 37.534173], null, {
+            iconLayout: 'default#image',
+            iconImageHref: "/static/venom/img/ballKoptevo.png",
+            iconImageSize: [74, 74],
+            iconImageOffset: [-38, -70]
+        }
+        );
+        myMap.geoObjects.add(myPlacemarkKoptevo);
+
+
+
+        var myPlacemarkLuberci = new ymaps.Placemark([55.704292, 37.844081], null, {
+            iconLayout: 'default#image',
+            iconImageHref: "/static/venom/img/ballZulebino.png",
+            iconImageSize: [90, 74],
+            iconImageOffset: [-44, -63]
+        }
+        );
+        myMap.geoObjects.add(myPlacemarkLuberci);
+
+
+
+        var myPlacemarkLuberci = new ymaps.Placemark([55.610058, 38.087624], null, {
+            iconLayout: 'default#image',
+            iconImageHref: "/static/venom/img/ballZuk.png",
+            iconImageSize: [101, 74],
+            iconImageOffset: [-44, -63]
+        }
+        );
+        myMap.geoObjects.add(myPlacemarkLuberci);
+
+
+
+        var myPlacemarkLuberci = new ymaps.Placemark([55.727334, 37.627813], null, {
+            iconLayout: 'default#image',
+            iconImageHref: "/static/venom/img/ballSerpuhov.png",
+            iconImageSize: [121, 74],
+            iconImageOffset: [-44, -63]
+        }
+        );
+        myMap.geoObjects.add(myPlacemarkLuberci);
+
+
+
+    }
+
+    </script>

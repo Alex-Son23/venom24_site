@@ -1,0 +1,46 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ koptevonews.title }}{% endblock %}
+{% block descriptionseo %}{{ koptevonews.title }}{% endblock %}
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubFix glassEffectFeaturesDark">
+    <img src="{{ koptevonews.photo.url }}" alt="{{ koptevonews.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'coptevo' %}" class="rubric">Новости Коптево</a>
+        <div class="date">{{ koptevonews.time_create|date:"d F Y" }}</div>
+        <h1>{{ koptevonews.title }}</h1>
+        <p>{{ koptevonews.descr|safe }}</p>
+
+        <a href="{% url 'coptevo' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+
+
+<!--<div class="detailNewsAndPrmoInClub">-->
+<!--    <img src="{{ koptevonews.photo.url }}" alt="{{ koptevonews.title }}" class="topPic">-->
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'coptevo' %}" class="rubric">Новости Коптево</a>-->
+<!--        <div class="date">{{ koptevonews.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ koptevonews.title }}</h1>-->
+<!--        <p>{{ koptevonews.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'coptevo' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+{% endblock %}

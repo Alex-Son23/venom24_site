@@ -1,0 +1,24 @@
+
+{% load static %}
+
+<div class="ourAdvantagesMobile glassGameZones">
+        <div class="title">Наши игровые зоны = <span>Наши преимущества</span></div>
+        <div class="subTitle">Только в VENOM CYBER ZONE</div>
+
+
+        <ul class="insideAdvantages">
+            {% for zone in zoneplay %}
+            <li class="glassEffect zone">
+                <div class="zoneTitle">{{ zone.name }}</div>
+                <img src="{{ zone.photo_mobile.url }}" alt="">
+                {% for characteristic in characteristics %}
+                {% if characteristic.zone_id == zone.id %}
+                <div class="param">{{characteristic.key}} <span>{{characteristic.value}}</span></div>
+                {% endif %}
+            {% endfor %}
+            </li>
+            {% endfor %}
+
+        </ul>
+
+    </div>

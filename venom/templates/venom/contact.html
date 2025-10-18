@@ -1,0 +1,80 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+<div class="contactPage">
+
+
+    {% include 'venom/components/contact_dec.html' with titlepart="Контакты клубов VENOM" subtitle="Cеть топовых кибер-арен в Москве" %}
+
+
+    <ul class="listsContactsClubs">
+        {% for club in clubs %}
+            <li class="glassEffect eachClub">
+                <a class="photoLink" href="{% url 'club_page' club.slug %}">
+                    {% if club.zones_image and club.zones_image.image %}
+                        <img src="{{ club.zones_image.image.url }}" alt="{{ club.name }}">
+                    {% else %}
+                        <img src="{% static 'venom/img/noimage.jpg' %}" alt="{{ club.name }}">
+                    {% endif %}
+                </a>
+
+                <a href="{% url 'club_page' club.slug %}" class="title">{{ club.name }}</a>
+
+                {% if club.route.address %}
+                <div class="street">{{ club.route.address }}</div>
+                {% else %}
+                <div class="street">Адрес уточняется</div>
+                {% endif %}
+
+                {% if club.is_open_24 %}
+                <div class="timeWork">Работает круглосуточно</div>
+                {% endif %}
+
+                <div class="bntWrap">
+                    {% if club.phone %}
+                    <a href="tel:{{ club.phone|cut:' ' }}" class="phone lineAnimation">
+                        <span class="flare"></span> {{ club.phone }}
+                    </a>
+                    {% endif %}
+
+                    {% if club.map_link %}
+                    <a href="{{ club.yandex_map_url }}" target="_blank" class="onMap">Показать на карте</a>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+</div>
+
+
+
+{% include 'venom/components/map.html' %}
+
+
+
+
+
+
+{% endblock %}

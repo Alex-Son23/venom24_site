@@ -1,0 +1,304 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="clubsPage">
+
+
+
+
+    <ul class="wrapClubsMobile">
+
+        {% include 'venom/components/glassEffectBlocks.html' with titlepart="Клубы VENOM" subtitle="Выбери свою любимую арену" %}
+        {% for club_image in clubs_images %}
+        {% if club_image.type == "Серпуховская" %}
+        <li class="club glassEffect ">
+            <a class="photoLink" href="{% url 'serpuhovskaya' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="pcCount">43ПК</div>
+            <h4 class="title">Серпуховская</h4>
+
+            <div class="howMuchClubsMobileInClubPage">
+                    <div class="titleHowMuch">7 зон в клубе:</div>
+                    <ul class="listShortZones">
+                        <li>COMFORT 24-27" 240HZ <span>23пк</span></li>
+                        <li>BOOTCAMP 24,5` 380HZ <span>4пк</span></li>
+                        <li>BOOTCAMP 24,5` 380HZ <span>4пк</span></li>
+                        <li>VIP 32` 2K 240HZ <span>4пк</span></li>
+                        <li>VIP BOOTCAMP  25' 380HZ <span>4пк</span></li>
+                        <li>SUPERVIP 34' 190HZ 3,5K <span>3пк</span></li>
+                        <li>VIP TV ZONE 85` + STREAM </li>
+                    </ul>
+            </div>
+
+<!--            <ul class="features">-->
+<!--                <li>BOOTCAMP</li>-->
+<!--                <li>COMFORTZ</li>-->
+<!--                <li>VIP</li>-->
+<!--                <li>SUPERVIP</li>-->
+<!--            </ul>-->
+
+            <div class="timeworking">Работает круглосуточно</div>
+            <a href="{% url 'serpuhovskaya' %}" class="more">Подробнее</a>
+        </li>
+
+        {% elif club_image.type == "ВДНХ" %}
+        <li class="club glassEffect">
+            <a class="photoLink" href="{% url 'vdnh' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="pcCount">52ПК</div>
+            <h4 class="title">ВДНХ</h4>
+
+            <div class="howMuchClubsMobileInClubPage">
+                <div class="titleHowMuch">8 зон в клубе:</div>
+                <ul class="listShortZones">
+                    <li>COMFORT 27` 240HZ <span>32пк</span></li>
+                    <li>DUO VIP 4K 34' 165HZ <span>2пк</span></li>
+                    <li>DUO VIP 4K 34' 165HZ <span>2пк</span></li>
+                    <li>BOOTCAMP 24.5` 380HZ <span>5пк</span></li>
+                    <li>BOOTCAMP 24.5` 380HZ <span>5пк</span></li>
+                    <li>STREAM 24.5` 380HZ <span>1пк</span></li>
+                    <li>SUPERVIP 4k 35` 144HZ <span>5пк</span></li>
+                    <!-- <li>TV ZONE</li> -->
+                    <li>VIP TV ZONE</li>
+                </ul>
+            </div>
+
+<!--            <ul class="features">-->
+<!--                <li>42 ПК COMFORT 240HZ</li>-->
+<!--                <li>5 ПК BOOTCAMP ковролин</li>-->
+<!--                <li>5 ПК BOOTCAMP 240HZ</li>-->
+<!--                <li>9 ПК SUPERVIP 4K 34`</li>-->
+<!--                <li>STREAM комната</li>-->
+<!--                <li>4 TV 60 дюймов</li>-->
+<!--                <li>VIP TV 70 дюймов</li>-->
+<!--            </ul>-->
+
+            <div class="timeworking">Работает круглосуточно</div>
+            <a href="{% url 'vdnh' %}" class="more">Подробнее</a>
+        </li>
+
+        {% elif club_image.type == "Вернадского" %}
+        <li class="club  glassEffect">
+            <a class="photoLink" href="{% url 'vernadka' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="pcCount">58ПК</div>
+            <h4 class="title">Вернадского</h4>
+
+            <div class="howMuchClubsMobileInClubPage">
+                    <div class="titleHowMuch">9 зон в клубе:</div>
+                    <ul class="listShortZones">
+                        <li>COMFORT 27` 240HZ <span>32пк</span></li>
+                        <li>BOOTCAMP 24.5` 380HZ <span>6пк</span></li>
+                        <li>BOOTCAMP 24.5` 380HZ <span>6пк</span></li>
+                        <li>STREAM 24.5` 380HZ <span>1пк</span></li>
+                        <li>SUPERVIP 49` 4k 120HZ <span>3пк</span></li>
+                        <li>VIP 2k 32" 240HZ <span>3пк</span></li>
+                        <li>VIP 4k 35” 144HZ <span>5пк</span></li>
+                        <li>TV ZONE</li>
+                        <li>VIP TV ZONE</li>
+                    </ul>
+                </div>
+
+<!--            <ul class="features">-->
+<!--                <li>42 ПК COMFORT 240HZ</li>-->
+<!--                <li>6 ПК BOOTCAMP ковролин</li>-->
+<!--                <li>3 ПК SUPERVIP 4K 49`</li>-->
+<!--                <li>5 ПК SUPERVIP 4K 34`</li>-->
+<!--                <li>STREAM комната</li>-->
+<!--                <li>2 TV 60 дюймов</li>-->
+<!--                <li>VIP TV 70 дюймов</li>-->
+<!--            </ul>-->
+
+            <div class="timeworking">Работает круглосуточно</div>
+            <a href="{% url 'vernadka' %}" class="more">Подробнее</a>
+        </li>
+        {% elif club_image.type == "Митино" %}
+        <li class="club glassEffect ">
+            <a class="photoLink" href="{% url 'mitino' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="pcCount">62ПК</div>
+            <h4 class="title">Митино</h4>
+
+
+            <div class="howMuchClubsMobileInClubPage">
+                <div class="titleHowMuch">8 зон в клубе:</div>
+                <ul class="listShortZones">
+                    <li>COMFORT 24-27` 240hz <span>31пк</span></li>
+                    <li>BOOTCAMP 24,5` 380hz <span>6пк</span></li>
+                    <li>BOOTCAMP 24,5` 380hz <span>6пк</span></li>
+                    <li>BOOTCAMP 24,5` 380hz <span>5пк</span></li>
+                    <li>VIP 35` 200hz FHD <span>7пк</span></li>
+                    <li>SUPERVIP 34` 3,5K 144hz <span>6пк</span></li>
+                    <li>TV ZONE</li>
+                    <li>VIP TV ZONE + STREAM</li>
+                </ul>
+            </div>
+
+
+<!--            <ul class="features">-->
+<!--                <li>33 ПК COMFORT 144HZ</li>-->
+<!--                <li>6 ПК BOOTCAMP ковролин</li>-->
+<!--                <li>11 ПК BOOTCAMP 240HZ</li>-->
+<!--                <li>11 ПК SUPERVIP 4K 34`</li>-->
+<!--                <li>3 TV 65 дюймов</li>-->
+<!--                <li>VIP TV 86 дюймов</li>-->
+<!--            </ul>-->
+
+            <div class="timeworking">Работает круглосуточно</div>
+            <a href="{% url 'mitino' %}" class="more">Подробнее</a>
+        </li>
+
+        {% elif club_image.type == "Коптево" %}
+        <li class="club glassEffect ">
+            <a class="photoLink" href="{% url 'coptevo' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="pcCount">54ПК</div>
+            <h4 class="title">Коптево</h4>
+
+            <div class="howMuchClubsMobileInClubPage">
+                    <div class="titleHowMuch">4 зоны в клубе:</div>
+                    <ul class="listShortZones">
+                        <li>COMFORT 27' 240HZ <span>42пк</span></li>
+                        <li>BOOTCAMP 24' 270HZ <span>6пк</span></li>
+                        <li>SUPERVIP 4K 34' 144HZ <span>6пк</span></li>
+                        <li>TV 4K 65' 60HZ <span>3tv</span></li>
+                    </ul>
+            </div>
+
+<!--            <ul class="features">-->
+<!--                <li>42 ПК COMFORT 240HZ</li>-->
+<!--                <li>6 ПК BOOTCAMP 270HZ</li>-->
+<!--                <li>6 ПК SUPERVIP 4K 34`</li>-->
+<!--                <li>3 TV 60 дюймов</li>-->
+<!--            </ul>-->
+
+            <div class="timeworking">Работает круглосуточно</div>
+            <a href="{% url 'coptevo' %}" class="more">Подробнее</a>
+        </li>
+
+        {% elif club_image.type == "Жулебино" %}
+        <li class="club glassEffect ">
+            <a class="photoLink" href="{% url 'zulebino' %}">
+                <img src="{% static 'venom/img/clubs/zelebino2.jpg' %}" alt="">
+            </a>
+            <div class="pcCount">47ПК</div>
+            <h4 class="title">Жулебино</h4>
+
+            <div class="howMuchClubsMobileInClubPage">
+                    <div class="titleHowMuch">4 зоны в клубе:</div>
+                    <ul class="listShortZones">
+                        <li>COMFORT ZONE </li>
+                        <li>BOOTCAMP ZONE</li>
+                        <li>Сomfort+</li>
+                        <li>TV ZONE</li>
+                    </ul>
+            </div>
+
+<!--            <ul class="features">-->
+<!--                <li>32 ПК COMFORT 240HZ</li>-->
+<!--                <li>10 ПК BOOTCAMP 360HZ</li>-->
+<!--                <li>5 ПК SUPERVIP 4K 34`</li>-->
+<!--                <li>2 TV 60 дюймов</li>-->
+<!--            </ul>-->
+
+            <div class="timeworking">Работает круглосуточно</div>
+            <a href="{% url 'zulebino' %}" class="more">Подробнее</a>
+        </li>
+
+        {% elif club_image.type == "Жуковский" %}
+        <li class="club glassEffect ">
+            <a class="photoLink" href="{% url 'zukovsky' %}">
+                <img src="{{ club_image.image_mobile.url }}" alt="">
+            </a>
+            <div class="pcCount">40ПК</div>
+            <h4 class="title">Жуковский</h4>
+
+            <div class="howMuchClubsMobileInClubPage">
+                    <div class="titleHowMuch">4 зоны в клубе:</div>
+                    <ul class="listShortZones">
+                        <li>COMFORT ZONE </li>
+                        <li>BOOTCAMP ZONE</li>
+                        <li>SUPERVIP 4K ZONE</li>
+                        <li>TV ZONE</li>
+                    </ul>
+            </div>
+
+<!--            <ul class="features">-->
+<!--                <li>32 ПК COMFORT 240HZ</li>-->
+<!--                <li>10 ПК BOOTCAMP 360HZ</li>-->
+<!--                <li>5 ПК SUPERVIP 4K 34`</li>-->
+<!--                <li>2 TV 60`</li>-->
+<!--            </ul>-->
+
+            <div class="timeworking">Работает круглосуточно</div>
+            <a href="{% url 'zukovsky' %}" class="more">Подробнее</a>
+        </li>
+
+
+
+
+       <!-- <li class="club glassEffect">
+           <a class="photoLink" href="{% url 'pushkino' %}">
+               <img src="{{ club_image.image_mobile.url }}" alt="">
+           </a>
+           <div class="pcCount">40ПК</div>
+           <h4 class="title">Пушкино</h4>
+           <ul class="features">
+               <li>BOOTCAMP</li>
+               <li>COMFORTZ</li>
+               <li>VIP</li>
+               <li>SUPERVIP</li>
+           </ul>
+           <div class="timeworking">Работает круглосуточно</div>
+           <a href="{% url 'pushkino' %}" class="more">Подробнее</a>
+       </li> -->
+
+       {% elif club_image.type == "Махачкала" %}
+
+       <li class="club glassEffect ">
+           <a class="photoLink" href="{% url 'mahachkala' %}">
+               <img src="{{ club_image.image_mobile.url }}" alt="">
+           </a>
+           <div class="pcCount">ПК</div>
+           <h4 class="title">Махачкала</h4>
+           <ul class="features">
+               <li>BOOTCAMP</li>
+               <li>COMFORTZ</li>
+               <li>VIP</li>
+               <li>SUPERVIP</li>
+           </ul>
+           <div class="timeworking">Работает круглосуточно</div>
+           <a href="{% url 'mahachkala' %}" class="more">Подробнее</a>
+       </li>
+       {% endif %}
+
+       {% endfor %}
+    </ul>
+
+</div>
+
+
+{% include 'venom/components/map.html' %}
+
+
+{% endblock %}

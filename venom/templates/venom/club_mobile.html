@@ -1,0 +1,311 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+{% load static %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+{% block content %}
+
+{% if promos %}
+<ul class="listPromoMobileOnTop">
+    {% for item_promo in promos %}
+    <li>
+        <a href="{% url 'club_promo_detail' club.slug item_promo.slug %}">
+            <img src="{{ item_promo.photo_mobile.url }}" alt="{{ item_promo.title }}">
+        </a>
+        <a href="{% url 'club_promo_detail' club.slug item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="clubPageMobile">
+    <div class="topBanerMobile">
+        <div class="overlay"></div>
+
+        {% if club.video %}
+        <video class="videoPartClub" loop autoplay muted playsinline>
+            <source src="{{ club.video.url }}" type="video/mp4">
+        </video>
+        {% endif %}
+
+        <div class="txtPart">
+            <div class="firstLine">
+                <div class="smallTitle">VENOM CYBER ZONE</div>
+                <h1 class="title">{{ club.name }}</h1>
+            </div>
+
+            <div class="secondLine">
+                {% if club.total_pcs %}
+                <div class="titleTotalPCs" style="text-align: left; font-size: 36px; font-weight: bold; color: #007bff;">
+                    <span class="totalPCCount" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">
+                        {{ club.total_pcs }} ПК
+                    </span>
+                </div>
+                {% endif %}
+
+                <div class="howMuchClubsMobile">
+                    <div class="titleHowMuch">Зоны в клубе:</div>
+                    <ul class="listShortZones">
+                        {% for zone in zones %}
+                        <li>{{ zone.title }} {% if zone.count %}<span>{{ zone.count }}пк</span>{% endif %}</li>
+                        {% empty %}
+                        <li>Зоны пока не добавлены</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <ul class="phoneAndToMap">
+                    <li class="wrapPhone">
+                        <a href="tel:{{ club.phone }}" class="lineAnimation phone">
+                            <span class="flare"></span>
+                            {{ club.phone }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ club.map_link}}" target="_blank" class="toMapBt">На карте</a>
+                    </li>
+               </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="clubPageMobile">
+    <div class="howFindClubMobile">
+        <img src="{% static 'venom/img/steps2.svg' %}" alt="">
+        <div class="titleHow">Как найти клуб?</div>
+        <a href="#routeToclub" class="showWayToClub">Показать</a>
+    </div>
+</div>
+
+
+<!-- Новости клуба -->
+{% if news_new_variant %}
+<div class="newsBlockMobile">
+    <div class="titleNewsRazdel">Новости клуба {{ club.name }}</div>
+    <ul class="listNewsMobileOnTop">
+        {% for item_news in news_new_variant %}
+        <li>
+            <a href="{% url 'club_news_detail' club.slug item_news.slug %}">
+                <img src="{{ item_news.photo_mobile.url }}" alt="{{ item_news.title }}">
+            </a>
+            <a href="{% url 'club_news_detail' club.slug item_news.slug %}" class="titleNews">{{ item_news.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+<!-- Игровые зоны -->
+<div class="clubPageMobile">
+    <ul class="clubsZonesMobile">
+        {% for zone in zones %}
+        <li class="glassZones zoneMobileEach">
+            <div class="zoneSmall">комната</div>
+            <div class="wrapZoneName">
+                <div class="zoneName">{{ zone.title }}</div>
+            </div>
+
+            <div class="sliderLineWrap">
+                <div class="zoomIn">
+                    <img class="zoomInPic" src="{% static 'venom/img/zoom-in.svg' %}" alt="">
+                </div>
+                <div class="sliderLine">
+                    {% if zone.zone_pics.exists %}
+                        {% for pic in zone.zone_pics.all %}
+                            <a href="{{ pic.photo.url }}" data-fancybox="{{ zone.slug }}" data-caption="">
+                                <img class="onePic" src="{{ pic.photo.url }}" alt="">
+                            </a>
+                        {% endfor %}
+                    {% else %}
+                        <img src="{% static 'venom/img/noimage.jpg' %}" alt="">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="btnWrap">
+                <a href="tel:{{ club.phone|default:'8 (925) 541-97-29' }}" class="call">{{ club.phone|default:'8 (925) 541-97-29' }}</a>
+                <a href="{{ club.map_link }}" target="_blank" class="toMap">На карте</a>
+            </div>
+
+            <ul class="params">
+                {% if zone.monitor %}<li><div class="pTitle">Монитор</div><div class="pDescr">{{ zone.monitor }}</div></li>{% endif %}
+                {% if zone.processor %}<li><div class="pTitle">Процессор</div><div class="pDescr">{{ zone.processor }}</div></li>{% endif %}
+                {% if zone.videocard %}<li><div class="pTitle">Видеокарта</div><div class="pDescr">{{ zone.videocard }}</div></li>{% endif %}
+                {% if zone.ozu %}<li><div class="pTitle">ОЗУ</div><div class="pDescr">{{ zone.ozu }}</div></li>{% endif %}
+                {% if zone.headset %}<li><div class="pTitle">Гарнитура</div><div class="pDescr">{{ zone.headset }}</div></li>{% endif %}
+                {% if zone.keyboard %}<li><div class="pTitle">Клавиатура</div><div class="pDescr">{{ zone.keyboard }}</div></li>{% endif %}
+                {% if zone.mouse %}<li><div class="pTitle">Мышь</div><div class="pDescr">{{ zone.mouse }}</div></li>{% endif %}
+            </ul>
+
+            {% if zone.price_blocks.exists %}
+                {% for block in zone.price_blocks.all %}
+                    {% if block.is_visible %}
+                        <ul class="pricePnCht glassEffectFeaturesDark">
+                            <p class="titleTime">{{ block.title }}</p>
+                            <div class="wrapTime">
+                                {% for price in block.prices.all %}
+                                    <li>{{ price.time }} <span>{{ price.price }}</span></li>
+                                {% empty %}
+                                    <li>Нет данных</li>
+                                {% endfor %}
+                            </div>
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+<!-- Изображение зон клуба -->
+{% if club.zones_image %}
+<div class="pictureForClubMobile">
+    <div class="title">Игровые зоны клуба {{ club.name }}</div>
+    <img src="{{ club.zones_image.image_mobile.url }}" alt="">
+</div>
+{% endif %}
+
+
+<!-- Игры -->
+<div class="wrapListGames glassEffect">
+    <div class="insideListGames">
+        <div class="leftPart">
+            <div class="title">Игры | <span>для ПК</span></div>
+            <a href="#" class="gamesBt showModalClubGamesBt">Все игры</a>
+        </div>
+        <div class="rightPart">
+            <div class="title">Игры | <span>для TV</span></div>
+            <a href="#" class="gamesBt showModalTVGamesBt">Все игры</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="modalGamesWrap ClubGamesModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt"><a href="#" class="closeModalGames">Закрыть</a></div>
+        <div class="titleModal">Все игры для ПК ({{ club.name }})</div>
+        <ul>
+            {% for game in pc_games %}
+                <li>{{ game }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="modalGamesWrap ClubTVsModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt"><a href="#" class="closeModalTV">Закрыть</a></div>
+        <div class="titleModal">Все игры для TV ({{ club.name }})</div>
+        <ul>
+            {% for game in tv_games %}
+                <li>{{ game }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  function modalHandler(openSelector, modalSelector, closeSelector) {
+    const openBtn = document.querySelector(openSelector);
+    const modal = document.querySelector(modalSelector);
+    const closeBtn = modal.querySelector(closeSelector);
+    if (!openBtn || !modal || !closeBtn) return;
+
+    function closeModal(e) {
+      e.preventDefault();
+      modal.style.display = "none";
+    }
+
+    openBtn.addEventListener("click", e => {
+      e.preventDefault();
+      modal.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", e => { if (e.target === modal) closeModal(e); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(e); });
+  }
+
+  modalHandler(".showModalClubGamesBt", ".ClubGamesModal", ".closeModalGames");
+  modalHandler(".showModalTVGamesBt", ".ClubTVsModal", ".closeModalTV");
+});
+</script>
+
+
+<!-- Блок маршрута -->
+{% if route and route.is_published %}
+<div class="pictureForClubMobile glassEffect" id="routeToclub">
+    <div class="title">{{ route.title }}</div>
+    <div class="txt">
+        <p class="likeTitle">#Адрес:</p>
+        <p>{{ route.address }}</p>
+        {% if route.landmark %}<p>{{ route.landmark }}</p>{% endif %}
+        <br>
+        <p class="likeTitle">#Метро:</p>
+        {% for line in route.metro_info.splitlines %}<p>{{ line }}</p>{% endfor %}
+        <br>
+        <p class="likeTitle">#Телефон:</p>
+        <p><a href="tel:{{ route.phone }}">{{ route.phone }}</a></p>
+        <br>
+    </div>
+
+    {% with route.lottie_file.url|lower as file_url %}
+        {% if file_url|slice:"-4:" == ".mp4" %}
+            <video loop autoplay muted playsinline>
+                <source src="{{ route.lottie_file.url }}" type="video/mp4">
+            </video>
+        {% else %}
+            <lottie-player src="{{ route.lottie_file.url }}" background="transparent" speed="1" loop autoplay></lottie-player>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endif %}
+
+
+<!-- Галерея -->
+<div class="glassEffect squareGalleryMobile">
+    <div class="titleGallery">Фотогалерея {{ club.name }}</div>
+    <div class="wrapListGalery">
+        <div class="oneLine">
+            {% for i in photos|slice:":4" %}
+                <a href="{{ i.photo_mobile.url }}" data-fancybox="gallery">
+                    <img class="onePic" src="{{ i.photo_mobile.url }}" alt="">
+                </a>
+            {% endfor %}
+        </div>
+        <div class="twoLine">
+            {% for i in photos|slice:"4:8" %}
+                <a href="{{ i.photo_mobile.url }}" data-fancybox="gallery">
+                    <img class="twoPic" src="{{ i.photo_mobile.url }}" alt="">
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% if bottom_about and bottom_about.is_published %}
+<div class="bottomAboutMobile glassZones">
+    <div class="title">{{ bottom_about.title }}</div>
+    <div class="txt">{{ bottom_about.txt }}</div>
+</div>
+{% endif %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+<script>Fancybox.bind("[data-fancybox]", {});</script>
+
+{% endblock %}

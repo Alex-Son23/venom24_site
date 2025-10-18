@@ -1,0 +1,122 @@
+
+{% load static %}
+
+
+
+{% with request.resolver_match.url_name as current_url %}
+{% with current_slug=request.resolver_match.kwargs.club_slug %}
+<div class="wrapTopnavMobile">
+
+  <ul class="topNav">
+    <li class="logo">
+      <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'venom/img/logo_ex.png' %}" alt="Логотип">
+    </a>
+    </li>
+
+    <li>
+      <a href="{% url 'home' %}" class="{% if current_url == 'home' %}active{% endif %}">
+          Venom
+      </a>
+    </li>
+
+  </ul>
+
+  <a href="#" class="humb">
+    <img src="{% static 'venom/img/burger-menu.svg' %}" alt="Логотип">
+  </a>
+
+
+</div>
+
+
+
+
+
+<div class="leftMobileMenu">
+  <div class="insideLeftMobile">
+    <a href="#" class="closeBt">x закрыть</a>
+
+    <a href="{% url 'home' %}" class="logo ">
+      <img src="{% static 'venom/img/logo_ex.png' %}" alt="Веном">
+      Веном
+    </a>
+
+
+
+    <ul class="menu">
+
+      <li><a href="{% url 'home' %}" class="{% if current_url == 'home' %}active{% endif %}">Главная</a></li>
+
+      <li><a href="{% url 'clubs' %}" class="{% if current_url == 'clubs' or current_url == 'vdnh' or current_url == 'vernadka' or current_url == 'mitino' or current_url == 'coptevo' or current_url == 'zulebino' or current_url == 'zukovsky' or current_url == 'serpuhovskaya' or current_url == 'pushkino' or current_url == 'mahachkala' %}active{% endif %}"">Клубы</a></li>
+
+        <ul class="clubsListMobile">
+          <li><a href="{% url 'vdnh' %}" class="{% if current_url == 'vdnh' %}active{% endif %}">ВДНХ</a></li>
+          <li><a href="{% url 'vernadka' %}" class="{% if current_url == 'vernadka' %}active{% endif %}">Вернадского</a></li>
+          <li><a href="{% url 'mitino' %}" class="{% if current_url == 'mitino' %}active{% endif %}">Митино</a></li>
+          <li><a href="{% url 'serpuhovskaya' %}" class="{% if current_url == 'serpuhovskaya' %}active{% endif %}">Серпуховская</a></li>
+          <li><a href="{% url 'coptevo' %}" class="{% if current_url == 'coptevo' %}active{% endif %}">Коптево</a></li>
+          <li><a href="{% url 'zulebino' %}" class="{% if current_url == 'zulebino' %}active{% endif %}">Жулебино</a></li>
+          <li><a href="{% url 'zukovsky' %}" class="{% if current_url == 'zukovsky' %}active{% endif %}">Жуковский</a></li>
+<!--          <li><a href="{% url 'pushkino' %}" class="{% if current_url == 'pushkino' %}active{% endif %}">Пушкино</a></li>-->
+         <li><a href="{% url 'mahachkala' %}" class="{% if current_url == 'mahachkala' %}active{% endif %}">Махачкала</a></li>
+        </ul>
+
+      <li><a href="{% url 'promo' %}" class="{% if current_url == 'promo' %}active{% endif %}">Новости, Акции, Турниры</a></li>
+      <!-- <li><a href="{% url 'franchise' %}" class="{% if current_url == 'franchise' %}active{% endif %}">Франшиза </a></li> -->
+      <li><a href="{% url 'contact' %}" class="{% if current_url == 'contact' %}active{% endif %}">Контакты</a></li>
+    </ul>
+
+    <a href="{% url 'politic' %}" class="politicsBt">Политика конфиденциальности</a>
+
+
+
+    <ul class="phoneEmaial">
+      <div class="descr">
+        Единый телефон для записи на игры в любой из наших клубов и решения разных вопросов. Звоните
+      </div>
+      <li><a href="tel:8 (993) 666-0-444">8 (993) 666-0-444</a></li>
+    </ul>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+{% endwith %}
+
+{% endwith %}
+
+
+
+
+<script>
+let humbElement = document.querySelector('.humb');
+let mobileMenu = document.querySelector('.leftMobileMenu');
+let closeBt = document.querySelector('.closeBt')
+
+humbElement.addEventListener('click', function(event) {
+    event.preventDefault();
+    mobileMenu.classList.toggle('open');
+});
+
+
+closeBt.addEventListener('click', function(event) {
+  event.preventDefault();
+  mobileMenu.classList.toggle('open');
+});
+
+
+
+
+</script>
+
+
+
+
+

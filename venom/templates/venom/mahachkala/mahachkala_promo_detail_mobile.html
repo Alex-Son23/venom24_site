@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Махачкала Акции — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ mahachkalapromomobile.photo_mobile.url }}" alt="{{ mahachkalapromomobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'mahachkala' %}" class="rubric">Акции Махачкала</a>
+        <div class="date">{{ mahachkalapromomobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ mahachkalapromomobile.title }}</h1>
+        <p>{{ mahachkalapromomobile.descr|safe }}</p>
+
+        <a href="{% url 'mahachkala' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

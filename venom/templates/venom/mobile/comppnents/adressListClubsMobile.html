@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="adressListClubsMobile">
+    <ul class="clubsList">
+        {% for club in clubs %}
+            <li class="club glassEffect">
+                <div class="txtPart">
+                    <div class="phoneCountPc">
+                        <a href="{% url 'club_page' club.slug %}" class="title">{{ club.name }}</a>
+                        {% if club.total_pc_count %}
+                            <div class="pcCount">{{ club.total_pc_count }}ПК</div>
+                        {% endif %}
+                    </div>
+
+                    {% if club.route and club.route.address %}
+                        <div class="addr">{{ club.route.address }}</div>
+                    {% else %}
+                        <div class="addr">Адрес уточняется</div>
+                    {% endif %}
+
+                    {% if club.phone %}
+                        <a href="tel:{{ club.phone|cut:' ' }}" class="phone">
+                            📞 {{ club.phone }}
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="btnPart">
+                    <a href="{% url 'club_page' club.slug %}" class="more">Подробнее</a>
+                    {% if club.phone %}
+                        <a href="tel:{{ club.phone|cut:' ' }}" class="call">Позвонить</a>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

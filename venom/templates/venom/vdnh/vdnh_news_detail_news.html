@@ -1,0 +1,46 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ vdnhnews.title }}{% endblock %}
+{% block descriptionseo %}Клуб VENOM ВДНХ | {{ vdnhnews.title }}{% endblock %}
+{% block keywordsseo %}Клуб VENOM ВДНХ Новости{% endblock %}
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubFix glassEffectFeaturesDark">
+    <img src="{{ vdnhnews.photo.url }}" alt="{{ vdnhnews.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'vdnh' %}" class="rubric">ВДНХ Новости</a>
+        <div class="date">{{ vdnhnews.time_create|date:"d F Y" }}</div>
+        <h1>{{ vdnhnews.title }}</h1>
+        <p>{{ vdnhnews.descr|safe }}</p>
+
+        <a href="{% url 'vdnh' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+
+<!--<div class="detailNewsAndPrmoInClub">-->
+<!--    <img src="{{ vdnhnews.photo.url }}" alt="{{ vdnhnews.title }}" class="topPic">-->
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'vdnh' %}" class="rubric">Новости ВДНХ</a>-->
+<!--        <div class="date">{{ vdnhnews.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ vdnhnews.title }}</h1>-->
+<!--        <p>{{ vdnhnews.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'vdnh' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+{% endblock %}

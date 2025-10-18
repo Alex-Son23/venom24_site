@@ -1,0 +1,99 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}
+    {{ seo.title }}
+{% endblock %}
+
+{% block descriptionseo %}
+    {{ seo.description }}
+{% endblock %}
+
+{% block keywordsseo %}
+    {{ seo.keywords }}
+{% endblock %}
+
+
+
+
+
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+<div class="promoPage">
+
+    {% include 'venom/components/glassEffectBlocks.html' with titlepart="Новости и Акции в клубах Веном" subtitle="Узнавай первым о скидках, акциях, новостях в сети клубов Веном" %}
+
+
+
+
+
+    <div class="insideWrapNewsPromoList">
+
+
+        {% if news %}
+        <div class="newsPart">
+            <div class="titleRazdel"># Новости</div>
+            <ul class="newsList">
+                {% for news_item in news %}
+                    <li class="glassEffect">
+                        <div class="catNews">{{ news_item.catnews }}</div>
+                        <div class="date">{{ news_item.time_create|date:"d F Y" }}</div>
+                        <a href="{% url 'newsdetail' slug=news_item.slug %}" class="title">{{ news_item.title }}</a>
+                        {% if news_item.photo %}
+                            <a href="{% url 'newsdetail' slug=news_item.slug %}"><img src="{{ news_item.photo.url }}" alt=""></a>
+                        {% else %}
+                            <a href="{% url 'newsdetail' slug=news_item.slug %}"><img src="https://images.unsplash.com/photo-1705599773334-b73b8f707101?q=80&w=2614&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></a>
+                        {% endif %}
+                        <div class="short">{{ news_item.short|safe }}</div>
+                        <a href="{% url 'newsdetail' slug=news_item.slug %}" class="more">Больше</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
+
+        {% if promos %}
+        <div class="promoPart">
+            <div class="titleRazdel"># Акции</div>
+
+            <ul class="promoList">
+                {% for promo in promos %}
+                    <li class="glassEffect">
+                        <div class="date">{{ promo.time_create|date:"d F Y" }}</div>
+                        <a href="{% url 'promodetail' slug=promo.slug %}" class="title">{{ promo.title }}</a>
+                        {% if promo.photo %}
+                            <a href="{% url 'promodetail' slug=promo.slug %}"><img src="{{ promo.photo.url }}" alt=""></a>
+                        {% else %}
+                            <a href="{% url 'promodetail' slug=promo.slug %}"><img src="https://images.unsplash.com/photo-1705599773334-b73b8f707101?q=80&w=2614&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></a>
+                        {% endif %}
+                        <div class="descr">{{ promo.short|safe }}</div>
+                        <a href="{% url 'promodetail' slug=promo.slug %}" class="more">Больше</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

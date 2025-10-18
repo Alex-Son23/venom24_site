@@ -1,0 +1,67 @@
+{% load static %}
+
+{% with request.resolver_match.url_name as current_url %}
+{% with current_slug=request.resolver_match.kwargs.club_slug %}
+<div class="footer glassEffectFooter">
+
+    <ul class="pages">
+        <li>
+            <a href="{% url 'home' %}" class="{% if current_url == 'home' %}active{% endif %}">
+                Главная
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'clubs' %}"
+               class="{% if 'club' in current_url or current_url == 'clubs' %}active{% endif %}">
+                Клубы
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'promo' %}" class="{% if current_url == 'promo' %}active{% endif %}">
+                Акции
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'contact' %}" class="{% if current_url == 'contact' %}active{% endif %}">
+                Контакты
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'franchise' %}" class="{% if current_url == 'franchise' %}active{% endif %}">
+                Франшиза
+            </a>
+        </li>
+    </ul>
+
+
+    <ul class="clubs">
+        {% for club in all_clubs %}
+            <li>
+                <a href="{% url 'club_page' club.slug %}"
+                   class="{% if current_slug == club.slug %}active{% endif %}">
+                    {{ club.name }}
+                </a>
+            </li>
+        {% empty %}
+            <li><em>Клубы не найдены</em></li>
+        {% endfor %}
+    </ul>
+
+
+    <ul class="socials">
+        <li><a href="https://vk.com/venomcyberzone" target="_blank">Вконтакте</a></li>
+        <li><a href="https://www.youtube.com/@venomcyberzone2243" target="_blank">Youtube</a></li>
+        <li><a href="tel:89936660444">8 (993) 666-0-444</a></li>
+        <li>
+            <a href="{% url 'politics' %}" class="{% if current_url == 'politics' %}active{% endif %} politicsStyle">
+                Политика конфиденциальности
+            </a>
+        </li>
+    </ul>
+
+</div>
+{% endwith %}
+{% endwith %}

@@ -1,0 +1,20 @@
+<div class="ourAdvantages glassGameZones">
+    <div class="title">Наши игровые зоны = Наши преимущества</div>
+    <div class="subTitle">Только в VENOM CYBER ZONE</div>
+
+    <ul class="insideAdvantages">
+        {% for zone in zoneplay %}
+        <li class="zone">
+            <div class="zoneTitle">{{ zone.name }}</div>
+
+            <img src="{{ zone.photo.url }}" alt="{{ zone.name }}">
+
+            {% for characteristic in characteristics %}
+                {% if characteristic.zone_id == zone.id %}
+                <div class="param">{{ characteristic.key }} <span>{{ characteristic.value }}</span></div>
+                {% endif %}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>

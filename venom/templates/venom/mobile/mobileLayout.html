@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{% block titleseo %}{% endblock %}</title>
+    <meta name="description" content="{% block descriptionseo %}{% endblock %}">
+    <meta name="keywords" content="{% block keywordsseo %}{% endblock %}">
+
+
+    <link rel="icon" href="{{ logo.page_logo.url }}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'venom/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'venom/mobileCss/mobilemain.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Add this inside your <head> tag to include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@900&display=swap" rel="stylesheet">
+
+
+    
+
+</head>
+<body>
+
+<video id="video-background-mobile" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+    <source src="{% static 'venom/video/utp_v2_mobile_new2.mp4' %}" type="video/mp4">
+</video>
+
+{% include 'venom/mobile/comppnents/topnavMobile.html' %}
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

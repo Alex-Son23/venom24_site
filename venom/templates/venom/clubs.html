@@ -1,0 +1,69 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+
+
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="clubsPage">
+
+    {% include 'venom/components/glassEffectBlocks.html' with titlepart="Клубы VENOM" subtitle="Выбери свою любимую арену" %}
+
+
+    <ul class="wrapClubs">
+
+    {% for club in clubs %}
+    <li class="club glassEffect">
+      <div class="clubInfo">
+        <a class="photoLink" href="{% url 'club_page' club.slug %}">
+          {% if club.zones_image %}
+            <img src="{{ club.zones_image.image.url }}" alt="{{ club.name }}">
+          {% else %}
+            <img src="{% static 'venom/img/noimage.jpg' %}" alt="{{ club.name }}">
+          {% endif %}
+        </a>
+
+        {% if club.pc_count %}
+          <div class="pcCount">{{ club.pc_count }}ПК</div>
+        {% endif %}
+
+        <h4 class="title">{{ club.name }}</h4>
+
+        {% if club.zones %}
+          <div class="howMuchClubsInClubPage">
+            <div class="titleHowMuch">{{ club.zones.count }} зон в клубе:</div>
+            <ul class="listShortZones">
+              {% for zone in club.zones.all|slice:":8" %}
+                <li>{{ zone.title }}{% if zone.count %} <span>{{ zone.count }}пк</span>{% endif %}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="timeAndLink">
+        <div class="timeworking">Работает круглосуточно</div>
+        <a href="{% url 'club_page' club.slug %}" class="more">Подробнее</a>
+      </div>
+    </li>
+    {% endfor %}
+    </ul>
+
+</div>
+
+
+{% include 'venom/components/map.html' %}
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+<div class="adressListClubsNew2">
+    <ul class="clubsList">
+        {% for club in clubs %}
+            <li class="club glassEffect {% if not club.is_open %}clubNotStandart{% endif %}">
+                <div class="txtPart">
+                    <div class="phoneCountPc">
+                        <a href="{% url 'club_detail' slug=club.slug %}" class="title">{{ club.name }}</a>
+                        {% if club.total_pcs %}
+                            <div class="pcCount">{{ club.total_pcs }}ПК</div>
+                        {% endif %}
+                    </div>
+
+                    {% if club.address %}
+                        <div class="addr">{{ club.address }}</div>
+                    {% endif %}
+
+                    {% if club.phone %}
+                        <a href="tel:{{ club.phone|cut:' ' }}" class="phone">📞 {{ club.phone }}</a>
+                    {% endif %}
+                </div>
+
+                <div class="rightPart">
+                    {% if club.is_open %}
+                        <div class="howMuchZones">
+                            {% if club.zones_count %}
+                                <div class="titleHowMuch">{{ club.zones_count }} зон в клубе:</div>
+                            {% endif %}
+
+                            <ul class="listShortZones">
+                                {% for zone in club.zones.all %}
+                                    <li>
+                                        {{ zone.title }}
+                                        {% if zone.count %}
+                                            <span>{{ zone.count }}пк</span>
+                                        {% endif %}
+                                    </li>
+                                {% empty %}
+                                    <li>Зоны пока не добавлены</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="btnPart">
+                            <a href="{% url 'club_detail' slug=club.slug %}" class="more lineAnimation">
+                                Подробнее <div class="flare"></div>
+                            </a>
+                            {% if club.phone %}
+                                <a href="tel:{{ club.phone|cut:' ' }}" class="call lineAnimation">
+                                    Позвонить <div class="flare"></div>
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="howMuchZones">
+                            <div class="titleHowMuch">Клуб в процессе открытия</div>
+                        </div>
+                    {% endif %}
+                </div>
+            </li>
+        {% empty %}
+            <li><span>Клубы пока не добавлены</span></li>
+        {% endfor %}
+    </ul>
+</div>

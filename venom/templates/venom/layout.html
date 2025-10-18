@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+    <title>{% block titleseo %}{% endblock %}</title>
+    <meta name="description" content="{% block descriptionseo %}{% endblock %}">
+    <meta name="keywords" content="{% block keywordsseo %}{% endblock %}">
+
+
+    <meta property="og:url" content="https://venom24.ru/">
+    <meta property="og:locale" content="ru_RU">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Venom Cyber Zone">
+    <meta property="og:title" content="Веном — Лучший компьютерный игровой клуб в Москве">
+    <meta property="og:description" content="Присоединяйтесь к Веном - лучшему компьютерному игровому клубу в Москве. Мы предлагаем уникальные игровые возможности, многопользовательские соревнования и широкий выбор популярных компьютерных игр. Посетите наш клуб прямо сейчас и окунитесь в захватывающий мир гейминга">
+
+    <meta property="og:image" content="{% static 'venom/img/ogg/main.jpg' %}">
+
+
+
+
+    <link rel="icon" href="{{ logo.page_logo.url }}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'venom/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'venom/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'venom/mobileCss/mobilemain.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@900&display=swap" rel="stylesheet">
+
+
+
+
+    <!-- Yandex.Metrika counter -->
+
+		<script type="text/javascript" >
+		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+		m[i].l=1*new Date();
+		for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+		k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+		ym(51824186, "init", {
+				clickmap:true,
+				trackLinks:true,
+				accurateTrackBounce:true,
+				webvisor:true
+		});
+		</script>
+		<noscript><div><img src="https://mc.yandex.ru/watch/51824186" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+		<!-- /Yandex.Metrika counter -->
+
+
+
+
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5L3QJX68YF"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5L3QJX68YF');
+		</script>
+
+
+</head>
+
+
+
+<body>
+
+<video id="video-background" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+    <source src="{% static 'venom/video/utp_v2_blur.mp4' %}" type="video/mp4">
+</video>
+
+
+{% include 'venom/components/topnav.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+{% include 'venom/components/footer.html' %}
+
+</body>
+</html>

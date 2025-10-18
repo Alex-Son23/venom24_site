@@ -1,0 +1,213 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+
+
+
+
+<div class="promoPageMobile">
+
+
+
+    <div class="insideWrapNewsPromoMobile">
+
+        {% include 'venom/components/glassEffectBlocks.html' with titlepart="Новости и Акции в клубах VENOM" subtitle="Узнавай первым о скидках, акциях, новостях в сети клубов VENOM" %}
+
+
+
+        {% if promos %}
+
+            <div class="titleRazdel"># Акции</div>
+
+            <ul class="promoListScroll">
+                {% for promo in promos %}
+                    <li class="glassEffect">
+                        <a href="{% url 'promodetailmobile' slug=promo.slug %}"><img src="{{ promo.photo_mobile.url }}" alt=""></a>
+                        <a href="{% url 'promodetailmobile' slug=promo.slug %}" class="title">{{ promo.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+
+
+
+
+
+
+        {% if latest_news %}
+        <div class="newsPart">
+            <div class="titleRazdel"># НОВОСТИ, АКЦИИ, ТУРНИРЫ</div>
+            <ul class="newsListNew">
+                {% for news_item in latest_news %}
+                    <li class="glassEffect">
+
+<!--                        <div class="catNews">{{ news_item.catnews }}</div>-->
+<!--                        <div class="date">{{ news_item.time_create|date:"d F Y" }}</div>-->
+                        <a href="{% url 'news_detailmobile_new' slug=news_item.slug %}" class="title">{{ news_item.title }}</a>
+
+
+
+                        {% if news_item.photo_mobile %}
+                            <a href="{% url 'news_detailmobile_new' slug=news_item.slug %}" class="pic">
+
+                                <div class="categoryList">
+                                {% for category in news_item.catnews.all %}
+                                    {% if category.id != 1 %}
+                                   <span class="categoryTag"> {{ category.name }} {% if not forloop.last %}</span> {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                                <img src="{{ news_item.photo_mobile.url }}" alt="">
+                            </a>
+
+                        {% else %}
+                            <a href="{% url 'news_detailmobile_new' slug=news_item.slug %}"><img src="{% static '/venom/img/no_img.jpg' %}" alt=""></a>
+                        {% endif %}
+                        <p>{{ news_item.short|safe }}</p>
+                        <a href="{% url 'news_detailmobile_new' slug=news_item.slug %}" class="more">Больше</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <div class="titleRazdel"># Турниры</div>
+<!--squareGallery-->
+<div class="glassEffect squareGalleryMobile">
+
+
+    <div class="titleGallery">Фотогаллерея клубов VENOM</div>
+    <div class="subtitle">Cеть топовых кибер-арен в Москве</div>
+
+
+    <div class="wrapListGalery">
+      <div class="oneLine">
+        {% for i in photovenum|slice:":4" %} <!-- Берем первые 4 изображения -->
+        <a href="{{ i.photo_mobile.url }}" data-fancybox="gallery" data-caption="">
+            <img class="onePic" src="{{ i.photo_mobile.url }}" alt="Image"/>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="twoLine">
+        {% for i in photovenum|slice:"4:8" %} <!-- Берем следующие 4 изображения -->
+        <a href="{{ i.photo_mobile.url }}" data-fancybox="gallery" data-caption="">
+            <img class="twoPic" src="{{ i.photo_mobile.url }}" alt="Image"/>
+        </a>
+        {% endfor %}
+    </div>
+        <!-- <div class="oneLine">
+
+            <a href="{% static 'venom/img/mitino/09.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="onePic" src="{% static 'venom/img/mitino/09.jpg' %}" />
+            </a>
+
+            <a href="{% static 'venom/img/vdnh/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="twoPic" src="{% static 'venom/img/vdnh/03_new.jpg' %}" />
+            </a>
+
+
+            <a href="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="onePic" src="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" />
+            </a>
+
+
+            <a href="{% static 'venom/img/vdnh/04_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img src="{% static 'venom/img/vdnh/04_new.jpg' %}" />
+            </a>
+
+        </div>
+
+        <div class="twoLine">
+
+            <a href="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="twoPic" src="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" />
+            </a>
+
+            <a href="{% static 'venom/img/serpuhovskaya/06.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="sixPic" src="{% static 'venom/img/serpuhovskaya/06.jpg' %}" />
+            </a>
+
+             <a href="{% static 'venom/img/serpuhovskaya/02.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="sevenPic" src="{% static 'venom/img/serpuhovskaya/02.jpg' %}" />
+            </a>
+
+
+            <a href="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="fivePic" src="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" />
+            </a>
+
+        </div> -->
+
+    </div>
+
+</div>
+<!--squareGallery END -->
+
+
+        </div>
+
+        
+
+
+
+<!--            {% if news %}-->
+<!--                <div class="newsPart">-->
+<!--                    <div class="titleRazdel"># Новости</div>-->
+<!--                    <ul class="newsList">-->
+<!--                        {% for news_item in news %}-->
+<!--                            <li class="glassEffect">-->
+<!--                                <div class="catNews">{{ news_item.catnews }}</div>-->
+<!--                                <div class="date">{{ news_item.time_create|date:"d F Y" }}</div>-->
+<!--                                <a href="{% url 'newsdetailmobile' slug=news_item.slug %}" class="title">{{ news_item.title }}</a>-->
+<!--                                {% if news_item.photo_mobile %}-->
+<!--                                    <a href="{% url 'newsdetailmobile' slug=news_item.slug %}"><img src="{{ news_item.photo_mobile.url }}" alt=""></a>-->
+<!--                                {% else %}-->
+<!--                                    <a href="{% url 'newsdetailmobile' slug=news_item.slug %}"><img src="{% static '/venom/img/no_img.jpg' %}" alt=""></a>-->
+<!--                                {% endif %}-->
+<!--                                <p>{{ news_item.short|safe }}</p>-->
+<!--                                <a href="{% url 'newsdetailmobile' slug=news_item.slug %}" class="more">Больше</a>-->
+<!--                            </li>-->
+<!--                        {% endfor %}-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            {% endif %}-->
+
+
+    </div>
+<!-- end insideWrapNewsPromo -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}
+
+

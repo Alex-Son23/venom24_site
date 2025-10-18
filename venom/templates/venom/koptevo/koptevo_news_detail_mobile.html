@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Коптево новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ koptevonewsmobile.photo_mobile.url }}" alt="{{ koptevonewsmobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'coptevo' %}" class="rubric">Новости Коптево</a>
+        <div class="date">{{ koptevonewsmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ koptevonewsmobile.title }}</h1>
+        <p>{{ koptevonewsmobile.descr|safe }}</p>
+
+        <a href="{% url 'coptevo' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

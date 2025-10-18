@@ -1,0 +1,42 @@
+{% extends 'venom/layout.html' %}
+
+{% block title %} Митино новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubFix glassEffectFeaturesDark">
+    <img src="{{ mitinonews.photo.url }}" alt="{{ mitinonews.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'mitino' %}" class="rubric">Новости Митино</a>
+        <div class="date">{{ mitinonews.time_create|date:"d F Y" }}</div>
+        <h1>{{ mitinonews.title }}</h1>
+        <p>{{ mitinonews.descr|safe }}</p>
+
+        <a href="{% url 'mitino' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+
+<!--<div class="detailNewsAndPrmoInClub">-->
+<!--    <img src="{{ mitinonews.photo.url }}" alt="{{ mitinonews.title }}" class="topPic">-->
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'mitino' %}" class="rubric">Новости Митино</a>-->
+<!--        <div class="date">{{ mitinonews.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ mitinonews.title }}</h1>-->
+<!--        <p>{{ mitinonews.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'mitino' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+{% endblock %}

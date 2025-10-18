@@ -1,0 +1,27 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Серпуховская новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ serpuhovskayanewsmobile.photo_mobile.url }}" alt="{{ serpuhovskayanewsmobile.title }}" class="topPic">
+
+
+    <div class="txtPart">
+        <a href="{% url 'serpuhovskaya' %}" class="rubric">Серпуховская Новости </a>
+        <div class="date">{{ serpuhovskayanewsmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ serpuhovskayanewsmobile.title }}</h1>
+        <p>{{ serpuhovskayanewsmobile.descr|safe }}</p>
+
+        <a href="{% url 'serpuhovskaya' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

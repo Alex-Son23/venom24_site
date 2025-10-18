@@ -1,0 +1,15 @@
+db.sqlite3
+db copy.sqlite3
+venom_cache
+venv
+*.png
+*.jpg
+*.jpeg
+*.mp4
+__pycache__
+media
+env
+/static/
+
+# Но оставить все app/*/static/
+!*/static/

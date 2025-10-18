@@ -1,0 +1,64 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="contactPage">
+
+    
+    <ul class="listsContactsClubsMobile">
+        {% include 'venom/components/glassEffectBlocks.html' with titlepart="Контакты клубов VENOM" subtitle="Сеть топовых кибер-арен" %}
+        <div class="socialLinks">
+            <a href="https://vk.com/venomcyberzone" class="vkLink" target="_blank">
+                <i class="fab fa-vk"></i>VK
+            </a>
+            <a href="https://instagram.com/venomcyberzone" class="instaLink" target="_blank">
+                <i class="fab fa-instagram"></i>Instagram
+            </a>
+        </div>
+        {% for club in clubs %}
+            <li class="glassEffect eachClub">
+
+                <a href="{% url 'club_page' club.slug %}" class="title">{{ club.name }}</a>
+
+                {% if club.route and club.route.address %}
+                    <div class="street">{{ club.route.address }}</div>
+                {% else %}
+                    <div class="street">Адрес уточняется</div>
+                {% endif %}
+
+                <a class="photoLink" href="{% url 'club_page' club.slug %}">
+                    {% if club.zones_image and club.zones_image.image_mobile %}
+                        <img src="{{ club.zones_image.image_mobile.url }}" alt="{{ club.name }}">
+                    {% else %}
+                        <img src="{% static 'venom/img/noimage.jpg' %}" alt="{{ club.name }}">
+                    {% endif %}
+                </a>
+
+                {% if club.is_open_24 %}
+                    <div class="timeWork">Работает круглосуточно</div>
+                {% else %}
+                    <div class="timeWork">Время работы уточняется</div>
+                {% endif %}
+
+                <div class="bntWrap">
+                    {% if club.phone %}
+                        <a href="tel:{{ club.phone|cut:' ' }}" class="phone">
+                            {{ club.phone }}
+                        </a>
+                    {% endif %}
+                    {% if club.map_link %}
+                        <a href="{{ club.map_link }}" target="_blank" class="onMap">Показать на карте</a>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% include 'venom/components/map.html' %}
+{% endblock %}

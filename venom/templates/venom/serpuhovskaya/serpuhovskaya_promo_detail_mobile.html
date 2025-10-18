@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Серпуховская Акции — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ serpuhovskayapromomobile.photo_mobile.url }}" alt="{{ serpuhovskayapromomobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'serpuhovskaya' %}" class="rubric">Акции Серпуховская</a>
+        <div class="date">{{ serpuhovskayapromomobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ serpuhovskayapromomobile.title }}</h1>
+        <p>{{ serpuhovskayapromomobile.descr|safe }}</p>
+
+        <a href="{% url 'serpuhovskaya' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

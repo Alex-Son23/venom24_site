@@ -1,0 +1,45 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ serpuhovskayanews.title }}{% endblock %}
+{% block descriptionseo %}Клуб VENOM Серпуховская | {{ serpuhovskayanews.title }}{% endblock %}
+{% block keywordsseo %}Клуб VENOM Серпуховская Новости{% endblock %}
+
+
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubFix glassEffectFeaturesDark">
+    <img src="{{ serpuhovskayanews.photo.url }}" alt="{{ serpuhovskayanews.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'serpuhovskaya' %}" class="rubric">Серпуховская Новости</a>
+        <div class="date">{{ serpuhovskayanews.time_create|date:"d F Y" }}</div>
+        <h1>{{ serpuhovskayanews.title }}</h1>
+        <p>{{ serpuhovskayanews.descr|safe }}</p>
+
+        <a href="{% url 'serpuhovskaya' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+
+<!--<div class="detailNewsAndPrmoInClub">-->
+<!--    <img src="{{ serpuhovskayanews.photo.url }}" alt="{{ serpuhovskayanews.title }}" class="topPic">-->
+
+<!--    <div class="txtPart">-->
+<!--        <a href="{% url 'serpuhovskaya' %}" class="rubric">Новости Серпуховская</a>-->
+<!--        <div class="date">{{ serpuhovskayanews.time_create|date:"d F Y" }}</div>-->
+<!--        <h1>{{ serpuhovskayanews.title }}</h1>-->
+<!--        <p>{{ serpuhovskayanews.descr|safe }}</p>-->
+
+<!--        <a href="{% url 'serpuhovskaya' %}" class="goBack">Назад</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+{% endblock %}

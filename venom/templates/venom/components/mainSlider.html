@@ -1,0 +1,177 @@
+{% load static %}
+
+
+<div class="mainSlider">
+
+
+
+
+
+    <div class="carousel">
+
+
+        <div class="list">
+
+            <div class="item">
+                <img src="{% static 'venom/img/slider/mouse.JPG' %}" alt="">
+                <div class="content">
+                    <div class="title glassEffectFeaturesDark">Dark Project VGN F1</div>
+                    <div class="descr glassEffectFeaturesDark">Это что ещё за новиночка тут появилась?</div>
+                    <br>
+                    <a href="/news/dark-project-vgn-f1/" class="choise">Узнать больше</a>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <img src="{% static 'venom/img/slider/101.jpg' %}" alt="">
+                <div class="content">
+                    <div class="title glassEffectFeaturesDark">Посетите топовый клуб Вернадского</div>
+                    <div class="descr glassEffectFeaturesDark">ул. Вернадского 58</div>
+                    <br>
+                    <a href="{% url 'vernadka' %}" class="choise">Перейти в клуб</a>
+                </div>
+            </div>
+
+
+
+
+            <div class="item">
+                <img src="{% static 'venom/img/slider/01.jpg' %}" alt="">
+                <div class="content">
+                    <div class="title glassEffectFeaturesDark">Франшиза Веном</div>
+                    <div class="descr glassEffectFeaturesDark">Выгодные инвестиции</div>
+                    <br>
+                    <a href="{% url 'franchise' %}" class="choise">Узнать больше</a>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- end list-->
+
+
+
+
+
+        <div class="thumbnail">
+
+            <div class="item">
+                <img src="{% static 'venom/img/slider/mouse.JPG' %}" alt="">
+                <div class="overlay"></div>
+                <div class="content">
+                    <div class="title">Dark Project VGN F1</div>
+                    <div class="description">Новинка</div>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <img src="{% static 'venom/img/slider/101.jpg' %}" alt="">
+                <div class="overlay"></div>
+                <div class="content">
+                    <div class="title">Клуб Вернадского</div>
+                    <div class="description">Узнать больше</div>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <img src="{% static 'venom/img/slider/01.jpg' %}" alt="">
+                <div class="overlay"></div>
+                <div class="content">
+                    <div class="title">Франшиза Веном</div>
+                    <div class="description">Выгодные инвестиции</div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- end thumbnail-->
+
+
+
+
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+<!--        <div class="time"></div>-->
+        <!-- end arrows -->
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+    let nextDom = document.getElementById('next')
+    let prevDom = document.getElementById('prev')
+    let carouselDom = document.querySelector('.carousel')
+    let listItemDom = document.querySelector('.carousel .list')
+    let thumbnailDom = document.querySelector('.carousel .thumbnail')
+
+
+    nextDom.onclick = function() {
+        showSlider('next')
+    }
+
+    prevDom.onclick = function() {
+        showSlider('prev')
+    }
+
+
+    let timeRunning = 1000
+    let timeAutoNext = 7000
+    let runTimeOut
+    let runAutoRun = setTimeout(() => {
+            nextDom.click()
+        }, timeAutoNext)
+
+    function showSlider(type) {
+        let itemSlider = document.querySelectorAll('.carousel .list .item')
+        let itemThumbnail = document.querySelectorAll('.carousel .thumbnail .item')
+
+        if (type === 'next') {
+            listItemDom.appendChild(itemSlider[0])
+            thumbnailDom.appendChild(itemThumbnail[0])
+            carouselDom.classList.add('next')
+        } 
+        else {
+            let positionLastItem  = itemSlider.length -1
+            listItemDom.prepend(itemSlider[positionLastItem])
+            thumbnailDom.prepend(itemThumbnail[positionLastItem])
+            carouselDom.classList.add('prev')
+        }
+
+
+        clearTimeout(runTimeOut)
+        runTimeOut = setTimeout(() => {
+            carouselDom.classList.remove('next')
+            carouselDom.classList.remove('prev')
+        }, timeRunning)
+
+
+        clearTimeout(runAutoRun)
+        // runAutoRun = setTimeout(() => {
+        //     nextDom.click()
+        // }, timeAutoNext)
+
+
+
+    }
+
+
+
+
+</script>

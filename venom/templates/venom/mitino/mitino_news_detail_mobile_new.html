@@ -1,0 +1,26 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Митино новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ mitinonewsmobile.photo_mobile.url }}" alt="{{ mitinonewsmobile.title }}" class="topPic">
+
+    <div class="txtPart">
+        <a href="{% url 'mitino' %}" class="rubric">Митино Новости</a>
+        <div class="date">{{ mitinonewsmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ mitinonewsmobile.title }}</h1>
+        <p>{{ mitinonewsmobile.descr|safe }}</p>
+
+        <a href="{% url 'mitino' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

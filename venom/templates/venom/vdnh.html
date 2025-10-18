@@ -1,0 +1,1759 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="clubPage">
+
+    <div class="topBaner">
+
+        <div class="overlay"></div>
+
+        <video class="videoPartClub" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+          <source src="{% static 'venom/video/vdnh_club.mp4' %}" type="video/mp4">
+        </video>
+
+
+        <div class="txtPart">
+
+            <div class="firstLine">
+                <div class="smallTitle">VENOM CYBER ZONE</div>
+                <h1 class="title ">ВДНХ</h1>
+            </div>
+
+
+
+            <div class="secondLine">
+<!--                <div class="addr"><span>ул. Ярославская 21а, ВДНХ</span>  Работает круглосуточно</div>-->
+                <div class="titleTotalPCs" style="text-align: left; font-size: 22px; font-weight: bold; color: #007bff; margin-bottom: 10px;">
+                    <span class="totalPCCount" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">52ПК</span>
+                </div>
+                <div class="howMuchClubs">
+
+                    <div class="titleHowMuch">8 зон в клубе:</div>
+                    <ul class="listShortZones">
+                         
+                        
+                        <li>COMFORT 27` 240HZ <span>32пк</span></li>
+                        <li>DUO VIP 4K 34' 165HZ <span>2пк</span></li>
+                        <li>DUO VIP 4K 34' 165HZ <span>2пк</span></li>
+                        <li>BOOTCAMP 24.5` 380HZ <span>5пк</span></li>
+                        <li>BOOTCAMP 24.5` 380HZ <span>5пк</span></li>
+                        <li>STREAM 24.5` 380HZ <span>1пк</span></li>
+                        <li>SUPERVIP 4k 35` 144HZ <span>5пк</span></li>
+                        <!-- <li>TV ZONE</li> -->
+                        <li>VIP TV ZONE</li>
+                    </ul>
+                </div>
+
+<!--                <ul class="features">-->
+<!--                    <li class="">61ПК</li>-->
+<!--                    <li class="">5Видов ПК</li>-->
+<!--                    <li class="">4TV</li>-->
+<!--                </ul>-->
+
+
+                <ul class="phoneAndToMap">
+                    <li class="wrapPhone">
+                        <a href="tel:89255419729" class="lineAnimation phone">
+                          <span class="flare"></span>
+                          8 (925) 541-97-29
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMapBt">
+                        Найти клуб на карте
+                        </a>
+                    </li>
+               </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="clubPage">
+    <div class="howFindClub">
+        <img src="{% static 'venom/img/steps2.svg' %}" alt="">
+        <div class="titleHow">Как найти клуб?</div>
+        <a href="#routeToclub" class="showWayToClub">Показать</a>
+    </div>
+</div>
+
+
+{% include 'venom/components/featuresLines.html' %}
+
+
+
+
+
+<div class="clubPage glassEffect">
+
+    <div class="newsBlockSlider">
+
+        <div class="titleNewsRazdel">Новости клуба ВДНХ</div>
+
+      <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"
+        slides-per-view="4" navigation="true" loop="true"
+                        effect="coverflow"   grab-cursor="true" coverflow-effect-rotate="45"  coverflow-effect-depth="50" centered-slides="true" coverflow-effect-modifier="1"
+      >
+          {% for item_news in news_new_variant %}
+            <swiper-slide>
+                <a href="{% url 'vdnhdetailnewsnew' slug=item_news.slug %}" class="pic">
+                    <img src="{{ item_news.photo.url }}" alt="">
+                </a>
+                <div class="txtPart">
+                    <a href="{% url 'vdnhdetailnewsnew' slug=item_news.slug %}" class="titleNews">{{ item_news.title }}</a>
+                    <div class="descr">{{ item_news.short|safe }}</div>
+                    <a href="{% url 'vdnhdetailnewsnew' slug=item_news.slug %}" class="moreBt">Больше</a>
+                </div>
+
+            </swiper-slide>
+          {% endfor %}
+
+      </swiper-container>
+
+
+             <div class="margingRazdel"></div>
+
+              <div class="titleNewsRazdel">Акции клуба ВДНХ</div>
+
+              <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"
+                slides-per-view="4" navigation="true" loop="true"
+              >
+
+                  {% for item_promo in promoVdnh %}
+                    <swiper-slide class="promo">
+
+                        <a href="{% url 'vdnhdetailpromo' slug=item_promo.slug %}" class="pic"><img src="{{ item_promo.photo.url }}" alt=""></a>
+                        <div class="txtPart">
+                            <a href="{% url 'vdnhdetailpromo' slug=item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>
+                            <div class="descr">{{ item_promo.short|safe }}</div>
+                            <a href="{% url 'vdnhdetailpromo' slug=item_promo.slug %}" class="moreBt">Больше</a>
+                        </div>
+
+                    </swiper-slide>
+                  {% endfor %}
+
+
+
+              </swiper-container>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="clubPage glassEffect">-->
+
+<!--    <div class="newsBlockSlider">-->
+
+<!--        <div class="titleNewsRazdel">Новости клуба ВДНХ</div>-->
+
+<!--      <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"-->
+<!--        slides-per-view="4" navigation="true" loop="true"-->
+<!--                        effect="coverflow"   grab-cursor="true" coverflow-effect-rotate="45"  coverflow-effect-depth="50" centered-slides="true" coverflow-effect-modifier="1"-->
+<!--      >-->
+
+<!--          {% for item_news in newsVdnh %}-->
+<!--            <swiper-slide>-->
+
+<!--                <a href="{% url 'vdnhdetailnews' slug=item_news.slug %}" class="pic"><img src="{{ item_news.photo.url }}" alt=""></a>-->
+<!--                <a href="{% url 'vdnhdetailnews' slug=item_news.slug %}" class="titleNews">{{ item_news.title }}</a>-->
+<!--                <div class="descr">{{ item_news.short|safe }}</div>-->
+<!--                <a href="{% url 'vdnhdetailnews' slug=item_news.slug %}" class="moreBt">Больше</a>-->
+
+<!--            </swiper-slide>-->
+<!--          {% endfor %}-->
+
+<!--      </swiper-container>-->
+
+
+<!--             <div class="margingRazdel"></div>-->
+
+<!--              <div class="titleNewsRazdel">Акции клуба ВДНХ</div>-->
+
+<!--              <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"-->
+<!--                slides-per-view="4" navigation="true" loop="true"-->
+<!--              >-->
+
+<!--                  {% for item_promo in promoVdnh %}-->
+<!--                    <swiper-slide class="promo">-->
+
+<!--                        <a href="{% url 'vdnhdetailpromo' slug=item_promo.slug %}" class="pic"><img src="{{ item_promo.photo.url }}" alt=""></a>-->
+<!--                        <a href="{% url 'vdnhdetailpromo' slug=item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>-->
+<!--                        <div class="descr">{{ item_promo.short|safe }}</div>-->
+<!--                        <a href="{% url 'vdnhdetailpromo' slug=item_promo.slug %}" class="moreBt">Больше</a>-->
+
+<!--                    </swiper-slide>-->
+<!--                  {% endfor %}-->
+
+
+
+<!--              </swiper-container>-->
+
+<!--      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>-->
+
+
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+<!--squareGallery-->
+<div class="glassEffect squareGallery">
+
+
+        <div class="titleGallery">Фотогаллерея ВДНХ</div>
+
+
+        <div class="wrapListGalery">
+            <div class="oneLine">
+                {% for i in photos|slice:":4" %} <!-- Берем первые 4 изображения -->
+                <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+                    <img class="onePic" src="{{ i.photo.url }}" alt="Image"/>
+                </a>
+                {% endfor %}
+            </div>
+        
+            <div class="twoLine">
+                {% for i in photos|slice:"4:8" %} <!-- Берем следующие 4 изображения -->
+                <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+                    <img class="twoPic" src="{{ i.photo.url }}" alt="Image"/>
+                </a>
+                {% endfor %}
+            </div>
+            <!-- <div class="oneLine">
+
+                <a href="{% static 'venom/img/vdnh/06_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/vdnh/06_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vdnh/02_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/vdnh/02_new.jpg' %}" />
+                </a>
+
+               <a href="{% static 'venom/img/vdnh/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/vdnh/03_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vdnh/04_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/vdnh/04_new.jpg' %}" />
+                </a>
+
+            </div>
+
+            <div class="twoLine">
+
+                <a href="{% static 'venom/img/vdnh/05_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="fivePic" src="{% static 'venom/img/vdnh/05_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vdnh/01_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sixPic" src="{% static 'venom/img/vdnh/01_new.jpg' %}" />
+                </a>
+
+                 <a href="{% static 'venom/img/vdnh/07_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sevenPic" src="{% static 'venom/img/vdnh/07_new.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/vdnh/08_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="eightPic" src="{% static 'venom/img/vdnh/08_new.jpg' %}" />
+                </a>
+
+            </div> -->
+
+        </div>
+
+</div>
+<!--squareGallery END -->
+
+
+
+
+
+
+
+
+
+<!--clubsZones newVersion with Pics -->
+<div class="clubPage ">
+
+
+    <ul class="clubsZones">
+        {% for zone in zonesVdnhNew %}
+        <li class="glassZones">
+            <div class="zoneSmall">комната</div>
+            <div class="wrapZoneName">
+                <div class="zoneName">{{ zone.title }}</div>
+            </div>
+
+
+
+
+
+            <div class="sliderLineWrap">
+                <div class="zoomIn">
+                            <img class="zoomInPic" src="{% static 'venom/img/zoom-in.svg' %}" alt="">
+                        </div>
+                
+                <div class="sliderLine">
+                {% if zone.zone_pics.all %}
+
+
+                    {% for pic in zone.zone_pics.all %}
+                        <a href="{{ pic.photo.url }}" data-fancybox="{{ zone.slug }}"  data-caption="">
+
+                            <img class="onePic" src="{{ pic.photo.url }}" />
+                        </a>
+                    {% endfor %}
+                    {% else %}
+                    <img src="{% static 'venom/img/noimage.jpg' %}" alt="">
+
+                {% endif %}
+                </div>
+            </div>
+
+
+
+            <div class="btnWrap">
+                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>
+                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17"
+                    target="_blank" class="toMap">На карте</a>
+            </div>
+
+
+            <ul class="params">
+                {% if zone.monitor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.monitor_tile }}</div>
+                        <div class="pDescr">{{ zone.monitor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.processor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.processor_tile }}</div>
+                        <div class="pDescr">{{ zone.processor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.videocard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.videocard_tile }}</div>
+                        <div class="pDescr">{{ zone.videocard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.ozu_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.ozu_tile }}</div>
+                        <div class="pDescr">{{ zone.ozu }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.headset_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.headset_tile }}</div>
+                        <div class="pDescr">{{ zone.headset }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.keyboard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.keyboard_tile }}</div>
+                        <div class="pDescr">{{ zone.keyboard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.mouse_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.mouse_tile }}</div>
+                        <div class="pDescr">{{ zone.mouse }}</div>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <ul class="pricePnCht glassEffectFeaturesDark">
+                <p class="titleTime">ПН-ЧТ (price)</p>
+
+                <div class="wrapTime">
+                    {% if zone.timeone %}
+                        <li class="">{{ zone.timeone }} <span>{{ zone.priceone }}</span></li>
+                    {% endif %}
+                    {% if zone.timetwo %}
+                        <li class="">{{ zone.timetwo }} <span>{{ zone.prictwo }}</span></li>
+                    {% endif %}
+                    {% if zone.timetri %}
+                        <li class="">{{ zone.timetri }} <span>{{ zone.pricetri }}</span></li>
+                    {% endif %}
+                    {% if zone.timefour %}
+                        <li class="">{{ zone.timefour }} <span>{{ zone.pricefour }}</span></li>
+                    {% endif %}
+                    {% if zone.timefive %}
+                        <li class="">{{ zone.timefive }} <span>{{ zone.pricefive }}</span></li>
+                    {% endif %}
+                    {% if zone.timesix %}
+                        <li class="">{{ zone.timesix }} <span>{{ zone.pricesix }}</span></li>
+                    {% endif %}
+                </div>
+
+            </ul>
+
+
+            <ul class="pricePtVs glassEffectFeaturesDark">
+                <p class="titleTime">ПТ-ВС (price)</p>
+                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>
+                <div class="wrapTime">
+                    {% if zone.weekend_timeone %}
+                        <li class="">{{ zone.weekend_timeone }} <span>{{ zone.weekend_priceone }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timetwo %}
+                        <li class="">{{ zone.weekend_timetwo }} <span>{{ zone.weekend_prictwo }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timetri %}
+                        <li class="">{{ zone.weekend_timetri }} <span>{{ zone.weekend_pricetri }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timefour %}
+                        <li class="">{{ zone.weekend_timefour }} <span>{{ zone.weekend_pricefour }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timefive %}
+                        <li class="">{{ zone.weekend_timefive }} <span>{{ zone.weekend_pricefive }}</span></li>
+                    {% endif %}
+                    {% if zone.weekend_timesix %}
+                        <li class="">{{ zone.weekend_timesix }} <span>{{ zone.weekend_pricesix }}</span></li>
+                    {% endif %}
+                </div>
+            </ul>
+
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--clubsZones html-->
+<!--<div class="clubPage ">-->
+
+<!--    <ul class="clubsZones">-->
+
+
+<!--        &lt;!&ndash; COMFORT 27` 240HZ 42пк&ndash;&gt;-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">COMFORT 27` 240HZ 42пк</div>-->
+<!--            </div>-->
+
+
+<!--            <div class="sliderLine">-->
+<!--                <a href="{% static 'venom/img/vdnh/comfort/01.jpg' %}" data-fancybox="COMFORT27" data-caption="">-->
+<!--                  <img class="onePic" src="{% static 'venom/img/vdnh/comfort/01.jpg' %}" />-->
+<!--                </a>-->
+<!--                <a href="{% static 'venom/img/vdnh/comfort/02.jpg' %}" data-fancybox="COMFORT27" data-caption="">-->
+<!--                  <img src="{% static 'venom/img/vdnh/comfort/02.jpg' %}" />-->
+<!--                </a>-->
+<!--            </div>-->
+
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+
+
+
+<!--            <ul class="params">-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Монитор</div>-->
+<!--                        <div class="pDescr">ACER 27` 240HZ FHD</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Процессор</div>-->
+<!--                        <div class="pDescr">INTEL I5 9400</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Видеокарта</div>-->
+<!--                        <div class="pDescr">RTX 2070 SUPER</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Оперативная память</div>-->
+<!--                        <div class="pDescr">16GB DDR4 3200MHZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Гарнитура</div>-->
+<!--                        <div class="pDescr">HYPERX CLOUD 2</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Механическая клавиатура</div>-->
+<!--                        <div class="pDescr">DARK PROJECT KD 87A</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Мышь</div>-->
+<!--                        <div class="pDescr">LOGITECH G102 / SteelSeries Rival</div>-->
+<!--                    </li>-->
+
+
+<!--            </ul>-->
+
+
+
+<!--            <div class="priceBlock">-->
+<!--                    <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                        <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                        <div class="wrapTime">-->
+<!--                                <li class="">8:00 - 14:00 <span> 99 ₽.час</span></li>-->
+<!--                                <li class="">14:00 - 18:00  <span> 120 ₽.час</span></li>-->
+<!--                                <li class="">18:00 - 8:00 <span> 140 ₽.час</span></li>-->
+<!--                                <li class="">Пакет День | 9:00 - 16:00 <span> 350 ₽</span></li>-->
+<!--                                <li class="">Пакет Вечер | 16:00 - 22:00 <span> 550 ₽</span></li>-->
+<!--                                <li class="">Пакет Ночь | 22:00 - 9:00 <span> 650 ₽</span></li>-->
+<!--                        </div>-->
+
+<!--                    </ul>-->
+
+
+<!--                    <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                        <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                        <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                        <div class="wrapTime">-->
+<!--                                <li class="">8:00 - 14:00 <span> 120 ₽.час</span></li>-->
+<!--                                <li class="">14:00 - 18:00 <span> 150 ₽.час</span></li>-->
+<!--                                <li class="">18:00 - 8:00 <span> 170 ₽.час</span></li>-->
+<!--                                <li class="">Пакет День | 9:00 - 16:00 <span> 450 ₽</span></li>-->
+<!--                                <li class="">Пакет Вечер | 16:00 - 22:00 <span> 650 ₽</span></li>-->
+<!--                                <li class="">Пакет Ночь | 22:00 - 9:00 <span> 750 ₽</span></li>-->
+<!--                        </div>-->
+<!--                    </ul>-->
+
+
+<!--        </li>-->
+
+
+
+
+
+
+<!--        &lt;!&ndash; BOOTCAMP 24.5` 380HZ 5пк&ndash;&gt;-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">BOOTCAMP 24.5` 380HZ 5пк</div>-->
+<!--            </div>-->
+
+
+<!--            <div class="sliderLine">-->
+
+<!--                <a href="{% static 'venom/img/vdnh/BOOTCAMP24/01.jpg' %}" data-fancybox="BOOTCAMP24" data-caption="">-->
+<!--                  <img class="onePic" src="{% static 'venom/img/vdnh/BOOTCAMP24/01.jpg' %}" />-->
+<!--                </a>-->
+
+<!--                <a href="{% static 'venom/img/vdnh/BOOTCAMP24/02.jpg' %}" data-fancybox="BOOTCAMP24" data-caption="">-->
+<!--                  <img src="{% static 'venom/img/vdnh/BOOTCAMP24/02.jpg' %}" />-->
+<!--                </a>-->
+
+<!--            </div>-->
+
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Монитор</div>-->
+<!--                        <div class="pDescr">MSI 24,5` 380HZ FHD</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Процессор</div>-->
+<!--                        <div class="pDescr">INTEL I5 9400F</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Видеокарта</div>-->
+<!--                        <div class="pDescr">RTX 4070 TI</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Оперативная память</div>-->
+<!--                        <div class="pDescr">16GB DDR4 3600MHZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Гарнитура</div>-->
+<!--                        <div class="pDescr">HYPERX CLOUD ALPHA S / HYPERX REVOLVER S</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Механическая клавиатура</div>-->
+<!--                        <div class="pDescr">DARK PROJECT KD 87A</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Мышь</div>-->
+<!--                        <div class="pDescr">LOGITECH G102 / ZOWIE FK2 EC2 / DARK PROJECT VGN F1</div>-->
+<!--                    </li>-->
+
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 120 ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00  <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 600  ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 900  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1000  ₽</span></li>-->
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 290  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 750 ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 1100  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1200  ₽</span></li>-->
+<!--                </div>-->
+<!--            </ul>-->
+
+
+
+
+<!--        </li>-->
+
+
+
+
+
+<!--        &lt;!&ndash; BOOTCAMP 24.5` 380HZ 5пк (v2)&ndash;&gt;-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">BOOTCAMP 24.5` 380HZ 5пк</div>-->
+<!--            </div>-->
+
+
+<!--            <div class="sliderLine">-->
+
+<!--                <a href="{% static 'venom/img/vdnh/BOOTCAMP24_2/01.jpg' %}" data-fancybox="BOOTCAMP242" data-caption="">-->
+<!--                  <img class="onePic" src="{% static 'venom/img/vdnh/BOOTCAMP24_2/01.jpg' %}" />-->
+<!--                </a>-->
+
+<!--                <a href="{% static 'venom/img/vdnh/BOOTCAMP24_2/02.jpg' %}" data-fancybox="BOOTCAMP242" data-caption="">-->
+<!--                  <img src="{% static 'venom/img/vdnh/BOOTCAMP24_2/02.jpg' %}" />-->
+<!--                </a>-->
+
+<!--            </div>-->
+
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Монитор</div>-->
+<!--                        <div class="pDescr">MSI 24,5` 380HZ FHD</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Процессор</div>-->
+<!--                        <div class="pDescr">INTEL I5 9400F</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Видеокарта</div>-->
+<!--                        <div class="pDescr">RTX 4070 TI</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Оперативная память</div>-->
+<!--                        <div class="pDescr">16GB DDR4 3600MHZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Гарнитура</div>-->
+<!--                        <div class="pDescr">HYPERX CLOUD ALPHA S / HYPERX REVOLVER S</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Механическая клавиатура</div>-->
+<!--                        <div class="pDescr">DARK PROJECT KD 87A</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Мышь</div>-->
+<!--                        <div class="pDescr">LOGITECH G102 / SteelSeries Rival / DARK PROJECT VGN F1</div>-->
+<!--                    </li>-->
+
+
+<!--            </ul>-->
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 120  ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00  <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 600  ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 900  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1000 ₽</span></li>-->
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 290  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 750  ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 1100  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1200  ₽</span></li>-->
+<!--                </div>-->
+<!--            </ul>-->
+
+<!--        </li>-->
+
+
+
+
+<!--        &lt;!&ndash; STREAM 24.5` 380HZ 1пк&ndash;&gt;-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">STREAM 24.5` 380HZ 1пк</div>-->
+<!--            </div>-->
+
+
+<!--            <div class="sliderLine">-->
+
+<!--                <a href="{% static 'venom/img/vdnh/STREAM/01.jpg' %}" data-fancybox="STREAM" data-caption="">-->
+<!--                  <img class="onePic" src="{% static 'venom/img/vdnh/STREAM/01.jpg' %}" />-->
+<!--                </a>-->
+
+<!--                <a href="{% static 'venom/img/vdnh/STREAM/02.jpg' %}" data-fancybox="STREAM" data-caption="">-->
+<!--                  <img src="{% static 'venom/img/vdnh/STREAM/02.jpg' %}" />-->
+<!--                </a>-->
+
+<!--            </div>-->
+
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Монитор</div>-->
+<!--                        <div class="pDescr">MSI 24,5` 380HZ FHD / Philips 27` 60HZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Процессор</div>-->
+<!--                        <div class="pDescr">INTEL I7 8700K</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Видеокарта</div>-->
+<!--                        <div class="pDescr">RTX 3060 TI</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Оперативная память</div>-->
+<!--                        <div class="pDescr">32GB DDR4 3600MHZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Гарнитура</div>-->
+<!--                        <div class="pDescr">HYPERX ALPHA S</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Механическая клавиатура</div>-->
+<!--                        <div class="pDescr">DARK PROJECT KD 87A</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Мышь</div>-->
+<!--                        <div class="pDescr">LOGITECH G102 / ZOWIE FK2 EC2 / DARK PROJECT VGN F1</div>-->
+<!--                    </li>-->
+
+
+<!--            </ul>-->
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 120  ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00  <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 600  ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 900  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1000 ₽</span></li>-->
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 290  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 750  ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 1100  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1200  ₽</span></li>-->
+<!--                </div>-->
+<!--            </ul>-->
+
+<!--        </li>-->
+
+
+
+
+
+
+<!--        &lt;!&ndash; SUPERVIP 4k 35` 144HZ 9пк&ndash;&gt;-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">SUPERVIP 4k 35` 144HZ 9пк</div>-->
+<!--            </div>-->
+
+
+<!--            <div class="sliderLine">-->
+
+<!--                <a href="{% static 'venom/img/vdnh/SUPERVIP4k/01.jpg' %}" data-fancybox="SUPERVIP4k" data-caption="">-->
+<!--                  <img class="onePic" src="{% static 'venom/img/vdnh/SUPERVIP4k/01.jpg' %}" />-->
+<!--                </a>-->
+
+<!--                <a href="{% static 'venom/img/vdnh/SUPERVIP4k/02.jpg' %}" data-fancybox="SUPERVIP4k" data-caption="">-->
+<!--                  <img src="{% static 'venom/img/vdnh/SUPERVIP4k/02.jpg' %}" />-->
+<!--                </a>-->
+
+<!--            </div>-->
+
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Монитор</div>-->
+<!--                        <div class="pDescr">XIAOMI 34` 144hz / Huawei 34` 165hz</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Процессор</div>-->
+<!--                        <div class="pDescr">INTEL I7 9700K</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Видеокарта</div>-->
+<!--                        <div class="pDescr">RTX 4070 TI</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Оперативная память</div>-->
+<!--                        <div class="pDescr">32GB DDR4 3600MHZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Гарнитура</div>-->
+<!--                        <div class="pDescr">HYPERX CLOUD ALPHA S / HYPERX REVOLVER S</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Механическая клавиатура</div>-->
+<!--                        <div class="pDescr">DARK PROJECT KD 87A / DARK PROJECT KD104A</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Мышь</div>-->
+<!--                        <div class="pDescr">LOGITECH G102 / ZOWIE FK2 EC2 / DARK PROJECT VGN F1</div>-->
+<!--                    </li>-->
+
+
+<!--            </ul>-->
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 120  ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00  <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 600  ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 900  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1000 ₽</span></li>-->
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">8:00 - 14:00 <span> 190  ₽.час</span></li>-->
+<!--                        <li class="">14:00 - 18:00 <span> 240  ₽.час</span></li>-->
+<!--                        <li class="">18:00 - 8:00 <span> 290  ₽.час</span></li>-->
+<!--                        <li class="">Пакет День | 9:00 - 16:00 <span> 750  ₽</span></li>-->
+<!--                        <li class="">Пакет Вечер | 16:00 - 22:00 <span> 1100  ₽</span></li>-->
+<!--                        <li class="">Пакет Ночь | 22:00 - 9:00 <span> 1200  ₽</span></li>-->
+<!--                </div>-->
+<!--            </ul>-->
+
+<!--        </li>-->
+
+
+
+
+
+
+<!--        &lt;!&ndash; TV ZONE&ndash;&gt;-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">TV ZONE</div>-->
+<!--            </div>-->
+
+
+<!--            <div class="sliderLine">-->
+
+<!--                <a href="{% static 'venom/img/vdnh/TVZONE/01.jpg' %}" data-fancybox="TVZONE" data-caption="">-->
+<!--                  <img class="onePic" src="{% static 'venom/img/vdnh/TVZONE/01.jpg' %}" />-->
+<!--                </a>-->
+
+<!--                <a href="{% static 'venom/img/vdnh/TVZONE/02.jpg' %}" data-fancybox="TVZONE" data-caption="">-->
+<!--                  <img src="{% static 'venom/img/vdnh/TVZONE/02.jpg' %}" />-->
+<!--                </a>-->
+
+<!--            </div>-->
+
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Игровая консоль</div>-->
+<!--                        <div class="pDescr">PS4 PRO</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">TV</div>-->
+<!--                        <div class="pDescr">TV LG 4K</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">TV</div>-->
+<!--                        <div class="pDescr">60 ДЮЙМОВ 60HZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">sound</div>-->
+<!--                        <div class="pDescr">саундбар + сабвуфер</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">уютно</div>-->
+<!--                        <div class="pDescr">Удобный диван</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">games</div>-->
+<!--                        <div class="pDescr">Большой выбор игр</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">комфорт</div>-->
+<!--                        <div class="pDescr">Отдельная комната</div>-->
+<!--                    </li>-->
+
+
+<!--            </ul>-->
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">Пакет 1 час  <span> 300 ₽</span></li>-->
+<!--                        <li class="">Пакет 3 часа  <span> 700 ₽</span></li>-->
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">Пакет 1 час  <span> 400 ₽</span></li>-->
+<!--                        <li class="">Пакет 3 часа  <span> 900 ₽</span></li>-->
+<!--                </div>-->
+<!--            </ul>-->
+
+<!--        </li>-->
+
+
+
+
+
+<!--        &lt;!&ndash; VIP TV ZONE &ndash;&gt;-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">VIP TV ZONE</div>-->
+<!--            </div>-->
+
+
+<!--            <div class="sliderLine">-->
+
+<!--                <a href="{% static 'venom/img/vdnh/VIPTVZONE/01.jpg' %}" data-fancybox="VIPTVZONE" data-caption="">-->
+<!--                  <img class="onePic" src="{% static 'venom/img/vdnh/VIPTVZONE/01.jpg' %}" />-->
+<!--                </a>-->
+
+<!--                <a href="{% static 'venom/img/vdnh/VIPTVZONE/02.jpg' %}" data-fancybox="VIPTVZONE" data-caption="">-->
+<!--                  <img src="{% static 'venom/img/vdnh/VIPTVZONE/02.jpg' %}" />-->
+<!--                </a>-->
+
+<!--            </div>-->
+
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">Игровая консоль</div>-->
+<!--                        <div class="pDescr">PS4 PRO</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">TV</div>-->
+<!--                        <div class="pDescr">TV LG 4K</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">TV</div>-->
+<!--                        <div class="pDescr">60 ДЮЙМОВ 60HZ</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">sound</div>-->
+<!--                        <div class="pDescr">саундбар + сабвуфер</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">уютно</div>-->
+<!--                        <div class="pDescr">Удобный диван</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">games</div>-->
+<!--                        <div class="pDescr">Большой выбор игр</div>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <div class="pTitle">комфорт</div>-->
+<!--                        <div class="pDescr">Отдельная комната</div>-->
+<!--                    </li>-->
+
+
+<!--            </ul>-->
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">Пакет 1 час  <span> 300 ₽</span></li>-->
+<!--                        <li class="">Пакет 3 часа  <span> 700 ₽</span></li>-->
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+<!--                        <li class="">Пакет 1 час  <span> 400 ₽</span></li>-->
+<!--                        <li class="">Пакет 3 часа  <span> 900 ₽</span></li>-->
+<!--                </div>-->
+<!--            </ul>-->
+
+<!--        </li>-->
+
+
+
+
+
+<!--    </ul>-->
+
+
+
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="clubPage ">-->
+
+<!--    <ul class="clubsZones">-->
+
+<!--        {% for zone in zonesVdnh %}-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">{{ zone.title }}</div>-->
+<!--            </div>-->
+<!--            <img src="{{ zone.photo.url }}" alt="{{ zone.title }}">-->
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:8 (925) 541-97-29" class="call">8 (925) 541-97-29</a>-->
+<!--                <a href="https://yandex.ru/maps/org/venom_cyber_zone/105697447406/?ll=37.649166%2C55.824177&z=17" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+<!--                {% if zone.monitor_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.monitor_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.monitor }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.processor_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.processor_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.processor }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.videocard_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.videocard_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.videocard }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.ozu_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.ozu_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.ozu }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.headset_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.headset_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.headset }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.keyboard_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.keyboard_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.keyboard }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.mouse_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.mouse_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.mouse }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+
+<!--            </ul>-->
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПН-ЧТ (price)</p>-->
+
+<!--                <div class="wrapTime">-->
+
+<!--                    {% if zone.timeone %}-->
+<!--                        <li class="">{{ zone.timeone }} <span>{{ zone.priceone }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timetwo %}-->
+<!--                        <li class="">{{ zone.timetwo }} <span>{{ zone.prictwo }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timetri %}-->
+<!--                        <li class="">{{ zone.timetri }} <span>{{ zone.pricetri }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timefour %}-->
+<!--                        <li class="">{{ zone.timefour }} <span>{{ zone.pricefour }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timefive %}-->
+<!--                        <li class="">{{ zone.timefive }} <span>{{ zone.pricefive }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timesix %}-->
+<!--                        <li class="">{{ zone.timesix }} <span>{{ zone.pricesix }}</span></li>-->
+<!--                    {% endif %}-->
+
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+
+<!--                    {% if zone.weekend_timeone %}-->
+<!--                        <li class="">{{ zone.weekend_timeone }} <span>{{ zone.weekend_priceone }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timetwo %}-->
+<!--                        <li class="">{{ zone.weekend_timetwo }} <span>{{ zone.weekend_prictwo }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timetri %}-->
+<!--                        <li class="">{{ zone.weekend_timetri }} <span>{{ zone.weekend_pricetri }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timefour %}-->
+<!--                        <li class="">{{ zone.weekend_timefour }} <span>{{ zone.weekend_pricefour }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timefive %}-->
+<!--                        <li class="">{{ zone.weekend_timefive }} <span>{{ zone.weekend_pricefive }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timesix %}-->
+<!--                        <li class="">{{ zone.weekend_timesix }} <span>{{ zone.weekend_pricesix }}</span></li>-->
+<!--                    {% endif %}-->
+
+<!--                </div>-->
+<!--            </ul>-->
+
+
+
+
+<!--        </li>-->
+<!--        {% endfor %}-->
+
+<!--    </ul>-->
+
+
+
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+<div class="pictureForClub3 glassEffect">
+    <div class="txtPart">
+        <div class="title">Игровые зоны клуба ВДНХ</div>
+        <div class="txt">Посмотреть все игровые зоны детальнее</div>
+        <a href="#" class="showPicMap">Показать</a>
+    </div>
+        <img src="{% static 'venom/img/4_minimap_vdnh.png' %}" alt="" class="kartinka">
+</div>
+
+<div class="modal-gamezone">
+    <div class="modal-content-gamezone">
+        <span class="modal-close-gamezone">Закрыть &times;</span>
+        <img src="{% static 'venom/img/4_minimap_vdnh.png' %}" alt="" class="modal-img-gamezone">
+    </div>
+</div>
+
+
+<script>
+    const showPicMapBtn = document.querySelector('.showPicMap');
+    const modal = document.querySelector('.modal-gamezone');
+    const modalCloseBtn = document.querySelector('.modal-close-gamezone');
+
+    function openModal(e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+    }
+
+    function closeModal(e) {
+        e.preventDefault();
+        modal.style.display = 'none';
+    }
+
+    showPicMapBtn.addEventListener('click', openModal);
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    window.addEventListener('keydown', function(e) {
+        if (e.keyCode === 27) {
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        }
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<div class="wrapListGames glassEffect">
+    <div class="insideListGames">
+
+        <div class="leftPart">
+            <div class="title">Игры | <span>для ПК</span></div>
+            <a href="#" class="gamesBt showModalClubGamesBt">Все игры</a>
+        </div>
+
+        <div class="rightPart">
+            <div class="title">Игры | <span>для TV</span></div>
+            <a href="#" class="gamesBt showModalTVGamesBt">Все игры</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="modalGamesWrap ClubGamesModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt">
+            <a href="#" class="closeModalGames">Закрыть</a>
+        </div>
+        <div class="titleModal">Все игры для ПК (ВДНХ)</div>
+         <ul>
+            <li>Age of Empires II: Definitive Edition</li>
+            <li>Amoung US</li>
+            <li>APEX Legends</li>
+            <li>Assetto Corsa Competizione</li>
+            <li>Black desert</li>
+            <li>Borderlands 2</li>
+            <li>Borderlands 3</li>
+            <li>CarX Drift Racing Online</li>
+            <li>Carmageddon Max Damage</li>
+            <li>Carmageddon Max Pack</li>
+            <li>CnC Kane Wraith</li>
+            <li>CnC Red Alert 3</li>
+            <li>CnC Tiberium Wars</li>
+            <li>Counter Strike 1.6</li>
+            <li>Days Gone</li>
+            <li>DEVIL MAY CRY 5</li>
+            <li>Dirt rally 2.0</li>
+            <li>DOOM 16</li>
+            <li>DOOM ETERNAL</li>
+            <li>Dragon Age:Inquisition</li>
+            <li>Dragon Age Origins</li>
+            <li>Dota 2</li>
+            <li>Eurotrack 3</li>
+            <li>Fall Guys</li>
+            <li>Final Fantasy 15</li>
+            <li>FLATOUT 2</li>
+            <li>Forza Horizon 4</li>
+            <li>Forza Horizon 5</li>
+            <li>GTA 5</li>
+            <li>Grand Theft Auto 5</li>
+            <li>HITMAN3</li>
+            <li>Hogwarts Legacy</li>
+            <li>Injustice 2</li>
+            <li>Little Big Planet 3</li>
+            <li>Lost Ark</li>
+            <li>MAFIA 1 REMASTERED</li>
+            <li>Mafia: Definitive Edition</li>
+            <li>Mass Effect andromeda</li>
+            <li>MASS EFFECT</li>
+            <li>METRO 2033</li>
+            <li>Minecraft</li>
+            <li>MK1</li>
+            <li>MORDHAU</li>
+            <li>Mortal combat 11</li>
+            <li>NARAKA: BLADEPOINT</li>
+            <li>NFS 2016</li>
+            <li>NFS Unbound</li>
+            <li>NHL20</li>
+            <li>Phasmophobia</li>
+            <li>PUBG</li>
+            <li>Quake 3 Arena</li>
+            <li>Quake Champions</li>
+            <li>Red Dead Redemption 2</li>
+            <li>Resident Evil 4</li>
+            <li>Rocket League</li>
+            <li>Rust</li>
+            <li>Sims 4</li>
+            <li>Sea of Thieves</li>
+            <li>SQUAD</li>
+            <li>Spider-man</li>
+            <li>STALKER Call of Pripyat</li>
+            <li>STALKER Clear Sky</li>
+            <li>STALKER Shadow of Chernobil</li>
+            <li>STAR WARS Jedi: Survivor</li>
+            <li>TEKKEN 7</li>
+            <li>THE FINALS</li>
+            <li>UFC2</li>
+            <li>UFC3</li>
+            <li>UFC4</li>
+            <li>UFC5</li>
+            <li>Warhammer Vermintide</li>
+            <li>WARFACE</li>
+            <li>WARTHUNDER</li>
+            <li>Watch Dogs Lehion</li>
+            <li>ВЕДЬМАК 3</li>
+            <li>Сounter Strike 1.6</li>
+
+         </ul>
+
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const showModalBtn = document.querySelector(".showModalClubGamesBt");
+  const modal = document.querySelector(".ClubGamesModal");
+  const closeModalBtn = modal.querySelector(".closeModalGames");
+
+  function closeModal(e) {
+    e.preventDefault();
+    modal.style.display = "none";
+  }
+
+  showModalBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+
+  closeModalBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      closeModal(event);
+    }
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      closeModal(event);
+    }
+  });
+});
+</script>
+
+
+
+
+
+<div class="modalGamesWrap ClubTVsModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt">
+            <a href="#" class="closeModalTV">Закрыть</a>
+        </div>
+        <div class="titleModal">Все игры для TV (ВДНХ)</div>
+         <ul>
+             <li>Bloodborn</li>
+            <li>Call of Duty Black ops 4</li>
+            <li>Crash Baandicoot</li>
+            <li>Fast and Furious</li>
+            <li>FIFA 2022</li>
+            <li>FIFA23/ps4</li>
+            <li>FIFA23/ps5</li>
+            <li>FIFA2020</li>
+            <li>FIFA2021</li>
+            <li>FC24 PS4</li>
+            <li>FC24 PS5</li>
+            <li>GTA 5</li>
+            <li>God Of War</li>
+            <li>Injustice 2</li>
+            <li>Just Cause4</li>
+            <li>Little Big Planet 3</li>
+            <li>Minecraft</li>
+            <li>MK1</li>
+            <li>Mortal combat 11</li>
+            <li>NBA 2K20</li>
+            <li>NHL20</li>
+            <li>Pes 2020</li>
+            <li>Red Dead Redemption 2</li>
+            <li>Spyro</li>
+            <li>Spider-man</li>
+            <li>Tekken7</li>
+            <li>UFC2</li>
+            <li>UFC3</li>
+            <li>UFC4</li>
+            <li>UFC5</li>
+            <li>W2K20</li>
+
+         </ul>
+
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const showModalTVBtn = document.querySelector(".showModalTVGamesBt");
+  const modalTV = document.querySelector(".ClubTVsModal");
+  const closeModalTVBtn = modalTV.querySelector(".closeModalTV");
+
+  function closeModalTV(event) {
+    event.preventDefault();
+    modalTV.style.display = "none";
+  }
+
+  showModalTVBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    modalTV.style.display = "flex";
+  });
+
+  closeModalTVBtn.addEventListener("click", closeModalTV);
+
+  modalTV.addEventListener("click", function(event) {
+    if (event.target === modalTV) {
+      closeModalTV(event);
+    }
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      closeModalTV(event);
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+<div class="glassEffect broniruyPc">
+    <div class="subTitle"> VENOM CYBER ZONE</div>
+    <div class="makeBronTxt">Бронируй мощный игровой ПК удобным способом,
+        <a href="tel:8 (925) 541-97-29">по телефону</a> или через приложение</div>
+
+        <div class="wrapLinkApp">
+
+            <a href="https://play.google.com/store/apps/details?id=com.f5computers.langame_aggregator" target="_blank" class="linkAppBlock">
+                <div class="logoPart">
+                    <img src="{% static 'venom/img/google_play_logo.svg' %}" alt="" class="kartinkaGoogle">
+                </div>
+                <div class="txtPart">
+                    <div class="txtTitle">GET IT ON for Android</div>
+                    <div class="txtSubtitle">Google Play</div>
+                </div>
+            </a>
+
+            <a href="https://apps.apple.com/ru/app/langame/id1642484175" target="_blank" class="linkAppBlock">
+                <div class="logoPart">
+                     <img src="{% static 'venom/img/apple_logo.svg' %}" alt="" class="kartinkaApple">
+                </div>
+                <div class="txtPart">
+                    <div class="txtTitle">Download on the iPhone</div>
+                    <div class="txtSubtitle">App Store</div>
+                </div>
+            </a>
+
+        </div>
+</div>
+
+
+
+
+
+
+
+
+<!--animationRoute-->
+<div class="animationRoute glassEffect" id="routeToclub">
+    <div class="title">Как найти клуб ВДНХ</div>
+
+
+    <div class="txt">
+        <p class="likeTitle">#Адрес:</p>
+        <p>ул. Ярославская 21а</p>
+        <p>Ориентир гостиница Космос</p>
+        <br>
+        <p class="likeTitle">#Метро:</p>
+        <p>Ближайшие к нашему клубу VENOM станции метро:</p>
+        <p>- ВДНХ - выход #1 самый удобный, чтобы добраться до клуба</p>
+        <p>- Выставочный центр - выход #1</p>
+        <p>- Улица Сергея Эйзенштейна - выход #1</p>
+        <br>
+        <p class="likeTitle">#Телефон:</p>
+        <p><a href="tel:8 (925) 541-97-29">8 (925) 541-97-29</a></p>
+        <br>
+
+    </div>
+
+    <lottie-player src="{% static 'venom/img/lottie/vdnhmap3.json' %}" background="transparent" speed="1" loop autoplay></lottie-player>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% include 'venom/components/bottomAbout.html' with titlepart="Киберспортивный клуб ВДНХ" txt="Добро пожаловать в увлекательный мир киберспорта на ВДНХ с клубом Веном. Мы создали пространство, где вы можете полностью погрузиться в киберспортивную атмосферу и развить свои навыки. Клуб Веном предлагает высококачественные профессиональные тренировки, возможность участвовать в захватывающих турнирах и соревнованиях, а также общаться с единомышленниками и опытными геймерами. Наше расположение на ВДНХ создает идеальную обстановку для киберспортивных любителей. Присоединяйтесь к нам уже сегодня и откройте для себя захватывающий мир киберспорта на ВДНХ!" %}
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let links = document.querySelectorAll('.showWayToClub');
+
+        links.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                let targetId = this.getAttribute('href').substring(1);
+                let targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    let offset = 150; // Определение смещения в 100px
+                    let targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth' // Плавный скролл
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+      // Your custom options
+});
+
+</script>
+
+
+
+
+{% endblock %}

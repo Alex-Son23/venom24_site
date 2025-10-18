@@ -1,0 +1,294 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="franchisePageNew">
+
+    <!-- 🔹 Верхний баннер -->
+    <div class="topBanerFranchise">
+        <div class="overlay"></div>
+
+        <video class="videoPartClub" loop autoplay muted playsinline>
+            <source src="{% static 'venom/video/franchise_video.mp4' %}" type="video/mp4">
+        </video>
+
+        <div class="txtPart">
+            <div class="firstLine">
+                <div class="smallTitle">Откройте компьютерный клуб по франшизе</div>
+                <h1 class="title">ФРАНШИЗА VENOM</h1>
+            </div>
+
+            <div class="secondLine">
+                <div class="addr">
+                    <span>Безоговорочный лидер рынка киберспорта в России</span>
+                </div>
+
+                <ul class="features">
+                    <li>Окупаемость от 1 года</li>
+                    <li>Чистая прибыль 45% от 900к до 2,3м</li>
+                    <li>Роялти 5%</li>
+                </ul>
+
+                <ul class="phoneAndToMap">
+                    <li class="wrapPhone">
+                        <a href="tel:+{{ franchisepage.phone }}" class="lineAnimation phone">
+                            <span class="flare"></span> {{ franchisepage.phone }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/79167720306" class="lineAnimation writeMeWidjet">
+                            <span class="flare"></span> Написать
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:VENOMFRANCHISE@GMAIL.COM" class="toMapBt">
+                            VENOMFRANCHISE@GMAIL.COM
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /topBanerFranchise -->
+
+
+    <!-- 🔹 Почему VENOM -->
+    <div class="glassEffect whyNet">
+        <div class="titleInfo">Почему сеть киберспортивных клубов VENOM?</div>
+
+        <ul class="listAbout">
+            <li>
+                <div class="info">Самая быстрорастущая отрасль</div>
+                <div class="descr">индустрии развлечений — это киберспорт</div>
+            </li>
+            <li>
+                <div class="info">Каждый 3-й</div>
+                <div class="descr">молодой человек до 25 лет вовлечён в киберспорт</div>
+            </li>
+            <li>
+                <div class="info">Инвестиции</div>
+                <div class="descr">
+                    Огромное количество брендов инвестируют в киберспорт
+                    (Тинькофф, Мегафон, Виза, Ситилинк, ВТБ и др.)
+                </div>
+            </li>
+            <li>
+                <div class="info">$2,9 млрд</div>
+                <div class="descr">Оборот мирового киберспортивного рынка</div>
+            </li>
+        </ul>
+    </div>
+    <!-- /whyNet -->
+
+
+    <!-- 🔹 О компании -->
+    <div class="glassEffect aboutInfo">
+        <div class="titleInfo">Лидеры рынка киберспорта и франчайзинга России</div>
+        <div class="subTitleAbout">
+            Франшиза VENOM — это крупнейшая сеть клубов, помощь с подбором и анализом помещения в вашем городе.
+        </div>
+
+        <ul class="listAbout">
+            <li>
+                <div class="info">800 000 ₽</div>
+                <div class="descr">паушальный взнос</div>
+            </li>
+            <li>
+                <div class="info">От 1 года</div>
+                <div class="descr">окупаемость проекта</div>
+            </li>
+            <li>
+                <div class="info">8–15 млн ₽</div>
+                <div class="descr">сумма инвестиций</div>
+            </li>
+            <li>
+                <div class="info">1–2 месяца</div>
+                <div class="descr">время запуска</div>
+            </li>
+        </ul>
+    </div>
+    <!-- /aboutInfo -->
+
+</div>
+<!-- /franchisePageNew -->
+
+
+{% include 'venom/components/ourAdvantages.html' %}
+{% include 'venom/components/ourFeatures.html' %}
+
+
+{% if homegallery %}
+<div class="glassEffect bigGallery">
+    <div class="titleGallery">Суперсовременные и уникальные</div>
+    <p>киберпространства в Москве</p>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for bigslider in homegallery %}
+                <div class="swiper-slide">
+                    <img src="{{ bigslider.photo.url }}" alt="">
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
+
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            effect: "creative",
+            creativeEffect: {
+                prev: { shadow: true, translate: [0, 0, -400] },
+                next: { translate: ["100%", 0, 0] },
+            },
+            slidesPerView: 2,
+            spaceBetween: 30,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            scrollbar: { el: '.swiper-scrollbar' },
+        });
+    </script>
+</div>
+{% endif %}
+<!-- /bigGallery -->
+
+
+<!-- 🔹 CRM Блок -->
+<div class="franchisePageNew" id="form">
+    <div class="glassEffect crmBlock">
+        <div class="titleInfo">Получите больше информации</div>
+        <div class="subTitleAbout">о франшизе VENOM</div>
+
+        <div class="wrapMorInfo">
+            <div class="presentationFranchiseNew">
+                <img src="{% static 'venom/img/cyberpunk.png' %}" alt="" class="avatar">
+                <div class="titlePresent">
+                    Узнайте больше о франшизе, посмотрев нашу презентацию и финансовую модель
+                </div>
+            </div>
+
+            <div class="crmBitrixForm">
+                <script data-b24-form="inline/10/jijeh9" data-skip-moving="true">
+                    (function(w,d,u){
+                        var s=d.createElement('script');
+                        s.async=true;
+                        s.src=u+'?'+(Date.now()/180000|0);
+                        var h=d.getElementsByTagName('script')[0];
+                        h.parentNode.insertBefore(s,h);
+                    })(window,document,'https://cdn-ru.bitrix24.ru/b28569802/crm/form/loader_10.js');
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /crmBlock -->
+
+
+<!-- 🔹 Стоимость и финансовая модель -->
+<div class="franchisePageNew">
+    <div class="priceFranchise">
+        <div class="titleInfo">Стоимость</div>
+
+        <ul class="priceWrap">
+            <li class="one">
+                <div class="info">Стоимость франшизы</div>
+                <div class="descr">800 000 ₽</div>
+            </li>
+            <li class="two">
+                <div class="info">Роялти</div>
+                <div class="descr">5% в месяц</div>
+            </li>
+            <li>
+                <div class="info">Выручка в месяц</div>
+                <div class="descr">от 500 000 ₽</div>
+            </li>
+            <li>
+                <div class="info">Срок открытия</div>
+                <div class="descr">30–40 дней</div>
+            </li>
+            <li>
+                <div class="info">Окупаемость бизнеса</div>
+                <div class="descr">от 12 мес</div>
+            </li>
+        </ul>
+
+        <div class="titleInfo">Финансовая модель</div>
+        <ul class="fincnseModel">
+            <li class="card">
+                <div class="devicesWrap">
+                    <div class="pc">30 ПК</div>
+                    <div class="sony">2 PS</div>
+                </div>
+
+                <div class="item">
+                    <div class="titleItem">Вложения</div>
+                    <div class="moneyItem">14 000 000 ₽</div>
+                </div>
+
+                <div class="item">
+                    <div class="titleItem">Оборот</div>
+                    <div class="moneyItem">2 400 000 ₽</div>
+                </div>
+
+                <div class="item">
+                    <div class="titleItem">Прибыль</div>
+                    <div class="moneyItem">1 250 000 ₽</div>
+                </div>
+
+                <a href="#form" class="write">Скачать финансовую модель</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /priceFranchise -->
+
+
+<!-- 🔹 Скрипты -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // const buttons = document.querySelectorAll('.write');
+    const writeForFranchise = document.querySelector('.writeForFranchise');
+    const writeMeWidjet = document.querySelector('.writeMeWidjet');
+
+    if (writeForFranchise) {
+        writeForFranchise.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('.b24-widget-button-openline_livechat span')?.click();
+        });
+    }
+
+    // buttons.forEach((button) => {
+    //     button.addEventListener('click', (e) => {
+    //         e.preventDefault();
+    //         document.querySelector('.b24-widget-button-openline_livechat span')?.click();
+    //     });
+    // });
+});
+</script>
+
+<script>
+(function(w,d,u){
+    var s=d.createElement('script');
+    s.async=true;
+    s.src=u+'?'+(Date.now()/60000|0);
+    var h=d.getElementsByTagName('script')[0];
+    h.parentNode.insertBefore(s,h);
+})(window,document,'https://cdn-ru.bitrix24.ru/b28569802/crm/site_button/loader_2_wy011b.js');
+</script>
+
+{% endblock %}

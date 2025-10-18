@@ -1,0 +1,256 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{% for item_seo in seo %}{{ item_seo.title }}{% endfor %}{% endblock %}
+
+{% block descriptionseo %}{% for item_seo in seo %}{{ item_seo.description }}{% endfor %}{% endblock %}
+
+{% block keywordsseo %}{% for item_seo in seo %}{{ item_seo.keywords }}{% endfor %}{% endblock %}
+
+
+
+
+{% load static %}
+
+
+
+
+
+
+
+{% block content %}
+
+    {% include 'venom/components/utp.html' %}
+    {% include 'venom/components/featuresLines.html' %}
+    {% include 'venom/components/ourFeatures.html' %}
+
+
+
+
+    {% include 'venom/components/ourAdvantages.html' %}
+
+
+
+
+{% if latest_news %}
+<div class="glassEffect bigGalleryHomePageNewsSlider">
+
+
+        <div class="titleGallery">Новости </div>
+        <div class="subTitle">В сети клубов VENOM</div>
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <div class="swiperNews">
+      <!-- Additional required wrapper -->
+
+
+    <div class="swiper-wrapper">
+        {% for news_item in latest_news %}
+            <div class="swiper-slide item">
+
+                <a href="{% url 'news_detail_new' slug=news_item.slug %}" class="title">{{ news_item.title }}</a>
+
+                <a href="{% url 'news_detail_new' slug=news_item.slug %}" class="newsPiclink">
+                    <img src="{{ news_item.photo_mobile.url }}" alt="" >
+                    <div class="categoryList">
+                    {% for category in news_item.catnews.all %}
+                       <span class="categoryTag"> {{ category.name }} {% if not forloop.last %}</span> {% endif %}
+                    {% endfor %}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+
+
+
+
+
+<!--          <div class="swiper-wrapper">-->
+<!--              {% for item_news in news %}-->
+<!--                <div class="swiper-slide item">-->
+<!--                    <a href="{% url 'newsdetail' slug=item_news.slug %}" class="title">{{ item_news.title }}</a>-->
+<!--                    <a href="{% url 'newsdetail' slug=item_news.slug %}">-->
+<!--                        <img src="{{ item_news.photo_mobile.url }}" alt="">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--              {% endfor %}-->
+<!--          </div>-->
+
+
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+      <script>
+        var swiper = new Swiper(".swiperNews", {
+          slidesPerView: 5,
+          spaceBetween: 20,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      </script>
+
+
+    <div class="wrapLinkNews">
+        <a href="{% url 'promo' %}" class="allNewsLinkBt">Все новости</a>
+    </div>
+
+</div>
+
+
+<!-- end bigGallery-->
+{% endif %}
+
+
+
+
+
+
+
+<!--squareGallery-->
+<div class="glassEffect squareGallery">
+
+
+        <div class="titleGallery">Фотогаллерея клубов VENOM</div>
+        <div class="subtitle">Cеть топовых кибер-арен в Москве</div>
+
+
+        <div class="wrapListGalery">
+          <div class="oneLine">
+            {% for i in photovenum|slice:":4" %} <!-- Берем первые 4 изображения -->
+            <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+                <img class="onePic" src="{{ i.photo.url }}" alt="Image"/>
+            </a>
+            {% endfor %}
+        </div>
+    
+        <div class="twoLine">
+            {% for i in photovenum|slice:"4:8" %} <!-- Берем следующие 4 изображения -->
+            <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+                <img class="twoPic" src="{{ i.photo.url }}" alt="Image"/>
+            </a>
+            {% endfor %}
+        </div>
+<!-- 
+            <div class="oneLine">
+
+                <a href="{% static 'venom/img/mitino/09.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/mitino/09.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/vdnh/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/vdnh/03_new.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/vdnh/04_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/vdnh/04_new.jpg' %}" />
+                </a>
+
+            </div>
+
+            <div class="twoLine">
+
+                <a href="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/serpuhovskaya/06.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sixPic" src="{% static 'venom/img/serpuhovskaya/06.jpg' %}" />
+                </a>
+
+                 <a href="{% static 'venom/img/serpuhovskaya/02.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sevenPic" src="{% static 'venom/img/serpuhovskaya/02.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="fivePic" src="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" />
+                </a>
+
+            </div> -->
+
+        </div>
+
+</div>
+<!--squareGallery END -->
+
+
+
+
+    {% include 'venom/components/adressListClubs.html' %}
+
+    {% include 'venom/components/map.html' %}
+
+    {% include 'venom/components/featuresLines.html' %}
+
+
+
+
+
+
+
+
+
+
+{% include 'venom/components/bottomAbout.html' with titlepart="Лучший компьютерный игровой клуб в Москве — VENOM" txt="Присоединяйтесь к  VENOM — ведущему компьютерному игровому клубу в Москве. У нас вы найдете самые популярные компьютерные игры, многопользовательские соревнования и уютную атмосферу. Посетите наш клуб прямо сейчас и окунитесь в мир захватывающих игровых приключений" %}
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
+</script>
+
+
+
+
+
+{% endblock %}
+
+
+

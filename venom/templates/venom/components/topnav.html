@@ -1,0 +1,143 @@
+
+{% load static %}
+
+
+
+{% with current_url=request.resolver_match.url_name %}
+{% with current_slug=request.resolver_match.kwargs.club_slug %}
+<div class="wrapTopnav">
+
+  <ul class="topNav">
+    <li>
+      <a href="{% url 'home' %}" class="logo">
+      <img src="{{ logo.site_logo.url }}" alt="Логотип">
+    </a>
+    </li>
+
+    <li>
+      <a href="{% url 'home' %}" class="{% if current_url == 'home' %}active{% endif %}">
+          Главная
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'clubs' %}" class="{% if 'club' in current_url or current_url == 'clubs' %}active{% endif %}">
+          Клубы
+      </a>
+
+      <ul class="inside">
+          {% for c in all_clubs %}
+            <li>
+              <a href="{% url 'club_page' c.slug %}" class="{% if current_slug == c.slug %}active{% endif %}">
+                {{ c.name }}
+              </a>
+            </li>
+          {% empty %}
+            <li><span>Клубы пока не добавлены</span></li>
+          {% endfor %}
+      </ul>
+    </li>
+
+
+
+
+
+<!--      <li>-->
+<!--        <a href="{% url 'promo' %}" class="{% if 'promo' in current_url or 'news' in current_url %}active{% endif %}">-->
+<!--            Акции-->
+<!--        </a>-->
+<!--      </li>-->
+
+      <li>
+        <a href="{% url 'promo' %}" class="{% if current_url == 'promo' %}active{% endif %}">
+            Новости, Акции, Турниры
+        </a>
+      </li>
+
+
+
+
+
+    <!-- <li>
+      <a href="{% url 'franchise' %}" class="{% if current_url == 'franchise' %}active{% endif %}">
+          Франшиза
+        </a>
+    </li> -->
+
+
+
+
+    <li>
+      <a href="{% url 'contact' %}" class="{% if current_url == 'contact' %}active{% endif %}">
+          Контакты
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'franchise' %}" class="{% if current_url == 'franchise' %}active{% endif %}">
+          ФРАНШИЗА
+      </a>
+    </li>
+
+  </ul>
+
+
+
+
+
+  <ul class="lang">
+
+
+
+
+      <li>
+          {% if current_url == 'home' %}
+          <a href="tel:{{ mainpage.phone }}" class="callToClub">{{ mainpage.phone }}</a>
+          {% endif %}
+
+          {% if current_url == 'franchise' %}
+          <a href="tel:{{ franchisepage }}" class="callToClub"><span>Франшиза</span>{{ franchisepage.phone }}</a>
+          {% endif %}
+
+          {% if current_url == 'clubs' %}
+          <a href="tel:{{ mainpage.phone }}" class="callToClub">{{ mainpage.phone }}</a>
+          {% endif %}
+
+
+
+          {% if 'promo' in current_url %}
+            <a href="tel:{{ mainpage.phone }}" class="callToClub">{{ mainpage.phone }}</a>
+          {% endif %}
+
+
+
+          {% if current_url == 'contact' %}
+          <a href="tel:{{ mainpage.phone }}" class="callToClub">{{ mainpage.phone }}</a>
+          {% endif %}
+
+
+      </li>
+
+      {% if user.is_authenticated %}
+      <a href="/admin77/" class="login" target="_blank">Админка</a>
+      {% endif %}
+
+      {% if request.user.is_authenticated %}
+        <div class="userName"><span>username:</span>{{ user.username }}</div>
+        <a href="{% url 'logout' %}" class="logout">Выйти</a>
+      {% endif %}
+
+  </ul>
+
+
+
+</div>
+{% endwith %}
+{% endwith %}
+
+
+
+
+
+
+

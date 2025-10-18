@@ -1,0 +1,35 @@
+{% extends 'venom/mobile/mobileLayout.html' %}
+
+{% block title %} Новости — Детальная {% endblock %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+<div class="detailNewsAndPrmoInClubMobile">
+    <img src="{{ newsdetailmobile.photo_mobile.url }}" alt="{{ newsdetailmobile.title }}" class="topPic">
+
+        <div class="categoryList">
+            <div class="availbaleInClub">Доступно в:</div>
+            {% for category in categories %}
+                {% if category.id != 1 %}
+                <span class="categoryTag">{{ category.name }}</span>{% if not forloop.last %} {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    <div class="txtPart">
+        <a href="{% url 'promo' %}" class="rubric">Новости</a>
+        <div class="date">{{ newsdetailmobile.time_create|date:"d F Y" }}</div>
+        <h1>{{ newsdetailmobile.title }}</h1>
+        <p>{{ newsdetailmobile.descr|safe }}</p>
+
+        <a href="{% url 'promo' %}" class="goBack">Назад</a>
+    </div>
+
+</div>
+
+{% endblock %}

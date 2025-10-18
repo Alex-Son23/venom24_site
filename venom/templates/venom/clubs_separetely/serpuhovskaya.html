@@ -1,0 +1,988 @@
+{% extends 'venom/layout.html' %}
+
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+
+
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="clubPage">
+
+    <div class="topBaner">
+
+        <div class="overlay"></div>
+
+        <video class="videoPartClub" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+          <source src="{% static 'venom/video/ser.mp4' %}" type="video/mp4"> 
+        </video>
+
+
+        <div class="txtPart">
+
+            <div class="firstLine">
+                <div class="smallTitle">VENOM CYBER ZONE</div>
+                <h1 class="title">Серпуховская</h1>
+            </div>
+
+
+
+            <div class="secondLine">
+<!--                <div class="addr"><span>Стремянный переулок, 36</span>  Работает круглосуточно</div>-->
+            <div class="titleTotalPCs" style="text-align: left; font-size: 22px; font-weight: bold; color: #007bff; margin-bottom: 10px;">
+                <span class="totalPCCount" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">43ПК</span>
+            </div>
+                <div class="howMuchClubs">
+                    <div class="titleHowMuch">7 зон в клубе:</div>
+                    <ul class="listShortZones">
+                        <li>COMFORT 24-27" 240HZ <span>23пк</span></li>
+                        <li>BOOTCAMP 24,5` 380HZ <span>4пк</span></li>
+                        <li>BOOTCAMP 24,5` 380HZ <span>4пк</span></li>
+                        <li>VIP 32` 2K 240HZ <span>4пк</span></li>
+                        <li>VIP BOOTCAMP  25' 380HZ <span>4пк</span></li>
+                        <li>SUPERVIP 34' 190HZ 3,5K <span>3пк</span></li>
+                        <li>VIP TV ZONE 85` + STREAM </li>
+                    </ul>
+                </div>
+
+<!--                <ul class="features">-->
+<!--                    <li class="">44ПК</li>-->
+<!--                    <li class="">4Вида ПК</li>-->
+<!--                    <li class="">2TV</li>-->
+<!--                </ul>-->
+
+
+                <ul class="phoneAndToMap">
+                    <li class="wrapPhone">
+                        <a href="tel:⁠89253850837" class="lineAnimation phone">
+                          <span class="flare"></span>
+                          ⁠8 (925) 385-08-37
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://yandex.ru/maps/-/CDueyCZa" target="_blank" class="toMapBt">
+                        Найти клуб на карте
+                        </a>
+                    </li>
+               </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="clubPage">
+    <div class="howFindClub">
+        <img src="{% static 'venom/img/steps2.svg' %}" alt="">
+        <div class="titleHow">Как найти клуб?</div>
+        <a href="#routeToclub" class="showWayToClub">Показать</a>
+    </div>
+</div>
+
+
+
+
+
+
+{% include 'venom/components/featuresLines.html' %}
+
+
+
+
+
+<div class="clubPage glassEffect">
+
+    <div class="newsBlockSlider">
+
+        <div class="titleNewsRazdel">Новости клуба Серпуховская</div>
+
+      <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"
+        slides-per-view="4" navigation="true" loop="true"
+                        effect="coverflow"   grab-cursor="true" coverflow-effect-rotate="45"  coverflow-effect-depth="50" centered-slides="true" coverflow-effect-modifier="1"
+      >
+
+          {% for item_news in news_new_variant %}
+            <swiper-slide>
+
+                <a href="{% url 'serpuhovskayadetailnewsnew' slug=item_news.slug %}" class="pic"><img src="{{ item_news.photo.url }}" alt=""></a>
+                <div class="txtPart">
+                <a href="{% url 'serpuhovskayadetailnewsnew' slug=item_news.slug %}" class="titleNews">{{ item_news.title }}</a>
+                <div class="descr">{{ item_news.short|safe }}</div>
+                <a href="{% url 'serpuhovskayadetailnewsnew' slug=item_news.slug %}" class="moreBt">Больше</a>
+                </div>
+
+            </swiper-slide>
+          {% endfor %}
+
+      </swiper-container>
+
+
+             <div class="margingRazdel"></div>
+
+              <div class="titleNewsRazdel">Акции клуба Серпуховская</div>
+
+              <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"
+                slides-per-view="4" navigation="true" loop="true" grab-cursor="true"
+              >
+
+                  {% for item_promo in promoSerpuhovskaya %}
+                    <swiper-slide class="promo ">
+
+
+                        <a href="{% url 'serpuhovskayadetailpromo' slug=item_promo.slug %}" class="pic"><img src="{{ item_promo.photo.url }}" alt=""></a>
+                        <div class="txtPart">
+                        <a href="{% url 'serpuhovskayadetailpromo' slug=item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>
+                        <div class="descr">{{ item_promo.short|safe }}</div>
+                        <a href="{% url 'serpuhovskayadetailpromo' slug=item_promo.slug %}" class="moreBt">Больше</a>
+                        </div>
+
+                    </swiper-slide>
+                  {% endfor %}
+
+
+
+              </swiper-container>
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+<!--<div class="clubPage glassEffect">-->
+
+<!--    <div class="newsBlockSlider">-->
+
+<!--        <div class="titleNewsRazdel">Новости клуба Серпуховская</div>-->
+
+<!--      <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"-->
+<!--        slides-per-view="4" navigation="true" loop="true"-->
+<!--                        effect="coverflow"   grab-cursor="true" coverflow-effect-rotate="45"  coverflow-effect-depth="50" centered-slides="true" coverflow-effect-modifier="1"-->
+<!--      >-->
+
+<!--          {% for item_news in newsSerpuhovskaya %}-->
+<!--            <swiper-slide>-->
+
+<!--                <a href="{% url 'serpuhovskayadetailnews' slug=item_news.slug %}" class="pic"><img src="{{ item_news.photo.url }}" alt=""></a>-->
+<!--                <a href="{% url 'serpuhovskayadetailnews' slug=item_news.slug %}" class="titleNews">{{ item_news.title }}</a>-->
+<!--                <div class="descr">{{ item_news.short|safe }}</div>-->
+<!--                <a href="{% url 'serpuhovskayadetailnews' slug=item_news.slug %}" class="moreBt">Больше</a>-->
+
+<!--            </swiper-slide>-->
+<!--          {% endfor %}-->
+
+<!--      </swiper-container>-->
+
+
+<!--             <div class="margingRazdel"></div>-->
+
+<!--              <div class="titleNewsRazdel">Акции клуба Серпуховская</div>-->
+
+<!--              <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="20"-->
+<!--                slides-per-view="4" navigation="true" loop="true" grab-cursor="true"-->
+<!--              >-->
+
+<!--                  {% for item_promo in promoSerpuhovskaya %}-->
+<!--                    <swiper-slide class="promo">-->
+
+
+<!--                        <a href="{% url 'serpuhovskayadetailpromo' slug=item_promo.slug %}" class="pic"><img src="{{ item_promo.photo.url }}" alt=""></a>-->
+<!--                        <a href="{% url 'serpuhovskayadetailpromo' slug=item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>-->
+<!--                        <div class="descr">{{ item_promo.short|safe }}</div>-->
+<!--                        <a href="{% url 'serpuhovskayadetailpromo' slug=item_promo.slug %}" class="moreBt">Больше</a>-->
+
+<!--                    </swiper-slide>-->
+<!--                  {% endfor %}-->
+
+
+
+<!--              </swiper-container>-->
+
+<!--      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>-->
+
+
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+
+<!--squareGallery-->
+<div class="glassEffect squareGallery">
+
+
+        <div class="titleGallery">Фотогаллерея Серпуховская</div>
+
+
+        <div class="wrapListGalery">
+            <div class="oneLine">
+                {% for i in photos|slice:":4" %} <!-- Берем первые 4 изображения -->
+                <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+                    <img class="onePic" src="{{ i.photo.url }}" alt="Image"/>
+                </a>
+                {% endfor %}
+            </div>
+        
+            <div class="twoLine">
+                {% for i in photos|slice:"4:8" %} <!-- Берем следующие 4 изображения -->
+                <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+                    <img class="twoPic" src="{{ i.photo.url }}" alt="Image"/>
+                </a>
+                {% endfor %}
+            </div>
+
+            <!-- <div class="oneLine">
+
+                <a href="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="onePic" src="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/serpuhovskaya/02.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/serpuhovskaya/02.jpg' %}" />
+                </a>
+
+               <a href="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="twoPic" src="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/serpuhovskaya/10.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img src="{% static 'venom/img/serpuhovskaya/10.jpg' %}" />
+                </a>
+
+            </div>
+
+            <div class="twoLine">
+
+                <a href="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="fivePic" src="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" />
+                </a>
+
+                <a href="{% static 'venom/img/serpuhovskaya/06.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sixPic" src="{% static 'venom/img/serpuhovskaya/06.jpg' %}" />
+                </a>
+
+                 <a href="{% static 'venom/img/serpuhovskaya/07.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="sevenPic" src="{% static 'venom/img/serpuhovskaya/07.jpg' %}" />
+                </a>
+
+
+                <a href="{% static 'venom/img/serpuhovskaya/09.jpg' %}" data-fancybox="gallery" data-caption="">
+                  <img class="eightPic" src="{% static 'venom/img/serpuhovskaya/09.jpg' %}" />
+                </a>
+
+            </div> -->
+
+        </div>
+
+</div>
+<!--squareGallery END -->
+
+
+
+
+
+
+
+
+<!--clubsZones newVersion with Pics -->
+<div class="clubPage ">
+
+
+    <ul class="clubsZones">
+        {% for zone in zonesSerpuhovskayaNew %}
+        <li class="glassZones">
+            <div class="zoneSmall">комната</div>
+            <div class="wrapZoneName">
+                <div class="zoneName">{{ zone.title }}</div>
+            </div>
+
+
+            <div class="sliderLineWrap">
+                <div class="zoomIn">
+                    <img class="zoomInPic" src="{% static 'venom/img/zoom-in.svg' %}" alt="">
+                </div>
+                <div class="sliderLine">
+                {% if zone.zone_pics.all %}
+                    {% for pic in zone.zone_pics.all %}
+                        <a href="{{ pic.photo.url }}" data-fancybox="{{ zone.slug }}" data-caption="">
+
+                            <img class="onePic" src="{{ pic.photo.url }}" />
+                        </a>
+                    {% endfor %}
+                    {% else %}
+                    <img src="{% static 'venom/img/noimage.jpg' %}" alt="">
+                {% endif %}
+                </div>
+            </div>
+
+
+
+            <div class="btnWrap">
+                <a href="tel:⁠8 (925) 385-08-37" class="call">⁠8 (925) 385-08-37</a>
+                <a href="https://yandex.ru/maps/-/CDueyCZa" target="_blank" class="toMap">На карте</a>
+            </div>
+
+
+            <ul class="params">
+                {% if zone.monitor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.monitor_tile }}</div>
+                        <div class="pDescr">{{ zone.monitor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.processor_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.processor_tile }}</div>
+                        <div class="pDescr">{{ zone.processor }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.videocard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.videocard_tile }}</div>
+                        <div class="pDescr">{{ zone.videocard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.ozu_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.ozu_tile }}</div>
+                        <div class="pDescr">{{ zone.ozu }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.headset_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.headset_tile }}</div>
+                        <div class="pDescr">{{ zone.headset }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.keyboard_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.keyboard_tile }}</div>
+                        <div class="pDescr">{{ zone.keyboard }}</div>
+                    </li>
+                {% endif %}
+                {% if zone.mouse_tile %}
+                    <li>
+                        <div class="pTitle">{{ zone.mouse_tile }}</div>
+                        <div class="pDescr">{{ zone.mouse }}</div>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <ul class="pricePnCht glassEffectFeaturesDark">
+                <p class="titleTime">Понедельник-Воскресенье</p>
+
+                <div class="wrapTime">
+                    {% if zone.timeone %}
+                        <li class="">{{ zone.timeone }} <span>{{ zone.priceone }}</span></li>
+                    {% endif %}
+                    {% if zone.timetwo %}
+                        <li class="">{{ zone.timetwo }} <span>{{ zone.prictwo }}</span></li>
+                    {% endif %}
+                    {% if zone.timetri %}
+                        <li class="">{{ zone.timetri }} <span>{{ zone.pricetri }}</span></li>
+                    {% endif %}
+                    {% if zone.timefour %}
+                        <li class="">{{ zone.timefour }} <span>{{ zone.pricefour }}</span></li>
+                    {% endif %}
+                    {% if zone.timefive %}
+                        <li class="">{{ zone.timefive }} <span>{{ zone.pricefive }}</span></li>
+                    {% endif %}
+                    {% if zone.timesix %}
+                        <li class="">{{ zone.timesix }} <span>{{ zone.pricesix }}</span></li>
+                    {% endif %}
+                </div>
+
+            </ul>
+
+
+<!--            <ul class="pricePtVs glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">ПТ-ВС (price)</p>-->
+<!--                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>-->
+<!--                <div class="wrapTime">-->
+<!--                    {% if zone.weekend_timeone %}-->
+<!--                        <li class="">{{ zone.weekend_timeone }} <span>{{ zone.weekend_priceone }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timetwo %}-->
+<!--                        <li class="">{{ zone.weekend_timetwo }} <span>{{ zone.weekend_prictwo }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timetri %}-->
+<!--                        <li class="">{{ zone.weekend_timetri }} <span>{{ zone.weekend_pricetri }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timefour %}-->
+<!--                        <li class="">{{ zone.weekend_timefour }} <span>{{ zone.weekend_pricefour }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timefive %}-->
+<!--                        <li class="">{{ zone.weekend_timefive }} <span>{{ zone.weekend_pricefive }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.weekend_timesix %}-->
+<!--                        <li class="">{{ zone.weekend_timesix }} <span>{{ zone.weekend_pricesix }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--            </ul>-->
+
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+
+
+
+
+
+<!--clubsZones-->
+<!--<div class="clubPage ">-->
+
+<!--    <ul class="clubsZones">-->
+
+<!--        {% for zone in zonesSerpuhovskaya %}-->
+<!--        <li class="glassZones">-->
+<!--            <div class="zoneSmall">комната</div>-->
+<!--            <div class="wrapZoneName">-->
+<!--                <div class="zoneName">{{ zone.title }}</div>-->
+<!--            </div>-->
+<!--            <img src="{{ zone.photo.url }}" alt="{{ zone.title }}">-->
+
+<!--            <div class="btnWrap">-->
+<!--                <a href="tel:⁠8 (925) 385-08-37" class="call">⁠8 (925) 385-08-37</a>-->
+<!--                <a href="https://yandex.ru/maps/-/CDueyCZa" target="_blank" class="toMap">На карте</a>-->
+<!--            </div>-->
+
+
+<!--            <ul class="params">-->
+<!--                {% if zone.monitor_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.monitor_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.monitor }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.processor_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.processor_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.processor }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.videocard_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.videocard_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.videocard }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.ozu_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.ozu_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.ozu }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.headset_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.headset_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.headset }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.keyboard_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.keyboard_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.keyboard }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--                {% if zone.mouse_tile %}-->
+<!--                    <li>-->
+<!--                        <div class="pTitle">{{ zone.mouse_tile }}</div>-->
+<!--                        <div class="pDescr">{{ zone.mouse }}</div>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--            </ul>-->
+
+<!--            <ul class="pricePnCht glassEffectFeaturesDark">-->
+<!--                <p class="titleTime">Понедельник-Воскресенье</p>-->
+
+<!--                <div class="wrapTime">-->
+<!--                    {% if zone.timeone %}-->
+<!--                        <li class="">{{ zone.timeone }} <span>{{ zone.priceone }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timetwo %}-->
+<!--                        <li class="">{{ zone.timetwo }} <span>{{ zone.prictwo }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timetri %}-->
+<!--                        <li class="">{{ zone.timetri }} <span>{{ zone.pricetri }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timefour %}-->
+<!--                        <li class="">{{ zone.timefour }} <span>{{ zone.pricefour }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timefive %}-->
+<!--                        <li class="">{{ zone.timefive }} <span>{{ zone.pricefive }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                    {% if zone.timesix %}-->
+<!--                        <li class="">{{ zone.timesix }} <span>{{ zone.pricesix }}</span></li>-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+
+<!--            </ul>-->
+
+
+<!--&lt;!&ndash;            <ul class="pricePtVs glassEffectFeaturesDark">&ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="titleTime">ПТ-ВС (price)</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="smallTitle">(В том числе выходные и праздничные дни)</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="wrapTime">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% if zone.weekend_timeone %}&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="">{{ zone.weekend_timeone }} <span>{{ zone.weekend_priceone }}</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% if zone.weekend_timetwo %}&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="">{{ zone.weekend_timetwo }} <span>{{ zone.weekend_prictwo }}</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% if zone.weekend_timetri %}&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="">{{ zone.weekend_timetri }} <span>{{ zone.weekend_pricetri }}</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% if zone.weekend_timefour %}&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="">{{ zone.weekend_timefour }} <span>{{ zone.weekend_pricefour }}</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% if zone.weekend_timefive %}&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="">{{ zone.weekend_timefive }} <span>{{ zone.weekend_pricefive }}</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% if zone.weekend_timesix %}&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="">{{ zone.weekend_timesix }} <span>{{ zone.weekend_pricesix }}</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
+
+
+
+
+
+
+<!--        </li>-->
+<!--        {% endfor %}-->
+
+<!--    </ul>-->
+
+
+
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+<div class="pictureForClub3 glassEffect">
+    <div class="txtPart">
+        <div class="title">Игровые зоны клуба Серпуховская</div>
+        <div class="txt">Посмотреть все игровые зоны детальнее</div>
+        <a href="#" class="showPicMap">Показать</a>
+    </div>
+        <img src="{% static 'venom/img/2_minimap_surpuh.png' %}" alt="" class="kartinka">
+</div>
+
+<div class="modal-gamezone">
+    <div class="modal-content-gamezone">
+        <span class="modal-close-gamezone">Закрыть &times;</span>
+        <img src="{% static 'venom/img/2_minimap_surpuh.png' %}" alt="" class="modal-img-gamezone">
+    </div>
+</div>
+
+
+<script>
+    const showPicMapBtn = document.querySelector('.showPicMap');
+    const modal = document.querySelector('.modal-gamezone');
+    const modalCloseBtn = document.querySelector('.modal-close-gamezone');
+
+    function openModal(e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+    }
+
+    function closeModal(e) {
+        e.preventDefault();
+        modal.style.display = 'none';
+    }
+
+    showPicMapBtn.addEventListener('click', openModal);
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    window.addEventListener('keydown', function(e) {
+        if (e.keyCode === 27) {
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+<div class="wrapListGames glassEffect">
+    <div class="insideListGames">
+
+        <div class="leftPart">
+            <div class="title">Игры | <span>для ПК</span></div>
+            <a href="#" class="gamesBt showModalClubGamesBt">Все игры</a>
+        </div>
+
+        <div class="rightPart">
+            <div class="title">Игры | <span>для TV</span></div>
+            <a href="#" class="gamesBt showModalTVGamesBt">Все игры</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="modalGamesWrap ClubGamesModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt">
+            <a href="#" class="closeModalGames">Закрыть</a>
+        </div>
+        <div class="titleModal">Все игры для ПК (Серпуховская)</div>
+         <ul>
+            <li>Age of Empires II: Definitive Edition</li>
+            <li>Amoung US</li>
+            <li>Assetto Corsa Competizione</li>
+            <li>Assetto Corsa Competizione</li>
+            <li>Borderlands 2</li>
+            <li>Borderlands 3</li>
+            <li>CarX Drift Racing Online</li>
+            <li>Carmageddon Max Damage</li>
+            <li>Carmageddon Max Pack</li>
+            <li>CnC Kane Wraith</li>
+            <li>CnC Red Alert 3</li>
+            <li>CnC Tiberium Wars</li>
+            <li>COD MW1/WZ1 (WARZONE 3)</li>
+            <li>Cyberpunk 2077</li>
+            <li>Day of defeat: Source</li>
+            <li>Days Gone</li>
+            <li>DEVIL MAY CRY 5</li>
+            <li>Dirt rally 2.0</li>
+            <li>DOOM 16</li>
+            <li>DOOM ETERNAL</li>
+            <li>Dragon Age:Inquisition</li>
+            <li>Dragon Age Origins</li>
+            <li>Dota 2</li>
+            <li>Eurotrack 3</li>
+            <li>Fall Guys</li>
+            <li>Final Fantasy 15</li>
+            <li>FLATOUT 2</li>
+            <li>Forza Horizon 4</li>
+            <li>Forza Horizon 5</li>
+            <li>Grand Theft Auto 5</li>
+            <li>HITMAN3</li>
+            <li>Hogwarts Legacy</li>
+            <li>MAFIA 1 REMASTERED</li>
+            <li>Mafia: Definitive Edition</li>
+            <li>Mass Effect andromeda</li>
+            <li>MASS EFFECT</li>
+            <li>METRO 2033</li>
+            <li>Mordhau</li>
+            <li>MORTAL KOMBAT 11</li>
+            <li>NARAKA: BLADEPOINT</li>
+            <li>NFS 2016</li>
+            <li>NFS Unbound</li>
+            <li>Nier:Automata</li>
+            <li>PAYDAY 2</li>
+            <li>Phasmophobia</li>
+            <li>PUBG</li>
+            <li>Quake 3 Arena</li>
+            <li>Quake 3 Arena</li>
+            <li>Quake Champions</li>
+            <li>Red Dead Redemption 2</li>
+            <li>Resident Evil 4</li>
+            <li>Rocket League</li>
+            <li>Rust</li>
+            <li>Sims 4</li>
+            <li>SQUAD</li>
+            <li>STALKER Call of Pripyat</li>
+            <li>STALKER Clear Sky</li>
+            <li>STALKER Shadow of Chernobil</li>
+            <li>Sea of Thieves</li>
+            <li>STAR WARS Jedi: Survivor</li>
+            <li>TEKKEN 7</li>
+            <li>THE FINALS</li>
+            <li>Warhammer Vermintide</li>
+            <li>WARFACE</li>
+            <li>WARTHUNDER</li>
+            <li>World of Tanks Blitz</li>
+
+         </ul>
+
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const showModalBtn = document.querySelector(".showModalClubGamesBt");
+  const modal = document.querySelector(".ClubGamesModal");
+  const closeModalBtn = modal.querySelector(".closeModalGames");
+
+  function closeModal(e) {
+    e.preventDefault();
+    modal.style.display = "none";
+  }
+
+  showModalBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+
+  closeModalBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      closeModal(event);
+    }
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      closeModal(event);
+    }
+  });
+});
+</script>
+
+
+
+
+
+<div class="modalGamesWrap ClubTVsModal">
+    <div class="insideModalGames">
+        <div class="lineCloseBt">
+            <a href="#" class="closeModalTV">Закрыть</a>
+        </div>
+        <div class="titleModal">Все игры для TV (Серпуховская)</div>
+         <ul>
+             <li>FIFA23 PS5</li>
+            <li>FC24 PS5</li>
+            <li>GTA5 PS4</li>
+            <li>GTA5 PS5</li>
+            <li>Gran Turismo 7 PS5</li>
+            <li>GRID Legend PS4</li>
+            <li>Little Big Planet 3</li>
+            <li>Mortal Kombat 1 PS5</li>
+            <li>NBA 2K24 PS5</li>
+            <li>NHL24 PS5</li>
+            <li>Tekken 8 PS5</li>
+            <li>UFC 5 PS5</li>
+            <li>UFC4 PS4</li>
+         </ul>
+
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const showModalTVBtn = document.querySelector(".showModalTVGamesBt");
+  const modalTV = document.querySelector(".ClubTVsModal");
+  const closeModalTVBtn = modalTV.querySelector(".closeModalTV");
+
+  function closeModalTV(event) {
+    event.preventDefault();
+    modalTV.style.display = "none";
+  }
+
+  showModalTVBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    modalTV.style.display = "flex";
+  });
+
+  closeModalTVBtn.addEventListener("click", closeModalTV);
+
+  modalTV.addEventListener("click", function(event) {
+    if (event.target === modalTV) {
+      closeModalTV(event);
+    }
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      closeModalTV(event);
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+<div class="glassEffect broniruyPc">
+    <div class="subTitle"> VENOM CYBER ZONE</div>
+    <div class="makeBronTxt">Бронируй мощный игровой ПК удобным способом,
+        <a href="tel:⁠8 (925) 385-08-37">по телефону</a> или через приложение</div>
+
+        <div class="wrapLinkApp">
+
+            <a href="https://play.google.com/store/apps/details?id=com.f5computers.langame_aggregator" target="_blank" class="linkAppBlock">
+                <div class="logoPart">
+                    <img src="{% static 'venom/img/google_play_logo.svg' %}" alt="" class="kartinkaGoogle">
+                </div>
+                <div class="txtPart">
+                    <div class="txtTitle">GET IT ON for Android</div>
+                    <div class="txtSubtitle">Google Play</div>
+                </div>
+            </a>
+
+            <a href="https://apps.apple.com/ru/app/langame/id1642484175" target="_blank" class="linkAppBlock">
+                <div class="logoPart">
+                     <img src="{% static 'venom/img/apple_logo.svg' %}" alt="" class="kartinkaApple">
+                </div>
+                <div class="txtPart">
+                    <div class="txtTitle">Download on the iPhone</div>
+                    <div class="txtSubtitle">App Store</div>
+                </div>
+            </a>
+
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--animationRoute-->
+<div class="animationRoute glassEffect" id="routeToclub">
+    <div class="title">Как найти клуб Серпуховская</div>
+
+    <div class="txt">
+
+        <p class="likeTitle">#Адрес:</p>
+        <p>Стремянный переулок 36 - Ориентир - РЭУ им Г. В. Плеханова, ВТБ Банк</p>
+        <br>
+        <p class="likeTitle">#Метро:</p>
+        <p>Ближайшие к нашему клубу VENOM станции метро:</p>
+        <p>- Серпуховская выход #7 -  самый удобный, чтобы добраться до клуба</p>
+        <p>- Добрынинская - выход #1 </p>
+        <br>
+        <p class="likeTitle">#Телефон:</p>
+        <p><a href="tel:+7 (925) 385-08-37">+7 (925) 385-08-37</a></p>
+        <br>
+
+    </div>
+<!--    <img src="{% static 'venom/img/serpuhovskaya/serpuhovskaya_map.jpg' %}" alt="">-->
+    <video id="" loop="loop" autoplay="autoplay" muted="muted" playsinline="playsinline">
+        <source src="{% static 'venom/video/animation_find_serpuhovskaya2.mp4' %}" type="video/mp4">
+    </video>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let links = document.querySelectorAll('.showWayToClub');
+
+        links.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                let targetId = this.getAttribute('href').substring(1);
+                let targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    let offset = 150; // Определение смещения в 100px
+                    let targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth' // Плавный скролл
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+{% include 'venom/components/bottomAbout.html' with titlepart="Киберспортивный клуб Серпуховская" txt="Откройте для себя захватывающий мир киберспорта в Серпуховской с клубом Веном. Наш клуб предоставляет высококлассные профессиональные тренировки, уникальную возможность участвовать в увлекательных турнирах и соревнованиях, а также наслаждаться общением с единомышленниками и геймерами в нашей киберспортивной среде. Независимо от вашего уровня подготовки, мы предлагаем идеальную платформу для развития в киберспорте. Присоединяйтесь к нам сегодня и окунитесь в захватывающий мир киберспорта в Серпуховской!" %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
+</script>
+
+
+
+
+{% endblock %}

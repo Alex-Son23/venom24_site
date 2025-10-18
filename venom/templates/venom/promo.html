@@ -1,0 +1,208 @@
+{% extends 'venom/layout.html' %}
+
+{% block titleseo %}{{ seo.title }}{% endblock %}
+
+{% block descriptionseo %}{{ seo.description }}{% endblock %}
+
+{% block keywordsseo %}{{ seo.keywords }}{% endblock %}
+
+
+
+
+
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+<div class="promoPage">
+
+    {% include 'venom/components/glassEffectBlocks.html' with titlepart="Новости и Акции в клубах VENOM" subtitle="Узнавай первым о скидках, акциях, новостях в сети клубов VENOM" %}
+
+
+
+
+
+    <div class="insideWrapNewsPromoList">
+
+
+        {% if latest_news %}
+        <div class="newsPart">
+            <div class="titleRazdel"># НОВОСТИ, АКЦИИ, ТУРНИРЫ</div>
+            <ul class="newsListNew">
+                {% for news_item in latest_news %}
+                    <li class="glassEffect cardNewNews">
+                        <a href="{% url 'news_detail_new' slug=news_item.slug %}" class="title">{{ news_item.title }}</a>
+
+                        <div class="categoryList">
+                        {% for category in news_item.catnews.all %}
+                            {% if category.id != 1 %}
+                           <span class="categoryTag"> {{ category.name }} {% if not forloop.last %}</span> {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+
+                        {% if news_item.photo %}
+                            <a href="{% url 'news_detail_new' slug=news_item.slug %}"><img src="{{ news_item.photo.url }}" alt=""></a>
+                        {% else %}
+                            <a href="{% url 'news_detail_new' slug=news_item.slug %}"><img src="https://images.unsplash.com/photo-1705599773334-b73b8f707101?q=80&w=2614&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></a>
+                        {% endif %}
+                        <div class="short">{{ news_item.short|safe }}</div>
+                        <a href="{% url 'news_detail_new' slug=news_item.slug %}" class="more">Больше</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
+
+
+        {% if promos %}
+        <div class="promoPart">
+            <div class="titleRazdel"># Акции</div>
+
+            <ul class="promoListNew">
+                {% for promo in promos %}
+                    <li class="glassEffect itemPromo">
+                        <div class="date">{{ promo.time_create|date:"d F Y" }}</div>
+                        <a href="{% url 'promodetail' slug=promo.slug %}" class="title">{{ promo.title }}</a>
+                        {% if promo.photo %}
+                            <a href="{% url 'promodetail' slug=promo.slug %}"><img src="{{ promo.photo.url }}" alt=""></a>
+                        {% else %}
+                            <a href="{% url 'promodetail' slug=promo.slug %}"><img src="https://images.unsplash.com/photo-1705599773334-b73b8f707101?q=80&w=2614&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></a>
+                        {% endif %}
+                        <div class="descr">{{ promo.short|safe }}</div>
+                        <a href="{% url 'promodetail' slug=promo.slug %}" class="more">Больше</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+
+           <!-- <ul class="promoList"
+               {% for promo in promos %}
+                   <li class="glassEffect">
+                       <div class="date">{{ promo.time_create|date:"d F Y" }}</div>
+                       <a href="{% url 'promodetail' slug=promo.slug %}" class="title">{{ promo.title }}</a>
+                       {% if promo.photo %}
+                           <a href="{% url 'promodetail' slug=promo.slug %}"><img src="{{ promo.photo.url }}" alt=""></a>
+                       {% else %}
+                           <a href="{% url 'promodetail' slug=promo.slug %}"><img src="https://images.unsplash.com/photo-1705599773334-b73b8f707101?q=80&w=2614&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></a>
+                       {% endif %}
+                       <div class="descr">{{ promo.short|safe }}</div>
+                       <a href="{% url 'promodetail' slug=promo.slug %}" class="more">Больше</a>
+                   </li>
+               {% endfor %}
+        </ul>  -->
+        </div>
+        {% endif %}
+        <div class="promoPart">
+            <div class="titleRazdel"># Турниры</div>
+<!--squareGallery-->
+<div class="glassEffect squareGallery">
+
+
+    <!-- <div class="titleGallery">Фотогаллерея клубов VENOM</div>
+    <div class="subtitle">Cеть топовых кибер-арен в Москве</div> -->
+
+
+    <div class="wrapListGalery">
+      <div class="oneLine">
+        {% for i in photovenum|slice:":4" %} <!-- Берем первые 4 изображения -->
+        <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+            <img class="onePic" src="{{ i.photo.url }}" alt="Image"/>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="twoLine">
+        {% for i in photovenum|slice:"4:8" %} <!-- Берем следующие 4 изображения -->
+        <a href="{{ i.photo.url }}" data-fancybox="gallery" data-caption="">
+            <img class="twoPic" src="{{ i.photo.url }}" alt="Image"/>
+        </a>
+        {% endfor %}
+    </div>
+<!-- 
+        <div class="oneLine">
+
+            <a href="{% static 'venom/img/mitino/09.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="onePic" src="{% static 'venom/img/mitino/09.jpg' %}" />
+            </a>
+
+            <a href="{% static 'venom/img/vdnh/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="twoPic" src="{% static 'venom/img/vdnh/03_new.jpg' %}" />
+            </a>
+
+
+            <a href="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="onePic" src="{% static 'venom/img/serpuhovskaya/01_new.jpg' %}" />
+            </a>
+
+
+            <a href="{% static 'venom/img/vdnh/04_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img src="{% static 'venom/img/vdnh/04_new.jpg' %}" />
+            </a>
+
+        </div>
+
+        <div class="twoLine">
+
+            <a href="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="twoPic" src="{% static 'venom/img/serpuhovskaya/03_new.jpg' %}" />
+            </a>
+
+            <a href="{% static 'venom/img/serpuhovskaya/06.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="sixPic" src="{% static 'venom/img/serpuhovskaya/06.jpg' %}" />
+            </a>
+
+             <a href="{% static 'venom/img/serpuhovskaya/02.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="sevenPic" src="{% static 'venom/img/serpuhovskaya/02.jpg' %}" />
+            </a>
+
+
+            <a href="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" data-fancybox="gallery" data-caption="">
+              <img class="fivePic" src="{% static 'venom/img/serpuhovskaya/05_new.jpg' %}" />
+            </a>
+
+        </div> -->
+
+    </div>
+
+</div>
+
+
+
+    </div>
+
+
+    
+
+
+
+
+
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
+</script>
+
+
+{% endblock %}
