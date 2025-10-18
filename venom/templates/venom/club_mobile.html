@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {% if route.landmark %}<p>{{ route.landmark }}</p>{% endif %}
         <br>
         <p class="likeTitle">#Метро:</p>
-        {% for line in route.metro_info.splitlines %}<p>{{ line }}</p>{% endfor %}
+        {% for line in route.metro_info.splitlines %}<p>{{ line|safe }}</p>{% endfor %}
         <br>
         <p class="likeTitle">#Телефон:</p>
         <p><a href="tel:{{ route.phone }}">{{ route.phone }}</a></p>
