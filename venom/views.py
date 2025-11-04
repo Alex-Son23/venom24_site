@@ -115,13 +115,13 @@ class PromoPageView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['promos'] = ClubPromo.objects.filter(is_published=True)
+        context['promos'] = ClubPromo.objects.filter(is_published=True).filter(is_main_page=True).order_by('-sort')
         context['news'] = [content for content in context['all_content'] if isinstance(content, News)]
         context['seo'] = PromoPageSeo.objects.last()
         context['news_new_variant'] = [content for content in context['all_content'] if
                                        isinstance(content, NewsNewVariant)]
 
-        latest_news = NewsNew.objects.filter(is_published=True).order_by('-sort', '-time_create', '-id')
+        latest_news = NewsNew.objects.filter(is_published=True).filter(is_main_page=True).order_by('-sort', '-time_create', '-id')
         context['photovenum'] = [content for content in context['all_content'] if isinstance(content, Tournament)]
         context['latest_news'] = latest_news
         context["mainpage"] = MainPage.get_solo

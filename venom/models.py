@@ -2971,6 +2971,8 @@ class ClubPromo(models.Model):
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Обновлено")
     is_published = models.BooleanField(default=True, verbose_name="Опубликована")
+    show_tags = models.BooleanField(default=True, verbose_name="Показывать теги")
+    is_main_page = models.BooleanField(default=False, verbose_name="Показывать на главной")
 
     def __str__(self):
         return self.title
