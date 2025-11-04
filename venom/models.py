@@ -3008,18 +3008,20 @@ class ClubZonesNew(models.Model):
 
     # характеристики оборудования
     monitor = models.CharField(max_length=255, blank=True, verbose_name="Монитор")
-    processor = models.CharField(max_length=255, blank=True, verbose_name="Процессор")
-    videocard = models.CharField(max_length=255, blank=True, verbose_name="Видеокарта")
-    ozu = models.CharField(max_length=255, blank=True, verbose_name="Оперативная память")
-    headset = models.CharField(max_length=255, blank=True, verbose_name="Гарнитура")
-    keyboard = models.CharField(max_length=255, blank=True, verbose_name="Клавиатура")
-    mouse = models.CharField(max_length=255, blank=True, verbose_name="Мышь")
+    processor = models.CharField(max_length=255, blank=True, verbose_name="Процессор/Телевизор")
+    videocard = models.CharField(max_length=255, blank=True, verbose_name="Видеокарта/Размер и характеристики")
+    ozu = models.CharField(max_length=255, blank=True, verbose_name="Оперативная память/Звук")
+    headset = models.CharField(max_length=255, blank=True, verbose_name="Гарнитура/Комфорт")
+    keyboard = models.CharField(max_length=255, blank=True, verbose_name="Клавиатура/Преимущества")
+    mouse = models.CharField(max_length=255, blank=True, verbose_name="Мышь/Расположение")
 
     # доп параметры
     sort = models.CharField(max_length=4, blank=True, verbose_name="Сортировка")
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Создание')
     time_update = models.DateTimeField(auto_now=True, verbose_name='Обновлено')
     is_published = models.BooleanField(default=True, verbose_name="Опубликован")
+
+    is_tv = models.BooleanField(default=False, null=True, verbose_name='TV ZONE')
 
     class Meta:
         verbose_name = "Игровая зона"
@@ -3081,7 +3083,7 @@ def club_zone_pics_upload_path(instance, filename):
 
 
 class ZonesClubPics(models.Model):
-    club = models.ForeignKey("Club", related_name="zone_photos", on_delete=models.CASCADE)
+    club = models.ForeignKey("Club", related_name="zone_photos", on_delete=models.CASCADE, null=True)
     zone = models.ForeignKey("ClubZonesNew", related_name="zone_pics", on_delete=models.CASCADE)
 
     photo = models.ImageField(upload_to=club_zone_pics_upload_path)
@@ -3091,7 +3093,8 @@ class ZonesClubPics(models.Model):
     is_published = models.BooleanField(default=True, verbose_name="Опубликован")
 
     def __str__(self):
-        return f"{self.club.name} — {self.zone.title} — {os.path.basename(self.photo.name)}"
+        return f"{self.zone.title} — {os.path.basename(self.photo.name)}"
+        # return f"{self.club.name} — {self.zone.title} — {os.path.basename(self.photo.name)}"
 
     class Meta:
         verbose_name = "Фото игровой зоны"
@@ -3120,6 +3123,7 @@ class NewsNew(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True, verbose_name="Опубликовано")
+    show_tags = models.BooleanField(default=True, verbose_name="Показывать теги")
 
     is_main_page = models.BooleanField(default=False, verbose_name="Показывать на главной")
 

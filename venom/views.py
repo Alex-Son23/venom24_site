@@ -1,5 +1,5 @@
 from itertools import chain
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.shortcuts import redirect
 
 from django.contrib.auth import logout
@@ -37,14 +37,18 @@ class HomePageView(ListView):
         context['news_new_variant'] = [content for content in context['all_content'] if
                                        isinstance(content, NewsNewVariant)]
 
-        latest_news = NewsNew.objects.filter(is_published=True).order_by( '-time_create', '-id')[:7]
+        latest_news = NewsNew.objects.filter(is_published=True).filter(is_main_page=True).order_by( '-time_create', '-id')[:7]
 
         context['latest_news'] = latest_news
         context['photovenum'] = [content for content in context['all_content'] if isinstance(content, PhotoVenum)]
         context['zoneplay'] = [content for content in context['all_content'] if isinstance(content, ZonePlay)]
         context['characteristics'] = [content for content in context['all_content'] if isinstance(content, Characteristics)]
         context["mainpage"] = MainPage.get_solo
-        context["clubs"] = Club.objects.all()
+        # context["clubs"] = Club.objects.all()
+        zones_queryset = ClubZonesNew.objects.all().order_by('sort')
+        context["clubs"] = Club.objects.all().select_related('zones_image').prefetch_related(
+            Prefetch("zones", queryset=zones_queryset)
+        ).order_by("name")
         return context
 
     def get(self, request, *args, **kwargs):
@@ -75,7 +79,10 @@ class ClubsPage(ListView):
         seo = self.get_queryset()  # Получаем объект ClubPageSeo
         context['clubs_images'] = ClubPageZonesImages.objects.all() 
         context['seo'] = seo  # Добавляем объект ClubPageSeo в контекст
-        context["clubs"] = Club.objects.all().select_related('zones_image').prefetch_related("zones").order_by("name")
+        zones_queryset = ClubZonesNew.objects.all().order_by('sort')
+        context["clubs"] = Club.objects.all().select_related('zones_image').prefetch_related(
+            Prefetch("zones", queryset=zones_queryset)
+        ).order_by("name")
         context["mainpage"] = MainPage.get_solo
         return context
 
@@ -1195,7 +1202,7 @@ class ClubPageView(ListView):
         # Собираем контент по клубу
         news = ClubNews.objects.filter(club=self.club, is_published=True).order_by('-sort', '-time_create')
         promos = ClubPromo.objects.filter(clubs=self.club, is_published=True).order_by('-sort', '-time_create')
-        zones = ClubZonesNew.objects.filter(club=self.club, is_published=True).order_by('-sort', 'time_create')
+        zones = ClubZonesNew.objects.filter(club=self.club, is_published=True).order_by('sort', 'time_create')
         gallery = ClubGallery.objects.filter(club=self.club, is_published=True).order_by('id')
         photos = PhotoClub.objects.filter(club=self.club).order_by('-order')
         news_new_variant = NewsNew.objects.filter(is_published=True, clubs=self.club).order_by('-sort', '-time_create')

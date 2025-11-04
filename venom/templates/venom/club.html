@@ -179,26 +179,80 @@
             </div>
 
             <ul class="params">
-                {% if zone.monitor %}
+                {% if zone.monitor and not zone.is_tv %}
                     <li><div class="pTitle">Монитор</div><div class="pDescr">{{ zone.monitor }}</div></li>
                 {% endif %}
                 {% if zone.processor %}
-                    <li><div class="pTitle">Процессор</div><div class="pDescr">{{ zone.processor }}</div></li>
+                    <li>
+                        <div class="pTitle">
+                            {% if zone.is_tv %}
+                                Телевизор
+                            {% else %}
+                                Процессор
+                            {% endif %}
+                        </div>
+                        <div class="pDescr">{{ zone.processor }}</div>
+                    </li>
                 {% endif %}
                 {% if zone.videocard %}
-                    <li><div class="pTitle">Видеокарта</div><div class="pDescr">{{ zone.videocard }}</div></li>
+                    <li>
+                        <div class="pTitle">
+                            {% if zone.is_tv %}
+                                Характеристики
+                            {% else %}
+                                Видеокарта
+                            {% endif %}
+                        </div>
+                        <div class="pDescr">{{ zone.videocard }}</div>
+                    </li>
                 {% endif %}
                 {% if zone.ozu %}
-                    <li><div class="pTitle">Оперативная память</div><div class="pDescr">{{ zone.ozu }}</div></li>
+                    <li>
+                        <div class="pTitle">
+                            {% if zone.is_tv %}
+                                Звук
+                            {% else %}
+                                Оперативная память
+                            {% endif %}
+                        </div>
+                        <div class="pDescr">{{ zone.ozu }}</div>
+                    </li>
                 {% endif %}
                 {% if zone.headset %}
-                    <li><div class="pTitle">Гарнитура</div><div class="pDescr">{{ zone.headset }}</div></li>
+                    <li>
+                        <div class="pTitle">
+                            {% if zone.is_tv %}
+                                Комфорт
+                            {% else %}
+                                Гарнитура
+                            {% endif %}
+                        </div>
+                        <div class="pDescr">{{ zone.headset }}</div>
+                    </li>
                 {% endif %}
                 {% if zone.keyboard %}
-                    <li><div class="pTitle">Клавиатура</div><div class="pDescr">{{ zone.keyboard }}</div></li>
+                    <li>
+                        <div class="pTitle">
+                            {% if zone.is_tv %}
+                                Преимущества
+                            {% else %}
+                                Клавиатура
+                            {% endif %}
+                        </div>
+                        <div class="pDescr">{{ zone.keyboard }}</div>
+                    </li>
                 {% endif %}
                 {% if zone.mouse %}
-                    <li><div class="pTitle">Мышь</div><div class="pDescr">{{ zone.mouse }}</div></li>
+                    <li>
+                        <div class="pTitle">
+                            {% if zone.is_tv %}
+                                Расположение
+                            {% else %}
+                                Мышь
+                            {% endif %}
+                        </div>
+                        <div class="pDescr">{{ zone.mouse }}</div>
+                    </li>
                 {% endif %}
             </ul>
 

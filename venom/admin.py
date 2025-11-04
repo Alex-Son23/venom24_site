@@ -2366,17 +2366,17 @@ class NewsNewAdmin(admin.ModelAdmin):
         """Чтобы можно было кликнуть по названию для редактирования."""
         return ("title",)
 
-    def save_model(self, request, obj, form, change):
-        """
-        Автоматически отключает 'is_main_page', если выбраны клубы.
-        Это исключает логическую ошибку: новость не может быть и клубной, и главной.
-        """
-        # Проверяем: есть ли выбранные клубы
-        if obj.is_main_page and obj.pk:
-            if obj.clubs.exists():
-                obj.is_main_page = False
+    # def save_model(self, request, obj, form, change):
+    #     """
+    #     Автоматически отключает 'is_main_page', если выбраны клубы.
+    #     Это исключает логическую ошибку: новость не может быть и клубной, и главной.
+    #     """
+    #     # Проверяем: есть ли выбранные клубы
+    #     if obj.is_main_page and obj.pk:
+    #         if obj.clubs.exists():
+    #             obj.is_main_page = False
 
-        super().save_model(request, obj, form, change)
+    #     super().save_model(request, obj, form, change)
 
 # --- Inline для фото зоны ---
 class ZonePhotoInline(admin.TabularInline):
@@ -2441,15 +2441,16 @@ class ClubZonesNewAdmin(admin.ModelAdmin):
         "get_total_price_blocks",
         "get_total_photos",
         "add_price_block_link",
+        "is_tv"
     )
-    list_filter = ("club", "is_published")
+    list_filter = ("club", "is_published", "is_tv")
     search_fields = ("title", "club__name")
     ordering = ("club", "title")
     inlines = [ZonePhotoInline, ZonePriceBlockInline]
 
     fieldsets = (
         ("Основное", {
-            "fields": ("club", "title", "slug", "count", "sort", "is_published"),
+            "fields": ("club", "title", "slug", "count", "sort", "is_published", "is_tv"),
         }),
         ("Оборудование", {
             "fields": ("monitor", "processor", "videocard", "ozu", "headset", "keyboard", "mouse"),
@@ -2474,6 +2475,15 @@ class ClubZonesNewAdmin(admin.ModelAdmin):
         url = reverse("admin:venom_zonepriceblock_add") + f"?zone={obj.id}"
         return format_html('<a class="button" href="{}">➕ Добавить блок прайса</a>', url)
     add_price_block_link.short_description = "Добавить блок прайса"
+
+    def save_formset(self, request, form, formset, change):
+        instances = formset.save(commit=False)
+        for obj in instances:
+            if isinstance(obj, ZonesClubPics):
+                if obj.zone and not obj.club_id:
+                    obj.club = obj.zone.club
+            obj.save()
+        formset.save_m2m()
 
 
 @admin.register(MainPage)
