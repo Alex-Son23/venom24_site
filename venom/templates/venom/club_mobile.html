@@ -260,6 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <br>
     </div>
 
+    {% if route.lottie_file %}
     {% with route.lottie_file.url|lower as file_url %}
         {% if file_url|slice:"-4:" == ".mp4" %}
             <video loop autoplay muted playsinline>
@@ -270,6 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         {% endif %}
     {% endwith %}
+    {% endif %}
 </div>
 {% endif %}
 
