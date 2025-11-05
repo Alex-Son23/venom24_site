@@ -3141,6 +3141,7 @@ class NewsNew(models.Model):
 class MainPage(models.Model):
     phone = models.CharField(verbose_name="Номер телефона", max_length=64)
     video = models.FileField(upload_to="videos/mainpage/", verbose_name="Видео")
+    background_video = models.FileField(upload_to="videos/mainpage/", verbose_name="Видео заднего фона", null=True)
 
     class Meta:
         verbose_name = "Главная странца"
