@@ -2181,7 +2181,7 @@ class ClubPromoAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ("Основная информация", {
-            "fields": ("title", "slug", "is_published", "sort")
+            "fields": ("title", "slug", "is_published", "sort", "is_main_page")
         }),
         ("Контент", {
             "fields": ("short", "descr")
