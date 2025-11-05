@@ -1,29 +1,35 @@
 # signals.py
+import os
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.db.models import FileField, ImageField
-from .utils.images import compress_image  # твоя функция сжатия
+from .utils.images import compress_image  # твоя функция
+
+IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp"}  # можно расширить
 
 
 @receiver(pre_save)
 def compress_all_images(sender, instance, **kwargs):
-    """
-    Сжимаем только FileField / ImageField, не трогаем M2M, FK и прочее.
-    """
-    # у системных/абстрактных моделей может не быть _meta
     opts = getattr(instance, "_meta", None)
     if not opts:
         return
 
-    # ВАЖНО: берём только реальные поля модели
+    # берем только ОДНОПОЛЬНЫЕ поля модели (без m2m)
     for field in opts.fields:
-        # нас интересуют только file/image
         if not isinstance(field, (FileField, ImageField)):
             continue
 
         value = getattr(instance, field.name, None)
-        # если файл только что загружен — он ещё не _committed
-        if value and hasattr(value, "file") and not getattr(value, "_committed", True):
+        if not value:
+            continue
+
+        # проверяем расширение — если .mp4/.pdf/.zip — пропускаем
+        ext = os.path.splitext(value.name)[1].lower()
+        if ext not in IMAGE_EXTS:
+            continue
+
+        # сжимаем только если файл новый (только что загружен)
+        if hasattr(value, "_committed") and not value._committed:
             new_file = compress_image(value)
             if new_file:
                 setattr(instance, field.name, new_file)
