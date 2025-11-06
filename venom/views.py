@@ -175,7 +175,7 @@ class NewsDetailMobileNew(DetailView):
     model = ClubNews
     template_name = 'venom/news_detail_mobile_new.html'
     slug_url_kwarg = 'slug'
-    context_object_name = 'newsdetailmobile'
+    context_object_name = 'news'
 
     def get_queryset(self):
         slug = self.kwargs.get("slug")
@@ -224,7 +224,12 @@ class PromoDetailMobile(DetailView):
     model = ClubPromo
     template_name = 'venom/promo_detail_mobile.html'
     slug_url_kwarg = 'slug'
-    context_object_name = 'promodetailmobile'
+    context_object_name = 'promo'
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+
+    #     context["promo"] = ClubPromo.objects.filter(slug=)
 
 
 
@@ -1294,6 +1299,7 @@ class NewsNewDetailView(DetailView):
         if club_slug:
             club = get_object_or_404(Club, slug=club_slug)
             context["club"] = club
+            context["newsdetailmobile"] = club
             context["seo"] = getattr(club, "seo", None)
         else:
             context["club"] = None
@@ -1301,6 +1307,8 @@ class NewsNewDetailView(DetailView):
 
         # 🔹 Дополнительно: показываем, для каких клубов новость относится
         context["related_clubs"] = self.object.clubs.all()
+
+        print(context)
 
         return context
 

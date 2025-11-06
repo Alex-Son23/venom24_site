@@ -37,7 +37,9 @@
             <ul class="promoListScroll">
                 {% for promo in promos %}
                     <li class="glassEffect">
+                        {% if promo.photo_mobile %}
                         <a href="{% url 'promodetailmobile' slug=promo.slug %}"><img src="{{ promo.photo_mobile.url }}" alt=""></a>
+                        {% endif %}
                         <a href="{% url 'promodetailmobile' slug=promo.slug %}" class="title">{{ promo.title }}</a>
                     </li>
                 {% endfor %}

@@ -12,7 +12,9 @@
     {% for item_promo in promos %}
     <li>
         <a href="{% url 'club_promo_detail' club.slug item_promo.slug %}">
+            {% if item_promo.photo_mobile %}
             <img src="{{ item_promo.photo_mobile.url }}" alt="{{ item_promo.title }}">
+            {% endif %}
         </a>
         <a href="{% url 'club_promo_detail' club.slug item_promo.slug %}" class="titlePromo">{{ item_promo.title }}</a>
     </li>
