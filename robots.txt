@@ -1,6 +1,0 @@
-User-agent: *
-
-Allow: /
-Disallow: /admin77/
-
-Sitemap: https://venom24.ru/sitemap.xml
